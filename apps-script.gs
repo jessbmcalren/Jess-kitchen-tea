@@ -16,9 +16,28 @@
  * doPost → marks an item as taken by a guest's name.
  */
 
+const SHEET_ID = '1Kp8fy4GbZfoJwgWJ52sWBUwazIVYyIRkiXcAsXlg1eo';
+
+// Locate the registry sheet by finding the tab whose column A contains a "BOUGHT" header.
+function getRegistrySheet() {
+  const ss = SpreadsheetApp.openById(SHEET_ID);
+  const sheets = ss.getSheets();
+  for (let s = 0; s < sheets.length; s++) {
+    const lastRow = sheets[s].getLastRow();
+    if (lastRow === 0) continue;
+    const probe = sheets[s].getRange(1, 1, Math.min(lastRow, 20), 1).getValues();
+    for (let i = 0; i < probe.length; i++) {
+      if (String(probe[i][0] || '').trim().toUpperCase() === 'BOUGHT') {
+        return sheets[s];
+      }
+    }
+  }
+  return sheets[0];
+}
+
 function doGet() {
   try {
-    const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    const sheet = getRegistrySheet();
     const lastRow = sheet.getLastRow();
     const lastCol = Math.max(sheet.getLastColumn(), 7);
     const values = sheet.getRange(1, 1, lastRow, lastCol).getValues();
@@ -86,7 +105,7 @@ function doGet() {
 
 function doPost(e) {
   try {
-    const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    const sheet = getRegistrySheet();
     const data = JSON.parse(e.postData.contents);
     const rowIndex = parseInt(data.rowIndex, 10);
     const name = String(data.name || '').trim();
