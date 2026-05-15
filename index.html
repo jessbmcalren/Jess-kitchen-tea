@@ -6,237 +6,309 @@
 <title>Jess's Bridal Shower Registry</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Caveat+Brush&family=Patrick+Hand&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --cream: #f5efe6;
-    --cream-deep: #ebe2d4;
-    --ink: #1a1a1a;
-    --ink-soft: #3d3833;
-    --muted: #8a8079;
+    --bg: #fdfaf6;
+    --bg-warm: #f4ede2;
+    --paper: #ffffff;
+    --ink: #2d2520;
+    --ink-soft: #5a4f47;
+    --muted: #9a8e84;
+    --line: #e6dccf;
+    --rose: #b88078;
+    --rose-soft: #d9b3ab;
+    --sage: #7a8b6f;
+    --sage-soft: #b4c0a8;
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
   body {
-    font-family: 'Patrick Hand', sans-serif;
-    background: var(--cream);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
     color: var(--ink);
-    line-height: 1.5;
-    font-size: 17px;
+    line-height: 1.6;
+    font-size: 15px;
+    font-weight: 400;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
+  ::selection { background: var(--rose-soft); color: var(--ink); }
+
   .page {
-    max-width: 920px;
+    max-width: 1040px;
     margin: 0 auto;
-    padding: 48px 24px 80px;
+    padding: 64px 32px 96px;
   }
 
   /* ── HERO ─────────────────────────────────── */
   .hero {
     text-align: center;
-    padding: 8px 0 16px;
+    padding: 24px 0 48px;
+    position: relative;
   }
-  .eyebrow {
-    font-family: 'Caveat', cursive;
-    font-size: 26px;
-    transform: rotate(-3deg);
-    display: inline-block;
-    margin-bottom: 4px;
+  .hero-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 28px;
   }
   .hero h1 {
-    font-family: 'Caveat Brush', cursive;
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(56px, 9vw, 104px);
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+    margin: 0 0 4px;
+    color: var(--ink);
+  }
+  .hero h1 .italic {
+    font-style: italic;
     font-weight: 400;
-    font-size: 72px;
-    line-height: 0.95;
-    margin: 0;
-    letter-spacing: 1px;
+    color: var(--rose);
   }
-  .hero h1 .line2 {
-    display: block;
-    transform: rotate(-2deg);
-    margin-top: 6px;
-    font-size: 56px;
+  .hero-meta {
+    margin-top: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 400;
   }
-  .hero .subtitle {
-    font-family: 'Caveat', cursive;
-    font-size: 30px;
-    margin-top: 14px;
-    transform: rotate(1deg);
-    display: inline-block;
+  .hero-meta .dot {
+    width: 4px; height: 4px;
+    background: var(--rose);
+    border-radius: 50%;
   }
 
-  /* ── ILLUSTRATION ─────────────────────────── */
-  .illustration {
+  /* ── SPRIG ILLUSTRATION ───────────────────── */
+  .sprig {
     display: flex;
     justify-content: center;
-    margin: 12px 0 24px;
+    margin: 56px 0 32px;
   }
-  .illustration svg {
-    width: 220px;
+  .sprig svg {
+    width: 64px;
     height: auto;
+    color: var(--sage);
   }
 
   /* ── INTRO ────────────────────────────────── */
   .intro {
+    max-width: 580px;
+    margin: 0 auto 16px;
     text-align: center;
-    font-family: 'Caveat', cursive;
-    font-size: 26px;
-    line-height: 1.35;
-    max-width: 540px;
-    margin: 16px auto 8px;
-    transform: rotate(-0.5deg);
-  }
-
-  /* ── SQUIGGLE DIVIDER ─────────────────────── */
-  .squiggle {
-    display: flex;
-    justify-content: center;
-    margin: 32px 0 20px;
-  }
-  .squiggle svg { width: 160px; height: 30px; }
-
-  /* ── SECTION HEADER ───────────────────────── */
-  .section-header {
-    text-align: center;
-    margin: 44px 0 20px;
-  }
-  .section-header h2 {
-    font-family: 'Caveat Brush', cursive;
-    font-weight: 400;
-    font-size: 52px;
-    margin: 0;
-    transform: rotate(-1.5deg);
-    display: inline-block;
-  }
-  .section-header .count {
-    font-family: 'Caveat', cursive;
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-style: italic;
     font-size: 22px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    letter-spacing: -0.005em;
+  }
+
+  /* ── SECTION ──────────────────────────────── */
+  .section {
+    margin-top: 72px;
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 20px;
+    margin-bottom: 36px;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .section-head-left {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .section-num {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--rose);
+  }
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 38px;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .section-meta {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
     color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .progress-track {
+    width: 96px;
+    height: 2px;
+    background: var(--line);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--sage);
+    transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   /* ── REGISTRY GRID ────────────────────────── */
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
   }
   .card {
-    border: 2px solid var(--ink);
-    border-radius: 6px;
-    padding: 20px 18px;
-    background: var(--cream);
-    position: relative;
+    background: var(--paper);
+    padding: 26px 24px 22px;
     display: flex;
     flex-direction: column;
-    transition: transform 0.15s;
+    position: relative;
+    transition: background 0.25s;
   }
-  .card:nth-child(3n) { transform: rotate(0.4deg); }
-  .card:nth-child(3n+1) { transform: rotate(-0.4deg); }
-  .card:hover { transform: rotate(0deg) translateY(-2px); }
-  .card::before {
-    content: '';
-    position: absolute;
-    inset: 4px;
-    border: 1px solid var(--ink);
-    border-radius: 4px;
-    pointer-events: none;
-    opacity: 0.35;
-  }
-  .card.taken {
-    background: var(--cream-deep);
-    opacity: 0.7;
-  }
-  .card-num {
-    position: absolute;
-    top: -12px;
-    left: 14px;
-    background: var(--cream);
-    padding: 0 8px;
-    font-family: 'Caveat', cursive;
-    font-size: 22px;
+  .card:hover { background: #fffdfa; }
+  .card.taken { background: var(--bg-warm); }
+  .card.taken:hover { background: var(--bg-warm); }
+  .card-meta-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
     color: var(--muted);
+    font-weight: 500;
   }
+  .card-num { color: var(--rose); }
   .card-name {
-    font-family: 'Caveat Brush', cursive;
-    font-size: 26px;
-    line-height: 1.1;
-    margin: 4px 0 6px;
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.2;
+    margin: 0 0 12px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
   }
   .card.taken .card-name {
-    text-decoration: line-through;
-    text-decoration-thickness: 1.5px;
+    color: var(--muted);
   }
   .card-store {
-    font-family: 'Caveat', cursive;
-    font-size: 20px;
-    color: var(--ink-soft);
-    margin-bottom: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 12px;
   }
   .card-price {
-    font-family: 'Patrick Hand', sans-serif;
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 8px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 17px;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
   }
   .card-notes {
-    font-size: 15px;
+    font-size: 13.5px;
     color: var(--ink-soft);
     flex: 1;
-    margin-bottom: 14px;
-    line-height: 1.4;
+    margin-bottom: 22px;
+    line-height: 1.55;
   }
   .card-actions {
     display: flex;
     gap: 8px;
-    flex-wrap: wrap;
+    margin-top: auto;
   }
   .btn {
     flex: 1;
-    padding: 10px 12px;
-    border: 2px solid var(--ink);
-    border-radius: 4px;
-    font-family: 'Caveat', cursive;
-    font-size: 22px;
+    padding: 11px 14px;
+    border-radius: 1px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
     cursor: pointer;
     text-decoration: none;
     text-align: center;
-    color: var(--ink);
+    transition: all 0.2s;
+    border: 1px solid var(--ink);
     background: transparent;
-    transition: background 0.15s, color 0.15s;
+    color: var(--ink);
     line-height: 1;
     white-space: nowrap;
   }
-  .btn:hover { background: var(--cream-deep); }
+  .btn:hover { background: var(--ink); color: var(--bg); }
   .btn-primary {
     background: var(--ink);
-    color: var(--cream);
+    color: var(--bg);
   }
-  .btn-primary:hover { background: var(--cream); color: var(--ink); }
-  .btn:disabled, .btn[disabled] { opacity: 0.5; cursor: not-allowed; }
-  .taken-by {
-    font-family: 'Caveat', cursive;
-    font-size: 20px;
+  .btn-primary:hover { background: var(--rose); border-color: var(--rose); color: white; }
+  .btn:disabled, .btn[disabled] { opacity: 0.4; cursor: not-allowed; }
+  .taken-label {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--rose);
     text-align: center;
-    padding: 8px;
-    color: var(--ink-soft);
     width: 100%;
+    padding: 11px 0;
+    border-top: 1px solid var(--line);
+    margin-top: 8px;
   }
-  .taken-by .heart { color: var(--ink); }
+  .taken-label::before {
+    content: '✓';
+    margin-right: 6px;
+    font-style: normal;
+    font-weight: 600;
+  }
 
   /* ── LOADING & ERROR ──────────────────────── */
   .state-msg {
+    grid-column: 1 / -1;
     text-align: center;
-    font-family: 'Caveat', cursive;
-    font-size: 28px;
-    padding: 40px;
-    color: var(--ink-soft);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--muted);
+    padding: 64px 16px;
+    background: var(--paper);
   }
 
   /* ── MODAL ────────────────────────────────── */
   .modal-backdrop {
     position: fixed;
     inset: 0;
-    background: rgba(26, 26, 26, 0.5);
+    background: rgba(45, 37, 32, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     display: none;
     align-items: center;
     justify-content: center;
@@ -245,71 +317,117 @@
   }
   .modal-backdrop.open { display: flex; }
   .modal {
-    background: var(--cream);
-    border: 2px solid var(--ink);
-    border-radius: 6px;
-    padding: 32px 28px;
-    max-width: 420px;
+    background: var(--paper);
+    border-radius: 2px;
+    padding: 40px 36px 32px;
+    max-width: 440px;
     width: 100%;
-    position: relative;
+    box-shadow: 0 24px 64px rgba(45, 37, 32, 0.18);
   }
-  .modal::before {
-    content: '';
-    position: absolute;
-    inset: 4px;
-    border: 1px solid var(--ink);
-    border-radius: 4px;
-    pointer-events: none;
-    opacity: 0.4;
+  .modal-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 12px;
+    font-weight: 500;
   }
   .modal h3 {
-    font-family: 'Caveat Brush', cursive;
+    font-family: 'Fraunces', serif;
     font-weight: 400;
-    font-size: 38px;
-    margin: 0 0 8px;
-    line-height: 1;
+    font-size: 28px;
+    margin: 0 0 6px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
   }
-  .modal p {
-    font-family: 'Caveat', cursive;
-    font-size: 22px;
-    margin: 0 0 20px;
-    line-height: 1.3;
+  .modal .modal-item {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 17px;
+    color: var(--ink-soft);
+    margin: 0 0 28px;
+    line-height: 1.4;
+  }
+  .modal label {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+    font-weight: 500;
   }
   .modal input {
     width: 100%;
-    padding: 12px 14px;
-    border: 2px solid var(--ink);
-    border-radius: 4px;
-    font-family: 'Patrick Hand', sans-serif;
-    font-size: 18px;
+    padding: 12px 0;
+    border: none;
+    border-bottom: 1px solid var(--ink);
+    border-radius: 0;
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 20px;
     background: transparent;
-    margin-bottom: 16px;
+    color: var(--ink);
+    margin-bottom: 28px;
+    transition: border-color 0.2s;
   }
-  .modal input:focus { outline: none; background: var(--cream-deep); }
+  .modal input:focus { outline: none; border-color: var(--rose); }
+  .modal input::placeholder { color: var(--muted); font-style: italic; }
   .modal-actions {
     display: flex;
     gap: 10px;
   }
   .modal .feedback {
-    margin-top: 14px;
-    font-family: 'Caveat', cursive;
-    font-size: 22px;
+    margin-top: 18px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 16px;
     text-align: center;
+    color: var(--sage);
     display: none;
   }
+  .modal .feedback.error { color: var(--rose); }
 
+  /* ── FOOTER ───────────────────────────────── */
   footer {
     text-align: center;
-    margin-top: 56px;
-    font-family: 'Caveat', cursive;
-    font-size: 26px;
-    transform: rotate(-1deg);
+    margin-top: 96px;
+    padding-top: 48px;
+    border-top: 1px solid var(--line);
+  }
+  .footer-sprig {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+    color: var(--sage);
+  }
+  .footer-text {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 20px;
+    color: var(--ink-soft);
+  }
+  .footer-sub {
+    margin-top: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
   }
 
-  @media (max-width: 480px) {
-    .hero h1 { font-size: 56px; }
-    .hero h1 .line2 { font-size: 44px; }
+  @media (max-width: 640px) {
+    .page { padding: 40px 20px 64px; }
+    .section { margin-top: 56px; }
+    .section-head { padding-bottom: 16px; margin-bottom: 24px; }
+    .section-title { font-size: 30px; }
     .grid { grid-template-columns: 1fr; }
+    .hero-meta { flex-direction: column; gap: 10px; }
+    .hero-meta .dot { display: none; }
   }
 </style>
 </head>
@@ -317,95 +435,119 @@
   <div class="page">
 
     <!-- HERO -->
-    <div class="hero">
-      <div class="eyebrow">~ welcome to ~</div>
+    <header class="hero">
+      <div class="hero-eyebrow">A Celebration For Jess</div>
       <h1>
-        Jess's
-        <span class="line2">registry</span>
+        The Registry
       </h1>
-      <div class="subtitle">bridal shower · 15 august 2026</div>
-    </div>
+      <h1 style="margin-top:-8px;">
+        <span class="italic">— for Jess &amp; Sam</span>
+      </h1>
+      <div class="hero-meta">
+        <span>Bridal Shower</span>
+        <span class="dot"></span>
+        <span>15 August 2026</span>
+      </div>
+    </header>
 
-    <!-- TEACUP ILLUSTRATION -->
-    <div class="illustration">
-      <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#1a1a1a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M82 18 Q 76 30 84 42 Q 92 54 84 66" />
-        <path d="M108 12 Q 100 26 110 40 Q 120 54 110 68" />
-        <path d="M134 18 Q 128 30 136 42 Q 144 54 136 66" />
-        <path d="M55 80 Q 56 78 60 78 L 152 78 Q 156 78 156 80 L 150 134 Q 148 145 138 145 L 74 145 Q 64 145 62 134 Z" />
-        <path d="M58 88 Q 106 96 154 88" />
-        <path d="M156 88 Q 184 90 184 108 Q 184 126 156 124" />
-        <ellipse cx="106" cy="155" rx="78" ry="9" />
-        <path d="M32 152 Q 106 168 180 152" />
-        <path d="M30 60 q -4 -6 -10 -3 q -6 3 0 11 q 4 5 10 9 q 6 -4 10 -9 q 6 -8 0 -11 q -6 -3 -10 3 Z" stroke-width="2" />
-        <path d="M192 50 q -3 -5 -7 -2 q -5 3 0 9 q 3 4 7 7 q 4 -3 7 -7 q 5 -6 0 -9 q -4 -3 -7 2 Z" stroke-width="2" />
-        <path d="M14 110 l 3 5 l 5 1 l -4 4 l 1 5 l -5 -3 l -5 3 l 1 -5 l -4 -4 l 5 -1 z" stroke-width="1.5" />
-        <path d="M204 130 l 2 4 l 4 1 l -3 3 l 1 4 l -4 -2 l -4 2 l 1 -4 l -3 -3 l 4 -1 z" stroke-width="1.5" />
+    <!-- SPRIG -->
+    <div class="sprig">
+      <svg viewBox="0 0 80 100" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+        <!-- central stem -->
+        <path d="M40 95 Q 40 60 40 12" />
+        <!-- leaves left -->
+        <path d="M40 80 Q 28 76 22 68 Q 32 70 40 76" fill="currentColor" fill-opacity="0.06" />
+        <path d="M40 66 Q 26 60 20 50 Q 32 54 40 62" fill="currentColor" fill-opacity="0.06" />
+        <path d="M40 50 Q 28 44 24 32 Q 34 38 40 46" fill="currentColor" fill-opacity="0.06" />
+        <path d="M40 34 Q 30 30 28 18 Q 36 26 40 30" fill="currentColor" fill-opacity="0.06" />
+        <!-- leaves right -->
+        <path d="M40 74 Q 52 72 60 64 Q 50 64 40 70" fill="currentColor" fill-opacity="0.06" />
+        <path d="M40 58 Q 54 54 60 44 Q 48 46 40 54" fill="currentColor" fill-opacity="0.06" />
+        <path d="M40 42 Q 52 38 58 28 Q 46 30 40 38" fill="currentColor" fill-opacity="0.06" />
+        <path d="M40 28 Q 50 24 52 14 Q 44 20 40 24" fill="currentColor" fill-opacity="0.06" />
+        <!-- tip blossom -->
+        <circle cx="40" cy="10" r="2.5" fill="currentColor" fill-opacity="0.15" />
       </svg>
     </div>
 
     <p class="intro">
-      Pick something you'd love to gift &mdash; click "I'll bring this" so we don't double up.<br/>
-      Vouchers are split too, so any amount is a perfect contribution.
+      Welcome — pick something you'd love to gift, and click claim so we don't double up.
+      Vouchers are split into smaller amounts, so any contribution is perfect.
     </p>
 
-    <div class="squiggle">
-      <svg viewBox="0 0 140 30" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round">
-        <path d="M5 15 Q 20 0, 35 15 T 65 15 T 95 15 T 135 15" />
-      </svg>
-    </div>
+    <!-- WISHLIST -->
+    <section class="section">
+      <div class="section-head">
+        <div class="section-head-left">
+          <span class="section-num">01</span>
+          <h2 class="section-title">The Wishlist</h2>
+        </div>
+        <div class="section-meta" id="items-meta">
+          <span id="items-count-text">—</span>
+          <div class="progress-track"><div class="progress-fill" id="items-progress" style="width: 0%;"></div></div>
+        </div>
+      </div>
+      <div class="grid" id="items-grid">
+        <div class="state-msg" id="items-loading">Loading the wishlist…</div>
+      </div>
+    </section>
 
-    <!-- ITEMS SECTION -->
-    <div class="section-header">
-      <h2>the wishlist</h2>
-      <div class="count" id="items-count"></div>
-    </div>
-    <div class="grid" id="items-grid">
-      <div class="state-msg" id="items-loading">loading the wishlist...</div>
-    </div>
+    <!-- VOUCHERS -->
+    <section class="section">
+      <div class="section-head">
+        <div class="section-head-left">
+          <span class="section-num">02</span>
+          <h2 class="section-title">Vouchers</h2>
+        </div>
+        <div class="section-meta" id="vouchers-meta">
+          <span id="vouchers-count-text">—</span>
+          <div class="progress-track"><div class="progress-fill" id="vouchers-progress" style="width: 0%;"></div></div>
+        </div>
+      </div>
+      <div class="grid" id="vouchers-grid">
+        <div class="state-msg" id="vouchers-loading">Loading the vouchers…</div>
+      </div>
+    </section>
 
-    <!-- VOUCHERS SECTION -->
-    <div class="section-header">
-      <h2>vouchers</h2>
-      <div class="count" id="vouchers-count"></div>
-    </div>
-    <div class="grid" id="vouchers-grid">
-      <div class="state-msg" id="vouchers-loading">loading the vouchers...</div>
-    </div>
-
+    <!-- FOOTER -->
     <footer>
-      ~ thank you, with love ~
+      <div class="footer-sprig">
+        <svg viewBox="0 0 60 30" width="48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+          <path d="M2 15 Q 14 4 30 15 Q 46 26 58 15" />
+          <circle cx="30" cy="15" r="1.5" fill="currentColor" />
+        </svg>
+      </div>
+      <div class="footer-text">With love, and thanks — see you on the day.</div>
+      <div class="footer-sub">Jess &amp; Sam · 15 August 2026</div>
     </footer>
   </div>
 
   <!-- CLAIM MODAL -->
   <div class="modal-backdrop" id="modal-backdrop">
     <div class="modal">
-      <h3 id="modal-title">I'll bring this!</h3>
-      <p id="modal-item-name"></p>
-      <input type="text" id="modal-name" placeholder="your name" autocomplete="name" />
+      <div class="modal-eyebrow">Claim This Gift</div>
+      <h3>I'll bring this</h3>
+      <p class="modal-item" id="modal-item-name"></p>
+      <label for="modal-name">Your Name</label>
+      <input type="text" id="modal-name" placeholder="So Jess knows it's from you" autocomplete="name" />
       <div class="modal-actions">
-        <button type="button" class="btn" id="modal-cancel">cancel</button>
-        <button type="button" class="btn btn-primary" id="modal-confirm">confirm</button>
+        <button type="button" class="btn" id="modal-cancel">Cancel</button>
+        <button type="button" class="btn btn-primary" id="modal-confirm">Confirm</button>
       </div>
       <div class="feedback" id="modal-feedback"></div>
     </div>
   </div>
 
 <script>
-  // ⚠️ Paste your Google Apps Script Web App URL here after deploying.
   const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwcSsgdUQVLSCR_sMxWuYBVe-ra-HmlrmlZMB9MV1njGoJe9b2xMHNsFr98Izku6rmp/exec';
 
-  // ── State ─────────────────────────────────────
   let registry = { items: [], vouchers: [] };
   let pendingItem = null;
 
-  // ── Fetch & render ────────────────────────────
   async function loadRegistry() {
     if (APPS_SCRIPT_URL.startsWith('PASTE_')) {
-      document.getElementById('items-loading').textContent =
-        "⚠ Apps Script URL not yet configured. See SETUP.";
-      document.getElementById('vouchers-loading').textContent = "";
+      document.getElementById('items-loading').textContent = '⚠ Apps Script URL not yet configured.';
+      document.getElementById('vouchers-loading').textContent = '';
       return;
     }
     try {
@@ -415,25 +557,32 @@
       registry.vouchers = (data.items || []).filter(i => i.section === 'vouchers');
       renderAll();
     } catch (err) {
-      document.getElementById('items-loading').textContent =
-        "couldn't load the registry. please refresh.";
-      document.getElementById('vouchers-loading').textContent = "";
+      document.getElementById('items-loading').textContent = "Couldn't load the registry. Please refresh.";
+      document.getElementById('vouchers-loading').textContent = '';
     }
   }
 
   function renderAll() {
     renderGrid('items-grid', registry.items);
     renderGrid('vouchers-grid', registry.vouchers);
-    document.getElementById('items-count').textContent =
-      `${registry.items.filter(i => !i.taken).length} of ${registry.items.length} still available`;
-    document.getElementById('vouchers-count').textContent =
-      `${registry.vouchers.filter(i => !i.taken).length} of ${registry.vouchers.length} still available`;
+    updateMeta('items', registry.items);
+    updateMeta('vouchers', registry.vouchers);
+  }
+
+  function updateMeta(key, list) {
+    const total = list.length;
+    const taken = list.filter(i => i.taken).length;
+    const available = total - taken;
+    document.getElementById(`${key}-count-text`).textContent =
+      `${available} of ${total} available`;
+    const pct = total ? Math.round((taken / total) * 100) : 0;
+    document.getElementById(`${key}-progress`).style.width = pct + '%';
   }
 
   function renderGrid(targetId, items) {
     const grid = document.getElementById(targetId);
     if (!items.length) {
-      grid.innerHTML = '<div class="state-msg">nothing here yet</div>';
+      grid.innerHTML = '<div class="state-msg">Nothing here yet</div>';
       return;
     }
     grid.innerHTML = items.map(item => cardHtml(item)).join('');
@@ -441,23 +590,29 @@
 
   function cardHtml(item) {
     const linkBtn = item.url
-      ? `<a href="${escapeAttr(item.url)}" target="_blank" rel="noopener" class="btn">view</a>`
+      ? `<a href="${escapeAttr(item.url)}" target="_blank" rel="noopener" class="btn">View</a>`
       : '';
-    const claimBtn = item.taken
-      ? `<div class="taken-by"><span class="heart">✿</span> taken by ${escapeHtml(item.takenBy)}</div>`
-      : `<button type="button" class="btn btn-primary" onclick="openClaim(${item.rowIndex})">i'll bring this</button>`;
+    const claimRow = item.taken
+      ? `<div class="taken-label">Taken by ${escapeHtml(item.takenBy)}</div>`
+      : `<div class="card-actions">
+           ${linkBtn}
+           <button type="button" class="btn btn-primary" onclick="openClaim(${item.rowIndex})">Claim</button>
+         </div>`;
+    const linkOnlyForTaken = item.taken && item.url
+      ? `<div class="card-actions"><a href="${escapeAttr(item.url)}" target="_blank" rel="noopener" class="btn">View</a></div>`
+      : '';
     return `
-      <div class="card ${item.taken ? 'taken' : ''}">
-        ${item.number ? `<div class="card-num">#${escapeHtml(String(item.number))}</div>` : ''}
-        <div class="card-name">${escapeHtml(item.name)}</div>
-        ${item.store ? `<div class="card-store">${escapeHtml(item.store)}</div>` : ''}
-        ${item.price ? `<div class="card-price">${escapeHtml(item.price)}</div>` : ''}
-        ${item.notes ? `<div class="card-notes">${escapeHtml(item.notes)}</div>` : ''}
-        <div class="card-actions">
-          ${linkBtn}
-          ${claimBtn}
+      <article class="card ${item.taken ? 'taken' : ''}">
+        <div class="card-meta-top">
+          ${item.number ? `<span class="card-num">No. ${escapeHtml(String(item.number))}</span>` : '<span></span>'}
+          ${item.price ? `<span>${escapeHtml(item.price)}</span>` : ''}
         </div>
-      </div>
+        <h3 class="card-name">${escapeHtml(item.name)}</h3>
+        ${item.store ? `<div class="card-store">${escapeHtml(item.store)}</div>` : ''}
+        ${item.notes ? `<p class="card-notes">${escapeHtml(item.notes)}</p>` : '<p class="card-notes"></p>'}
+        ${item.taken ? linkOnlyForTaken : ''}
+        ${claimRow}
+      </article>
     `;
   }
 
@@ -468,7 +623,7 @@
   }
   function escapeAttr(s) { return escapeHtml(s); }
 
-  // ── Claim modal ───────────────────────────────
+  // ── Modal ─────────────────────────────────────
   const backdrop = document.getElementById('modal-backdrop');
   const modalItemName = document.getElementById('modal-item-name');
   const modalNameInput = document.getElementById('modal-name');
@@ -483,8 +638,9 @@
     modalItemName.textContent = pendingItem.name;
     modalNameInput.value = '';
     modalFeedback.style.display = 'none';
+    modalFeedback.classList.remove('error');
     modalConfirm.disabled = false;
-    modalConfirm.textContent = 'confirm';
+    modalConfirm.textContent = 'Confirm';
     backdrop.classList.add('open');
     setTimeout(() => modalNameInput.focus(), 50);
   }
@@ -494,6 +650,9 @@
   backdrop.addEventListener('click', (e) => {
     if (e.target === backdrop) backdrop.classList.remove('open');
   });
+  modalNameInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') modalConfirm.click();
+  });
 
   modalConfirm.addEventListener('click', async () => {
     const name = modalNameInput.value.trim();
@@ -501,20 +660,18 @@
     if (!pendingItem) return;
 
     modalConfirm.disabled = true;
-    modalConfirm.textContent = 'sending...';
+    modalConfirm.textContent = 'Sending…';
     modalFeedback.style.display = 'none';
 
     try {
-      // no-cors avoids preflight; Apps Script accepts text/plain bodies
       await fetch(APPS_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify({ rowIndex: pendingItem.rowIndex, name: name }),
       });
-      modalFeedback.textContent = '✿ thank you ~ you got it!';
+      modalFeedback.textContent = 'Thank you — you got it.';
       modalFeedback.style.display = 'block';
-      // Optimistic local update + refetch to reflect any race
       pendingItem.taken = true;
       pendingItem.takenBy = name;
       renderAll();
@@ -523,14 +680,14 @@
         loadRegistry();
       }, 1200);
     } catch (err) {
-      modalFeedback.textContent = 'something went wrong, try again';
+      modalFeedback.textContent = 'Something went wrong — please try again.';
+      modalFeedback.classList.add('error');
       modalFeedback.style.display = 'block';
       modalConfirm.disabled = false;
-      modalConfirm.textContent = 'confirm';
+      modalConfirm.textContent = 'Confirm';
     }
   });
 
-  // ── Init ──────────────────────────────────────
   loadRegistry();
 </script>
 </body>
