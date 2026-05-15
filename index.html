@@ -6,168 +6,177 @@
 <title>Jess's Bridal Shower Registry</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&family=Italianno&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Caveat:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #fdfaf6;
-    --bg-warm: #f4ede2;
+    --cream: #f4ede2;
+    --cream-soft: #faf5ec;
     --paper: #ffffff;
-    --ink: #2d2520;
-    --ink-soft: #5a4f47;
-    --muted: #9a8e84;
-    --line: #e6dccf;
-    --rose: #b88078;
-    --rose-soft: #d9b3ab;
-    --sage: #7a8b6f;
-    --sage-soft: #b4c0a8;
+    --ink: #1a1a1a;
+    --ink-soft: #3a3a3a;
+    --muted: #888080;
+    --line: #d4c9b8;
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
   body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: var(--bg);
+    font-family: 'Outfit', sans-serif;
+    background: var(--cream);
     color: var(--ink);
     line-height: 1.6;
     font-size: 15px;
-    font-weight: 400;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
-  ::selection { background: var(--rose-soft); color: var(--ink); }
+  ::selection { background: var(--ink); color: var(--cream); }
 
   .page {
-    max-width: 1040px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 64px 32px 96px;
+    padding: 56px 28px 96px;
   }
 
   /* ── HERO ─────────────────────────────────── */
   .hero {
     text-align: center;
-    padding: 24px 0 48px;
-    position: relative;
+    padding: 16px 0 32px;
+  }
+  .hero-script {
+    font-family: 'Caveat Brush', cursive;
+    font-weight: 400;
+    font-size: clamp(64px, 11vw, 132px);
+    line-height: 0.95;
+    color: var(--ink);
+    letter-spacing: 0.005em;
+    margin: 0;
+  }
+  .hero-script .row2 {
+    display: block;
+    transform: rotate(-2deg);
+    margin-top: -4px;
   }
   .hero-eyebrow {
-    font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    font-weight: 500;
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
     letter-spacing: 0.32em;
     text-transform: uppercase;
-    color: var(--sage);
-    margin-bottom: 28px;
-  }
-  .hero h1 {
-    font-family: 'Fraunces', serif;
-    font-weight: 300;
-    font-size: clamp(56px, 9vw, 104px);
-    line-height: 0.92;
-    letter-spacing: -0.02em;
-    margin: 0 0 4px;
     color: var(--ink);
-  }
-  .hero .hero-script {
-    font-family: 'Italianno', cursive;
-    font-weight: 400;
-    font-size: clamp(48px, 7vw, 80px);
-    color: var(--rose);
-    display: block;
-    line-height: 1;
-    margin-top: -4px;
-    letter-spacing: 0.01em;
+    margin-bottom: 20px;
   }
   .hero-meta {
-    margin-top: 28px;
+    margin-top: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 18px;
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.22em;
+    gap: 14px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
-    color: var(--ink-soft);
-    font-weight: 400;
   }
-  .hero-meta .dot {
-    width: 4px; height: 4px;
-    background: var(--rose);
-    border-radius: 50%;
+  .hero-meta .pipe {
+    font-weight: 300;
+    color: var(--muted);
   }
 
-  /* ── SPRIG ILLUSTRATION ───────────────────── */
-  .sprig {
+  /* ── ILLUSTRATION ─────────────────────────── */
+  .illustration {
     display: flex;
     justify-content: center;
-    margin: 56px 0 32px;
+    margin: 32px 0 24px;
   }
-  .sprig svg {
-    width: 64px;
+  .illustration svg {
+    width: 220px;
     height: auto;
-    color: var(--sage);
+    color: var(--ink);
   }
 
   /* ── INTRO ────────────────────────────────── */
   .intro {
     max-width: 580px;
-    margin: 0 auto 16px;
+    margin: 16px auto 32px;
     text-align: center;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Outfit', sans-serif;
     font-weight: 400;
-    font-style: italic;
-    font-size: 24px;
-    line-height: 1.5;
+    font-size: 15px;
+    line-height: 1.7;
     color: var(--ink-soft);
-    letter-spacing: 0;
   }
+
+  /* ── BUTTONS (hero pills) ─────────────────── */
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    margin-top: 28px;
+  }
+  .pill {
+    padding: 12px 28px;
+    border-radius: 999px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    border: 1.5px solid var(--ink);
+    color: var(--ink);
+    background: transparent;
+    transition: all 0.2s;
+    display: inline-block;
+    line-height: 1;
+  }
+  .pill:hover { background: var(--ink); color: var(--cream); }
+  .pill-dark {
+    background: var(--ink);
+    color: var(--cream);
+  }
+  .pill-dark:hover { background: transparent; color: var(--ink); }
 
   /* ── SECTION ──────────────────────────────── */
   .section {
     margin-top: 72px;
   }
-  .section-head {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    border-bottom: 1px solid var(--line);
-    padding-bottom: 20px;
+  .section-title-wrap {
+    text-align: center;
     margin-bottom: 36px;
-    gap: 24px;
-    flex-wrap: wrap;
   }
-  .section-head-left {
-    display: flex;
-    align-items: baseline;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-  .section-num {
-    font-family: 'Italianno', cursive;
+  .section-script {
+    font-family: 'Caveat Brush', cursive;
     font-weight: 400;
-    font-size: 42px;
-    color: var(--rose);
-    line-height: 1;
-    letter-spacing: 0.02em;
-  }
-  .section-title {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-weight: 500;
-    font-size: 36px;
-    letter-spacing: -0.018em;
+    font-size: clamp(48px, 7vw, 76px);
+    line-height: 0.95;
     color: var(--ink);
-    line-height: 1;
+    margin: 0;
+    display: inline-block;
+    transform: rotate(-1deg);
   }
-  .section-meta {
-    font-family: 'Inter', sans-serif;
+  .section-eyebrow {
+    font-family: 'Outfit', sans-serif;
     font-size: 11px;
-    letter-spacing: 0.2em;
+    font-weight: 600;
+    letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: var(--muted);
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .section-progress {
+    margin-top: 18px;
     display: flex;
     align-items: center;
-    gap: 14px;
+    justify-content: center;
+    gap: 12px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--muted);
   }
   .progress-track {
-    width: 96px;
+    width: 100px;
     height: 2px;
     background: var(--line);
     border-radius: 2px;
@@ -175,7 +184,7 @@
   }
   .progress-fill {
     height: 100%;
-    background: var(--sage);
+    background: var(--ink);
     transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
@@ -183,70 +192,68 @@
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1px;
-    background: var(--line);
-    border: 1px solid var(--line);
+    gap: 18px;
   }
   .card {
     background: var(--paper);
-    padding: 26px 24px 22px;
+    border-radius: 20px;
+    padding: 24px 22px 20px;
     display: flex;
     flex-direction: column;
-    position: relative;
-    transition: background 0.25s;
+    box-shadow: 0 2px 8px rgba(26, 26, 26, 0.04), 0 0 0 1px rgba(26, 26, 26, 0.04);
+    transition: transform 0.2s, box-shadow 0.2s;
   }
-  .card:hover { background: #fffdfa; }
-  .card.taken { background: var(--bg-warm); }
-  .card.taken:hover { background: var(--bg-warm); }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(26, 26, 26, 0.08), 0 0 0 1px rgba(26, 26, 26, 0.06);
+  }
+  .card.taken {
+    background: var(--cream-soft);
+  }
   .card-meta-top {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 14px;
-    font-family: 'Inter', sans-serif;
+    margin-bottom: 12px;
+    font-family: 'Outfit', sans-serif;
     font-size: 10px;
-    letter-spacing: 0.18em;
+    font-weight: 600;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
     color: var(--muted);
-    font-weight: 500;
   }
-  .card-num { color: var(--rose); }
+  .card-num { color: var(--ink); }
   .card-name {
-    font-family: 'Fraunces', serif;
-    font-weight: 400;
-    font-size: 21px;
-    line-height: 1.25;
-    margin: 0 0 12px;
-    letter-spacing: -0.01em;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.4;
+    margin: 0 0 10px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
     color: var(--ink);
   }
-  .card.taken .card-name {
-    color: var(--muted);
-  }
+  .card.taken .card-name { color: var(--muted); }
   .card-store {
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--sage);
-    margin-bottom: 12px;
+    font-family: 'Patrick Hand', sans-serif;
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 8px;
   }
   .card-price {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-weight: 500;
-    font-size: 19px;
-    color: var(--ink-soft);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--ink);
     margin-bottom: 14px;
-    letter-spacing: 0.01em;
   }
   .card-notes {
-    font-size: 13.5px;
+    font-family: 'Patrick Hand', sans-serif;
+    font-size: 15px;
     color: var(--ink-soft);
     flex: 1;
-    margin-bottom: 22px;
-    line-height: 1.55;
+    margin-bottom: 18px;
+    line-height: 1.45;
   }
   .card-actions {
     display: flex;
@@ -255,68 +262,66 @@
   }
   .btn {
     flex: 1;
-    padding: 11px 14px;
-    border-radius: 1px;
-    font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.18em;
+    padding: 11px 12px;
+    border-radius: 999px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     cursor: pointer;
     text-decoration: none;
     text-align: center;
-    transition: all 0.2s;
-    border: 1px solid var(--ink);
+    border: 1.5px solid var(--ink);
     background: transparent;
     color: var(--ink);
+    transition: all 0.2s;
     line-height: 1;
     white-space: nowrap;
   }
-  .btn:hover { background: var(--ink); color: var(--bg); }
+  .btn:hover { background: var(--ink); color: var(--cream); }
   .btn-primary {
     background: var(--ink);
-    color: var(--bg);
+    color: var(--cream);
   }
-  .btn-primary:hover { background: var(--rose); border-color: var(--rose); color: white; }
+  .btn-primary:hover { background: transparent; color: var(--ink); }
   .btn:disabled, .btn[disabled] { opacity: 0.4; cursor: not-allowed; }
   .taken-label {
-    font-family: 'Italianno', cursive;
-    font-size: 24px;
-    color: var(--rose);
+    font-family: 'Caveat', cursive;
+    font-weight: 500;
+    font-size: 22px;
+    color: var(--ink);
     text-align: center;
     width: 100%;
-    padding: 8px 0 6px;
-    border-top: 1px solid var(--line);
+    padding: 8px 0 4px;
+    border-top: 1px dashed var(--line);
     margin-top: 8px;
-    line-height: 1;
+    line-height: 1.1;
   }
   .taken-label::before {
     content: '✓';
     margin-right: 8px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Outfit', sans-serif;
     font-size: 13px;
-    font-weight: 600;
-    color: var(--sage);
-    vertical-align: 4px;
+    font-weight: 700;
+    vertical-align: 3px;
   }
 
-  /* ── LOADING & ERROR ──────────────────────── */
+  /* ── STATE MESSAGES ───────────────────────── */
   .state-msg {
     grid-column: 1 / -1;
     text-align: center;
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-size: 18px;
+    font-family: 'Caveat', cursive;
+    font-size: 26px;
     color: var(--muted);
-    padding: 64px 16px;
-    background: var(--paper);
+    padding: 48px 16px;
   }
 
   /* ── MODAL ────────────────────────────────── */
   .modal-backdrop {
     position: fixed;
     inset: 0;
-    background: rgba(45, 37, 32, 0.5);
+    background: rgba(26, 26, 26, 0.5);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     display: none;
@@ -328,124 +333,112 @@
   .modal-backdrop.open { display: flex; }
   .modal {
     background: var(--paper);
-    border-radius: 2px;
-    padding: 40px 36px 32px;
+    border-radius: 24px;
+    padding: 36px 32px 32px;
     max-width: 440px;
     width: 100%;
-    box-shadow: 0 24px 64px rgba(45, 37, 32, 0.18);
+    box-shadow: 0 24px 64px rgba(26, 26, 26, 0.22);
   }
   .modal-eyebrow {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Outfit', sans-serif;
     font-size: 10px;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: var(--sage);
-    margin-bottom: 12px;
-    font-weight: 500;
+    color: var(--ink);
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-align: center;
   }
   .modal h3 {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-weight: 500;
-    font-size: 28px;
-    margin: 0 0 6px;
-    line-height: 1.2;
-    letter-spacing: -0.015em;
+    font-family: 'Caveat Brush', cursive;
+    font-weight: 400;
+    font-size: 46px;
+    margin: 0 0 4px;
+    line-height: 0.95;
+    text-align: center;
   }
   .modal .modal-item {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-weight: 400;
-    font-size: 19px;
+    font-family: 'Patrick Hand', sans-serif;
+    font-size: 17px;
     color: var(--ink-soft);
-    margin: 0 0 28px;
+    margin: 8px 0 28px;
     line-height: 1.4;
+    text-align: center;
   }
   .modal label {
     display: block;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Outfit', sans-serif;
     font-size: 10px;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
-    color: var(--muted);
+    color: var(--ink);
+    font-weight: 600;
     margin-bottom: 8px;
-    font-weight: 500;
   }
   .modal input {
     width: 100%;
-    padding: 12px 0;
-    border: none;
-    border-bottom: 1px solid var(--ink);
-    border-radius: 0;
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 400;
-    font-size: 22px;
+    padding: 12px 16px;
+    border: 1.5px solid var(--ink);
+    border-radius: 999px;
+    font-family: 'Patrick Hand', sans-serif;
+    font-size: 17px;
     background: transparent;
     color: var(--ink);
-    margin-bottom: 28px;
-    transition: border-color 0.2s;
+    margin-bottom: 22px;
+    transition: background 0.2s;
   }
-  .modal input:focus { outline: none; border-color: var(--rose); }
-  .modal input::placeholder { color: var(--muted); font-style: italic; }
+  .modal input:focus { outline: none; background: var(--cream-soft); }
+  .modal input::placeholder { color: var(--muted); }
   .modal-actions {
     display: flex;
     gap: 10px;
   }
   .modal .feedback {
     margin-top: 18px;
-    font-family: 'Italianno', cursive;
-    font-size: 26px;
+    font-family: 'Caveat', cursive;
+    font-size: 24px;
     text-align: center;
-    color: var(--sage);
+    color: var(--ink);
     display: none;
     line-height: 1;
   }
-  .modal .feedback.error { color: var(--rose); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 17px; }
 
   /* ── FOOTER ───────────────────────────────── */
   footer {
     text-align: center;
-    margin-top: 96px;
-    padding-top: 48px;
-    border-top: 1px solid var(--line);
+    margin-top: 88px;
+    padding-top: 40px;
+    border-top: 1px dashed var(--line);
   }
-  .footer-sprig {
+  .footer-illus {
     display: flex;
     justify-content: center;
-    margin-bottom: 24px;
-    color: var(--sage);
+    margin-bottom: 16px;
+    color: var(--ink);
   }
-  .footer-text {
-    font-family: 'Italianno', cursive;
+  .footer-script {
+    font-family: 'Caveat Brush', cursive;
     font-weight: 400;
-    font-size: 38px;
-    color: var(--rose);
-    line-height: 1.1;
-  }
-  .footer-text-sub {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-weight: 400;
-    font-size: 17px;
-    color: var(--ink-soft);
-    margin-top: 6px;
+    font-size: 52px;
+    color: var(--ink);
+    line-height: 1.05;
   }
   .footer-sub {
-    margin-top: 12px;
-    font-family: 'Inter', sans-serif;
+    margin-top: 8px;
+    font-family: 'Outfit', sans-serif;
     font-size: 11px;
-    letter-spacing: 0.22em;
+    font-weight: 500;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: var(--muted);
+    color: var(--ink);
   }
 
   @media (max-width: 640px) {
-    .page { padding: 40px 20px 64px; }
+    .page { padding: 36px 18px 64px; }
     .section { margin-top: 56px; }
-    .section-head { padding-bottom: 16px; margin-bottom: 24px; }
-    .section-title { font-size: 30px; }
     .grid { grid-template-columns: 1fr; }
-    .hero-meta { flex-direction: column; gap: 10px; }
-    .hero-meta .dot { display: none; }
+    .illustration svg { width: 180px; }
+    .hero-meta { font-size: 11px; gap: 10px; }
   }
 </style>
 </head>
@@ -454,99 +447,113 @@
 
     <!-- HERO -->
     <header class="hero">
-      <div class="hero-eyebrow">A Celebration For Jess</div>
-      <h1>
-        The Registry
-        <span class="hero-script">for Jess &amp; Sam</span>
+      <div class="hero-eyebrow">A Celebration for Jess</div>
+      <h1 class="hero-script">
+        Jess's
+        <span class="row2">Kitchen Tea</span>
       </h1>
       <div class="hero-meta">
         <span>Bridal Shower</span>
-        <span class="dot"></span>
-        <span>15 August 2026</span>
+        <span class="pipe">·</span>
+        <span>15 · 08 · 26</span>
+      </div>
+
+      <!-- HERO ILLUSTRATION -->
+      <div class="illustration">
+        <svg viewBox="0 0 220 200" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- steam wisps -->
+          <path d="M82 22 Q 76 34 84 46 Q 92 58 84 70" />
+          <path d="M108 14 Q 100 28 110 42 Q 120 56 110 70" />
+          <path d="M134 22 Q 128 34 136 46 Q 144 58 136 70" />
+          <!-- teapot body -->
+          <path d="M55 85 Q 56 82 60 82 L 152 82 Q 156 82 156 85 L 152 142 Q 150 154 138 154 L 74 154 Q 62 154 60 142 Z" />
+          <!-- teapot rim -->
+          <path d="M58 92 Q 106 100 154 92" />
+          <!-- spout -->
+          <path d="M52 100 Q 38 95 30 85 Q 38 105 50 110" />
+          <!-- handle -->
+          <path d="M156 92 Q 188 94 188 116 Q 188 138 156 134" />
+          <!-- saucer -->
+          <ellipse cx="106" cy="166" rx="80" ry="10" />
+          <path d="M28 162 Q 106 182 184 162" />
+          <!-- little heart -->
+          <path d="M106 110 q -5 -8 -12 -4 q -7 4 0 13 q 5 6 12 11 q 7 -5 12 -11 q 7 -9 0 -13 q -7 -4 -12 4 Z" stroke-width="2" />
+          <!-- side flora -->
+          <path d="M18 130 Q 14 124 18 118 Q 22 124 18 130 Z" />
+          <path d="M18 130 L 18 144" />
+          <path d="M14 138 Q 18 134 22 138" />
+          <path d="M198 50 Q 194 44 198 38 Q 202 44 198 50 Z" />
+          <path d="M198 50 L 198 64" />
+          <!-- sparkle stars -->
+          <path d="M22 60 l 3 5 l 5 1 l -4 4 l 1 5 l -5 -3 l -5 3 l 1 -5 l -4 -4 l 5 -1 z" stroke-width="1.5" />
+          <path d="M200 130 l 2 4 l 4 1 l -3 3 l 1 4 l -4 -2 l -4 2 l 1 -4 l -3 -3 l 4 -1 z" stroke-width="1.5" />
+        </svg>
+      </div>
+
+      <p class="intro">
+        Welcome — pick something you'd love to gift, then claim it so we don't double up.
+        Vouchers split into smaller amounts, so any contribution is perfect.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#wishlist" class="pill pill-dark">The Wishlist</a>
+        <a href="#vouchers" class="pill">Vouchers</a>
       </div>
     </header>
 
-    <!-- SPRIG -->
-    <div class="sprig">
-      <svg viewBox="0 0 80 100" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-        <!-- central stem -->
-        <path d="M40 95 Q 40 60 40 12" />
-        <!-- leaves left -->
-        <path d="M40 80 Q 28 76 22 68 Q 32 70 40 76" fill="currentColor" fill-opacity="0.06" />
-        <path d="M40 66 Q 26 60 20 50 Q 32 54 40 62" fill="currentColor" fill-opacity="0.06" />
-        <path d="M40 50 Q 28 44 24 32 Q 34 38 40 46" fill="currentColor" fill-opacity="0.06" />
-        <path d="M40 34 Q 30 30 28 18 Q 36 26 40 30" fill="currentColor" fill-opacity="0.06" />
-        <!-- leaves right -->
-        <path d="M40 74 Q 52 72 60 64 Q 50 64 40 70" fill="currentColor" fill-opacity="0.06" />
-        <path d="M40 58 Q 54 54 60 44 Q 48 46 40 54" fill="currentColor" fill-opacity="0.06" />
-        <path d="M40 42 Q 52 38 58 28 Q 46 30 40 38" fill="currentColor" fill-opacity="0.06" />
-        <path d="M40 28 Q 50 24 52 14 Q 44 20 40 24" fill="currentColor" fill-opacity="0.06" />
-        <!-- tip blossom -->
-        <circle cx="40" cy="10" r="2.5" fill="currentColor" fill-opacity="0.15" />
-      </svg>
-    </div>
-
-    <p class="intro">
-      Welcome — pick something you'd love to gift, and click claim so we don't double up.
-      Vouchers are split into smaller amounts, so any contribution is perfect.
-    </p>
-
     <!-- WISHLIST -->
-    <section class="section">
-      <div class="section-head">
-        <div class="section-head-left">
-          <span class="section-num">01</span>
-          <h2 class="section-title">The Wishlist</h2>
-        </div>
-        <div class="section-meta" id="items-meta">
+    <section class="section" id="wishlist">
+      <div class="section-title-wrap">
+        <div class="section-eyebrow">01 — Gifts</div>
+        <h2 class="section-script">The Wishlist</h2>
+        <div class="section-progress">
           <span id="items-count-text">—</span>
           <div class="progress-track"><div class="progress-fill" id="items-progress" style="width: 0%;"></div></div>
         </div>
       </div>
       <div class="grid" id="items-grid">
-        <div class="state-msg" id="items-loading">Loading the wishlist…</div>
+        <div class="state-msg" id="items-loading">loading the wishlist…</div>
       </div>
     </section>
 
     <!-- VOUCHERS -->
-    <section class="section">
-      <div class="section-head">
-        <div class="section-head-left">
-          <span class="section-num">02</span>
-          <h2 class="section-title">Vouchers</h2>
-        </div>
-        <div class="section-meta" id="vouchers-meta">
+    <section class="section" id="vouchers">
+      <div class="section-title-wrap">
+        <div class="section-eyebrow">02 — Gift Cards</div>
+        <h2 class="section-script">Vouchers</h2>
+        <div class="section-progress">
           <span id="vouchers-count-text">—</span>
           <div class="progress-track"><div class="progress-fill" id="vouchers-progress" style="width: 0%;"></div></div>
         </div>
       </div>
       <div class="grid" id="vouchers-grid">
-        <div class="state-msg" id="vouchers-loading">Loading the vouchers…</div>
+        <div class="state-msg" id="vouchers-loading">loading the vouchers…</div>
       </div>
     </section>
 
     <!-- FOOTER -->
     <footer>
-      <div class="footer-sprig">
-        <svg viewBox="0 0 60 30" width="48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
-          <path d="M2 15 Q 14 4 30 15 Q 46 26 58 15" />
-          <circle cx="30" cy="15" r="1.5" fill="currentColor" />
+      <div class="footer-illus">
+        <svg width="60" height="40" viewBox="0 0 60 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M30 32 q -10 -16 -22 -8 q -6 4 -2 12 q 4 8 24 4 q 20 4 24 -4 q 4 -8 -2 -12 q -12 -8 -22 8 Z" />
+          <path d="M22 10 l 1.5 3 l 3 0.5 l -2 2 l 0.5 3 l -3 -1.5 l -3 1.5 l 0.5 -3 l -2 -2 l 3 -0.5 z" stroke-width="1.5" />
+          <path d="M42 16 l 1 2 l 2 0.3 l -1.5 1.5 l 0.5 2 l -2 -1 l -2 1 l 0.5 -2 l -1.5 -1.5 l 2 -0.3 z" stroke-width="1.3" />
         </svg>
       </div>
-      <div class="footer-text">With love &amp; thanks</div>
-      <div class="footer-text-sub">— see you on the day.</div>
-      <div class="footer-sub">Jess &amp; Sam · 15 August 2026</div>
+      <div class="footer-script">with love &amp; thanks</div>
+      <div class="footer-sub">Jess &amp; Sam · 15 · 08 · 26</div>
     </footer>
+
   </div>
 
   <!-- CLAIM MODAL -->
   <div class="modal-backdrop" id="modal-backdrop">
     <div class="modal">
       <div class="modal-eyebrow">Claim This Gift</div>
-      <h3>I'll bring this</h3>
+      <h3>I'll bring this!</h3>
       <p class="modal-item" id="modal-item-name"></p>
       <label for="modal-name">Your Name</label>
-      <input type="text" id="modal-name" placeholder="So Jess knows it's from you" autocomplete="name" />
+      <input type="text" id="modal-name" placeholder="so jess knows it's from you" autocomplete="name" />
       <div class="modal-actions">
         <button type="button" class="btn" id="modal-cancel">Cancel</button>
         <button type="button" class="btn btn-primary" id="modal-confirm">Confirm</button>
@@ -574,7 +581,7 @@
       registry.vouchers = (data.items || []).filter(i => i.section === 'vouchers');
       renderAll();
     } catch (err) {
-      document.getElementById('items-loading').textContent = "Couldn't load the registry. Please refresh.";
+      document.getElementById('items-loading').textContent = "couldn't load the registry. please refresh.";
       document.getElementById('vouchers-loading').textContent = '';
     }
   }
@@ -599,7 +606,7 @@
   function renderGrid(targetId, items) {
     const grid = document.getElementById(targetId);
     if (!items.length) {
-      grid.innerHTML = '<div class="state-msg">Nothing here yet</div>';
+      grid.innerHTML = '<div class="state-msg">nothing here yet</div>';
       return;
     }
     grid.innerHTML = items.map(item => cardHtml(item)).join('');
@@ -610,7 +617,7 @@
       ? `<a href="${escapeAttr(item.url)}" target="_blank" rel="noopener" class="btn">View</a>`
       : '';
     const claimRow = item.taken
-      ? `<div class="taken-label">Taken by ${escapeHtml(item.takenBy)}</div>`
+      ? `<div class="taken-label">taken by ${escapeHtml(item.takenBy)}</div>`
       : `<div class="card-actions">
            ${linkBtn}
            <button type="button" class="btn btn-primary" onclick="openClaim(${item.rowIndex})">Claim</button>
@@ -655,7 +662,6 @@
     modalItemName.textContent = pendingItem.name;
     modalNameInput.value = '';
     modalFeedback.style.display = 'none';
-    modalFeedback.classList.remove('error');
     modalConfirm.disabled = false;
     modalConfirm.textContent = 'Confirm';
     backdrop.classList.add('open');
@@ -687,7 +693,7 @@
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify({ rowIndex: pendingItem.rowIndex, name: name }),
       });
-      modalFeedback.textContent = 'Thank you — you got it.';
+      modalFeedback.textContent = 'thank you — you got it!';
       modalFeedback.style.display = 'block';
       pendingItem.taken = true;
       pendingItem.takenBy = name;
@@ -697,8 +703,7 @@
         loadRegistry();
       }, 1200);
     } catch (err) {
-      modalFeedback.textContent = 'Something went wrong — please try again.';
-      modalFeedback.classList.add('error');
+      modalFeedback.textContent = 'something went wrong — try again';
       modalFeedback.style.display = 'block';
       modalConfirm.disabled = false;
       modalConfirm.textContent = 'Confirm';
