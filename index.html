@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jess's Bridal Shower Registry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Caveat+Brush&family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f5efe6;
+    --cream-deep: #ebe2d4;
+    --ink: #1a1a1a;
+    --ink-soft: #3d3833;
+    --muted: #8a8079;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Patrick Hand', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.5;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  /* ── HERO ─────────────────────────────────── */
+  .hero {
+    text-align: center;
+    padding: 8px 0 16px;
+  }
+  .eyebrow {
+    font-family: 'Caveat', cursive;
+    font-size: 26px;
+    transform: rotate(-3deg);
+    display: inline-block;
+    margin-bottom: 4px;
+  }
+  .hero h1 {
+    font-family: 'Caveat Brush', cursive;
+    font-weight: 400;
+    font-size: 72px;
+    line-height: 0.95;
+    margin: 0;
+    letter-spacing: 1px;
+  }
+  .hero h1 .line2 {
+    display: block;
+    transform: rotate(-2deg);
+    margin-top: 6px;
+    font-size: 56px;
+  }
+  .hero .subtitle {
+    font-family: 'Caveat', cursive;
+    font-size: 30px;
+    margin-top: 14px;
+    transform: rotate(1deg);
+    display: inline-block;
+  }
+
+  /* ── ILLUSTRATION ─────────────────────────── */
+  .illustration {
+    display: flex;
+    justify-content: center;
+    margin: 12px 0 24px;
+  }
+  .illustration svg {
+    width: 220px;
+    height: auto;
+  }
+
+  /* ── INTRO ────────────────────────────────── */
+  .intro {
+    text-align: center;
+    font-family: 'Caveat', cursive;
+    font-size: 26px;
+    line-height: 1.35;
+    max-width: 540px;
+    margin: 16px auto 8px;
+    transform: rotate(-0.5deg);
+  }
+
+  /* ── SQUIGGLE DIVIDER ─────────────────────── */
+  .squiggle {
+    display: flex;
+    justify-content: center;
+    margin: 32px 0 20px;
+  }
+  .squiggle svg { width: 160px; height: 30px; }
+
+  /* ── SECTION HEADER ───────────────────────── */
+  .section-header {
+    text-align: center;
+    margin: 44px 0 20px;
+  }
+  .section-header h2 {
+    font-family: 'Caveat Brush', cursive;
+    font-weight: 400;
+    font-size: 52px;
+    margin: 0;
+    transform: rotate(-1.5deg);
+    display: inline-block;
+  }
+  .section-header .count {
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    color: var(--muted);
+  }
+
+  /* ── REGISTRY GRID ────────────────────────── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .card {
+    border: 2px solid var(--ink);
+    border-radius: 6px;
+    padding: 20px 18px;
+    background: var(--cream);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.15s;
+  }
+  .card:nth-child(3n) { transform: rotate(0.4deg); }
+  .card:nth-child(3n+1) { transform: rotate(-0.4deg); }
+  .card:hover { transform: rotate(0deg) translateY(-2px); }
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border: 1px solid var(--ink);
+    border-radius: 4px;
+    pointer-events: none;
+    opacity: 0.35;
+  }
+  .card.taken {
+    background: var(--cream-deep);
+    opacity: 0.7;
+  }
+  .card-num {
+    position: absolute;
+    top: -12px;
+    left: 14px;
+    background: var(--cream);
+    padding: 0 8px;
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    color: var(--muted);
+  }
+  .card-name {
+    font-family: 'Caveat Brush', cursive;
+    font-size: 26px;
+    line-height: 1.1;
+    margin: 4px 0 6px;
+  }
+  .card.taken .card-name {
+    text-decoration: line-through;
+    text-decoration-thickness: 1.5px;
+  }
+  .card-store {
+    font-family: 'Caveat', cursive;
+    font-size: 20px;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+  }
+  .card-price {
+    font-family: 'Patrick Hand', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  .card-notes {
+    font-size: 15px;
+    color: var(--ink-soft);
+    flex: 1;
+    margin-bottom: 14px;
+    line-height: 1.4;
+  }
+  .card-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    flex: 1;
+    padding: 10px 12px;
+    border: 2px solid var(--ink);
+    border-radius: 4px;
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    color: var(--ink);
+    background: transparent;
+    transition: background 0.15s, color 0.15s;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .btn:hover { background: var(--cream-deep); }
+  .btn-primary {
+    background: var(--ink);
+    color: var(--cream);
+  }
+  .btn-primary:hover { background: var(--cream); color: var(--ink); }
+  .btn:disabled, .btn[disabled] { opacity: 0.5; cursor: not-allowed; }
+  .taken-by {
+    font-family: 'Caveat', cursive;
+    font-size: 20px;
+    text-align: center;
+    padding: 8px;
+    color: var(--ink-soft);
+    width: 100%;
+  }
+  .taken-by .heart { color: var(--ink); }
+
+  /* ── LOADING & ERROR ──────────────────────── */
+  .state-msg {
+    text-align: center;
+    font-family: 'Caveat', cursive;
+    font-size: 28px;
+    padding: 40px;
+    color: var(--ink-soft);
+  }
+
+  /* ── MODAL ────────────────────────────────── */
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(26, 26, 26, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    padding: 20px;
+  }
+  .modal-backdrop.open { display: flex; }
+  .modal {
+    background: var(--cream);
+    border: 2px solid var(--ink);
+    border-radius: 6px;
+    padding: 32px 28px;
+    max-width: 420px;
+    width: 100%;
+    position: relative;
+  }
+  .modal::before {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border: 1px solid var(--ink);
+    border-radius: 4px;
+    pointer-events: none;
+    opacity: 0.4;
+  }
+  .modal h3 {
+    font-family: 'Caveat Brush', cursive;
+    font-weight: 400;
+    font-size: 38px;
+    margin: 0 0 8px;
+    line-height: 1;
+  }
+  .modal p {
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    margin: 0 0 20px;
+    line-height: 1.3;
+  }
+  .modal input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 2px solid var(--ink);
+    border-radius: 4px;
+    font-family: 'Patrick Hand', sans-serif;
+    font-size: 18px;
+    background: transparent;
+    margin-bottom: 16px;
+  }
+  .modal input:focus { outline: none; background: var(--cream-deep); }
+  .modal-actions {
+    display: flex;
+    gap: 10px;
+  }
+  .modal .feedback {
+    margin-top: 14px;
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    text-align: center;
+    display: none;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 56px;
+    font-family: 'Caveat', cursive;
+    font-size: 26px;
+    transform: rotate(-1deg);
+  }
+
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 56px; }
+    .hero h1 .line2 { font-size: 44px; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="eyebrow">~ welcome to ~</div>
+      <h1>
+        Jess's
+        <span class="line2">registry</span>
+      </h1>
+      <div class="subtitle">bridal shower · 15 august 2026</div>
+    </div>
+
+    <!-- TEACUP ILLUSTRATION -->
+    <div class="illustration">
+      <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#1a1a1a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M82 18 Q 76 30 84 42 Q 92 54 84 66" />
+        <path d="M108 12 Q 100 26 110 40 Q 120 54 110 68" />
+        <path d="M134 18 Q 128 30 136 42 Q 144 54 136 66" />
+        <path d="M55 80 Q 56 78 60 78 L 152 78 Q 156 78 156 80 L 150 134 Q 148 145 138 145 L 74 145 Q 64 145 62 134 Z" />
+        <path d="M58 88 Q 106 96 154 88" />
+        <path d="M156 88 Q 184 90 184 108 Q 184 126 156 124" />
+        <ellipse cx="106" cy="155" rx="78" ry="9" />
+        <path d="M32 152 Q 106 168 180 152" />
+        <path d="M30 60 q -4 -6 -10 -3 q -6 3 0 11 q 4 5 10 9 q 6 -4 10 -9 q 6 -8 0 -11 q -6 -3 -10 3 Z" stroke-width="2" />
+        <path d="M192 50 q -3 -5 -7 -2 q -5 3 0 9 q 3 4 7 7 q 4 -3 7 -7 q 5 -6 0 -9 q -4 -3 -7 2 Z" stroke-width="2" />
+        <path d="M14 110 l 3 5 l 5 1 l -4 4 l 1 5 l -5 -3 l -5 3 l 1 -5 l -4 -4 l 5 -1 z" stroke-width="1.5" />
+        <path d="M204 130 l 2 4 l 4 1 l -3 3 l 1 4 l -4 -2 l -4 2 l 1 -4 l -3 -3 l 4 -1 z" stroke-width="1.5" />
+      </svg>
+    </div>
+
+    <p class="intro">
+      Pick something you'd love to gift &mdash; click "I'll bring this" so we don't double up.<br/>
+      Vouchers are split too, so any amount is a perfect contribution.
+    </p>
+
+    <div class="squiggle">
+      <svg viewBox="0 0 140 30" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round">
+        <path d="M5 15 Q 20 0, 35 15 T 65 15 T 95 15 T 135 15" />
+      </svg>
+    </div>
+
+    <!-- ITEMS SECTION -->
+    <div class="section-header">
+      <h2>the wishlist</h2>
+      <div class="count" id="items-count"></div>
+    </div>
+    <div class="grid" id="items-grid">
+      <div class="state-msg" id="items-loading">loading the wishlist...</div>
+    </div>
+
+    <!-- VOUCHERS SECTION -->
+    <div class="section-header">
+      <h2>vouchers</h2>
+      <div class="count" id="vouchers-count"></div>
+    </div>
+    <div class="grid" id="vouchers-grid">
+      <div class="state-msg" id="vouchers-loading">loading the vouchers...</div>
+    </div>
+
+    <footer>
+      ~ thank you, with love ~
+    </footer>
+  </div>
+
+  <!-- CLAIM MODAL -->
+  <div class="modal-backdrop" id="modal-backdrop">
+    <div class="modal">
+      <h3 id="modal-title">I'll bring this!</h3>
+      <p id="modal-item-name"></p>
+      <input type="text" id="modal-name" placeholder="your name" autocomplete="name" />
+      <div class="modal-actions">
+        <button type="button" class="btn" id="modal-cancel">cancel</button>
+        <button type="button" class="btn btn-primary" id="modal-confirm">confirm</button>
+      </div>
+      <div class="feedback" id="modal-feedback"></div>
+    </div>
+  </div>
+
+<script>
+  // ⚠️ Paste your Google Apps Script Web App URL here after deploying.
+  const APPS_SCRIPT_URL = 'PASTE_YOUR_APPS_SCRIPT_URL_HERE';
+
+  // ── State ─────────────────────────────────────
+  let registry = { items: [], vouchers: [] };
+  let pendingItem = null;
+
+  // ── Fetch & render ────────────────────────────
+  async function loadRegistry() {
+    if (APPS_SCRIPT_URL.startsWith('PASTE_')) {
+      document.getElementById('items-loading').textContent =
+        "⚠ Apps Script URL not yet configured. See SETUP.";
+      document.getElementById('vouchers-loading').textContent = "";
+      return;
+    }
+    try {
+      const res = await fetch(APPS_SCRIPT_URL);
+      const data = await res.json();
+      registry.items = (data.items || []).filter(i => i.section === 'items');
+      registry.vouchers = (data.items || []).filter(i => i.section === 'vouchers');
+      renderAll();
+    } catch (err) {
+      document.getElementById('items-loading').textContent =
+        "couldn't load the registry. please refresh.";
+      document.getElementById('vouchers-loading').textContent = "";
+    }
+  }
+
+  function renderAll() {
+    renderGrid('items-grid', registry.items);
+    renderGrid('vouchers-grid', registry.vouchers);
+    document.getElementById('items-count').textContent =
+      `${registry.items.filter(i => !i.taken).length} of ${registry.items.length} still available`;
+    document.getElementById('vouchers-count').textContent =
+      `${registry.vouchers.filter(i => !i.taken).length} of ${registry.vouchers.length} still available`;
+  }
+
+  function renderGrid(targetId, items) {
+    const grid = document.getElementById(targetId);
+    if (!items.length) {
+      grid.innerHTML = '<div class="state-msg">nothing here yet</div>';
+      return;
+    }
+    grid.innerHTML = items.map(item => cardHtml(item)).join('');
+  }
+
+  function cardHtml(item) {
+    const linkBtn = item.url
+      ? `<a href="${escapeAttr(item.url)}" target="_blank" rel="noopener" class="btn">view</a>`
+      : '';
+    const claimBtn = item.taken
+      ? `<div class="taken-by"><span class="heart">✿</span> taken by ${escapeHtml(item.takenBy)}</div>`
+      : `<button type="button" class="btn btn-primary" onclick="openClaim(${item.rowIndex})">i'll bring this</button>`;
+    return `
+      <div class="card ${item.taken ? 'taken' : ''}">
+        ${item.number ? `<div class="card-num">#${escapeHtml(String(item.number))}</div>` : ''}
+        <div class="card-name">${escapeHtml(item.name)}</div>
+        ${item.store ? `<div class="card-store">${escapeHtml(item.store)}</div>` : ''}
+        ${item.price ? `<div class="card-price">${escapeHtml(item.price)}</div>` : ''}
+        ${item.notes ? `<div class="card-notes">${escapeHtml(item.notes)}</div>` : ''}
+        <div class="card-actions">
+          ${linkBtn}
+          ${claimBtn}
+        </div>
+      </div>
+    `;
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[c]));
+  }
+  function escapeAttr(s) { return escapeHtml(s); }
+
+  // ── Claim modal ───────────────────────────────
+  const backdrop = document.getElementById('modal-backdrop');
+  const modalItemName = document.getElementById('modal-item-name');
+  const modalNameInput = document.getElementById('modal-name');
+  const modalFeedback = document.getElementById('modal-feedback');
+  const modalConfirm = document.getElementById('modal-confirm');
+  const modalCancel = document.getElementById('modal-cancel');
+
+  function openClaim(rowIndex) {
+    const all = [...registry.items, ...registry.vouchers];
+    pendingItem = all.find(i => i.rowIndex === rowIndex);
+    if (!pendingItem) return;
+    modalItemName.textContent = pendingItem.name;
+    modalNameInput.value = '';
+    modalFeedback.style.display = 'none';
+    modalConfirm.disabled = false;
+    modalConfirm.textContent = 'confirm';
+    backdrop.classList.add('open');
+    setTimeout(() => modalNameInput.focus(), 50);
+  }
+  window.openClaim = openClaim;
+
+  modalCancel.addEventListener('click', () => backdrop.classList.remove('open'));
+  backdrop.addEventListener('click', (e) => {
+    if (e.target === backdrop) backdrop.classList.remove('open');
+  });
+
+  modalConfirm.addEventListener('click', async () => {
+    const name = modalNameInput.value.trim();
+    if (!name) { modalNameInput.focus(); return; }
+    if (!pendingItem) return;
+
+    modalConfirm.disabled = true;
+    modalConfirm.textContent = 'sending...';
+    modalFeedback.style.display = 'none';
+
+    try {
+      // no-cors avoids preflight; Apps Script accepts text/plain bodies
+      await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({ rowIndex: pendingItem.rowIndex, name: name }),
+      });
+      modalFeedback.textContent = '✿ thank you ~ you got it!';
+      modalFeedback.style.display = 'block';
+      // Optimistic local update + refetch to reflect any race
+      pendingItem.taken = true;
+      pendingItem.takenBy = name;
+      renderAll();
+      setTimeout(() => {
+        backdrop.classList.remove('open');
+        loadRegistry();
+      }, 1200);
+    } catch (err) {
+      modalFeedback.textContent = 'something went wrong, try again';
+      modalFeedback.style.display = 'block';
+      modalConfirm.disabled = false;
+      modalConfirm.textContent = 'confirm';
+    }
+  });
+
+  // ── Init ──────────────────────────────────────
+  loadRegistry();
+</script>
+</body>
+</html>
