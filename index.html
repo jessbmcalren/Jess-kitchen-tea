@@ -202,7 +202,20 @@
     flex-direction: column;
     box-shadow: 0 2px 8px rgba(26, 26, 26, 0.04), 0 0 0 1px rgba(26, 26, 26, 0.04);
     transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
   }
+  .card-doodle {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    width: 38px;
+    height: 38px;
+    color: var(--ink);
+    opacity: 0.75;
+    pointer-events: none;
+  }
+  .card-doodle svg { width: 100%; height: 100%; display: block; }
+  .card.taken .card-doodle { opacity: 0.3; }
   .card:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(26, 26, 26, 0.08), 0 0 0 1px rgba(26, 26, 26, 0.06);
@@ -212,9 +225,10 @@
   }
   .card-meta-top {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: baseline;
     margin-bottom: 12px;
+    padding-right: 52px;
     font-family: 'Outfit', sans-serif;
     font-size: 10px;
     font-weight: 600;
@@ -565,8 +579,25 @@
 <script>
   const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwcSsgdUQVLSCR_sMxWuYBVe-ra-HmlrmlZMB9MV1njGoJe9b2xMHNsFr98Izku6rmp/exec';
 
+  // Hand-drawn doodles cycled across cards by index.
+  const DOODLES = [
+    // heart
+    `<svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 30 q -10 -8 -13 -15 q -3 -7 4 -9 q 5 -1 9 4 q 4 -5 9 -4 q 7 2 4 9 q -3 7 -13 15 Z"/></svg>`,
+    // daisy
+    `<svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(18 18)"><ellipse cx="0" cy="-9" rx="3.5" ry="6"/><ellipse cx="0" cy="-9" rx="3.5" ry="6" transform="rotate(72)"/><ellipse cx="0" cy="-9" rx="3.5" ry="6" transform="rotate(144)"/><ellipse cx="0" cy="-9" rx="3.5" ry="6" transform="rotate(216)"/><ellipse cx="0" cy="-9" rx="3.5" ry="6" transform="rotate(288)"/></g><circle cx="18" cy="18" r="2.5" fill="currentColor"/></svg>`,
+    // mini teacup
+    `<svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5 Q 11 10 14 14"/><path d="M19 4 Q 16 10 19 14"/><path d="M7 17 L 26 17 L 24 28 Q 23 30 21 30 L 12 30 Q 10 30 9 28 Z"/><path d="M26 19 Q 30 20 30 24 Q 30 27 26 27"/><path d="M5 32 L 28 32"/></svg>`,
+    // sparkle 4-point
+    `<svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 4 Q 18 16 30 18 Q 18 20 18 32 Q 18 20 6 18 Q 18 16 18 4 Z"/></svg>`,
+    // leaf sprig
+    `<svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 32 Q 18 22 18 6"/><path d="M18 24 Q 11 23 7 18 Q 13 20 18 25"/><path d="M18 18 Q 25 17 29 12 Q 23 14 18 19"/><path d="M18 12 Q 14 9 12 4 Q 17 8 18 13"/></svg>`,
+    // bow
+    `<svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13 L 15 18 L 5 23 Z"/><path d="M31 13 L 21 18 L 31 23 Z"/><circle cx="18" cy="18" r="3"/><path d="M14 24 L 12 32"/><path d="M22 24 L 24 32"/></svg>`,
+  ];
+
   let registry = { items: [], vouchers: [] };
   let pendingItem = null;
+  let doodleCursor = 0;
 
   async function loadRegistry() {
     if (APPS_SCRIPT_URL.startsWith('PASTE_')) {
@@ -587,6 +618,7 @@
   }
 
   function renderAll() {
+    doodleCursor = 0;
     renderGrid('items-grid', registry.items);
     renderGrid('vouchers-grid', registry.vouchers);
     updateMeta('items', registry.items);
@@ -625,14 +657,16 @@
     const linkOnlyForTaken = item.taken && item.url
       ? `<div class="card-actions"><a href="${escapeAttr(item.url)}" target="_blank" rel="noopener" class="btn">View</a></div>`
       : '';
+    const doodle = DOODLES[doodleCursor++ % DOODLES.length];
     return `
       <article class="card ${item.taken ? 'taken' : ''}">
+        <div class="card-doodle">${doodle}</div>
         <div class="card-meta-top">
           ${item.number ? `<span class="card-num">No. ${escapeHtml(String(item.number))}</span>` : '<span></span>'}
-          ${item.price ? `<span>${escapeHtml(item.price)}</span>` : ''}
         </div>
         <h3 class="card-name">${escapeHtml(item.name)}</h3>
         ${item.store ? `<div class="card-store">${escapeHtml(item.store)}</div>` : ''}
+        ${item.price ? `<div class="card-price">${escapeHtml(item.price)}</div>` : ''}
         ${item.notes ? `<p class="card-notes">${escapeHtml(item.notes)}</p>` : '<p class="card-notes"></p>'}
         ${item.taken ? linkOnlyForTaken : ''}
         ${claimRow}
