@@ -7,14 +7,14 @@
 <title>Jess's Kitchen Tea · Registry</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Caveat:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Caveat:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --cream:        #ffffff;
     --cream-soft:   #f7f5f1;
     --cream-deep:   #ece8df;
     --paper:        #ffffff;
-    --ink:          #4f5d3c;        /* deep sage — body + illustration */
+    --ink:          #4f5d3c;        /* deep sage. body and illustration */
     --ink-soft:     #6b7855;
     --muted:        #9aa688;
     --line:         #c8d0b2;
@@ -42,7 +42,7 @@
     background: var(--cream);
     color: var(--ink);
     line-height: 1.6;
-    font-size: 15px;
+    font-size: 16px;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
@@ -261,8 +261,8 @@
   .path-card {
     display: flex;
     align-items: center;
-    gap: 14px;
-    padding: 18px 18px;
+    gap: 16px;
+    padding: 20px;
     background: var(--paper);
     border-radius: var(--radius);
     text-decoration: none;
@@ -287,11 +287,11 @@
   .path-icon svg { width: 100%; height: 100%; display: block; }
   .path-text { flex: 1; min-width: 0; }
   .path-eyebrow {
-    font-size: 9.5px;
+    font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: var(--muted);
+    color: var(--ink-soft);
     margin-bottom: 4px;
   }
   .path-title {
@@ -322,14 +322,14 @@
   /* ── STICKY "SEND A VOUCHER" FAB ───────────────────── */
   .voucher-fab {
     position: fixed;
-    bottom: 24px;
+    bottom: calc(24px + env(safe-area-inset-bottom, 0px));
     left: 50%;
     transform: translateX(-50%) translateY(12px);
     z-index: 40;
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    padding: 14px 22px;
+    gap: 8px;
+    padding: 16px 24px;
     background: var(--ink);
     color: var(--cream);
     border-radius: 999px;
@@ -350,6 +350,13 @@
     transform: translateX(-50%) translateY(0);
     transition: opacity var(--t), transform var(--t), background var(--t-fast), color var(--t-fast);
   }
+  body.modal-open .voucher-fab,
+  body.modal-open .toast-stack {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  body.modal-open .voucher-fab { transform: translateX(-50%) translateY(12px); }
   .voucher-fab:hover {
     background: var(--cream);
     color: var(--ink);
@@ -358,8 +365,8 @@
   .voucher-fab svg { flex-shrink: 0; }
   @media (max-width: 540px) {
     .voucher-fab {
-      bottom: 16px;
-      padding: 12px 18px;
+      bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+      padding: 12px 20px;
       font-size: 10px;
       letter-spacing: 0.22em;
     }
@@ -393,23 +400,24 @@
     transform: rotate(-1deg);
   }
   .section-sub {
-    margin: 14px auto 0;
+    margin: 16px auto 0;
     max-width: 460px;
-    font-family: 'Patrick Hand', sans-serif;
-    font-size: 17px;
+    font-family: 'Caveat', cursive;
+    font-size: 20px;
     color: var(--ink-soft);
-    line-height: 1.4;
+    line-height: 1.3;
   }
   .section-progress {
     margin-top: 16px;
-    display: inline-flex;
+    display: flex;
     align-items: center;
+    justify-content: center;
     gap: 12px;
     font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.24em;
     text-transform: uppercase;
-    color: var(--muted);
+    color: var(--ink-soft);
     font-variant-numeric: tabular-nums;
   }
   .progress-track {
@@ -470,12 +478,12 @@
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 18px;
+    gap: 16px;
   }
   .card {
     background: var(--paper);
     border-radius: var(--radius);
-    padding: 22px 22px 18px;
+    padding: 24px;
     display: flex;
     flex-direction: column;
     box-shadow: var(--shadow-1);
@@ -504,7 +512,7 @@
   }
   .card-doodle {
     position: absolute;
-    top: 14px;
+    top: 16px;
     right: 16px;
     width: 36px;
     height: 36px;
@@ -522,7 +530,7 @@
     gap: 8px;
     margin-bottom: 12px;
     padding-right: 48px;
-    min-height: 14px;
+    min-height: 16px;
     font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.24em;
@@ -546,37 +554,36 @@
   .card-name {
     font-weight: 600;
     font-size: 15px;
-    line-height: 1.35;
+    line-height: 1.4;
     margin: 0 0 8px;
     letter-spacing: 0.03em;
     text-transform: uppercase;
     color: var(--ink);
   }
-  .card.taken .card-name { color: var(--muted); }
+  .card.taken .card-name { color: var(--ink-soft); }
   .card-store {
-    font-family: 'Patrick Hand', sans-serif;
-    font-size: 16px;
+    font-size: 13px;
+    font-weight: 500;
     color: var(--ink-soft);
-    margin-bottom: 8px;
-    line-height: 1.3;
+    margin: 0 0 8px;
+    line-height: 1.4;
   }
   .card-price {
     font-weight: 600;
-    font-size: 17px;
+    font-size: 16px;
     color: var(--ink);
-    margin-bottom: 12px;
+    margin: 0 0 12px;
     font-variant-numeric: tabular-nums;
   }
-  .card.taken .card-price { color: var(--muted); }
+  .card.taken .card-price { color: var(--ink-soft); }
   .card-notes {
-    font-family: 'Patrick Hand', sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     color: var(--ink-soft);
     flex: 1;
     margin: 0 0 16px;
-    line-height: 1.45;
+    line-height: 1.5;
   }
-  .card-notes:empty { margin-bottom: 4px; }
+  .card-notes:empty { margin: 0 0 4px; }
   .card-actions {
     display: flex;
     gap: 8px;
@@ -584,12 +591,13 @@
   }
   .btn {
     flex: 1;
-    padding: 12px 14px;
+    min-height: 44px;
+    padding: 12px 16px;
     border-radius: 999px;
     font-family: inherit;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 600;
-    letter-spacing: 0.24em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     cursor: pointer;
     text-decoration: none;
@@ -603,7 +611,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
+    gap: 8px;
   }
   .btn:hover { background: var(--ink); color: var(--cream); }
   .btn:active { transform: scale(0.97); }
@@ -621,9 +629,9 @@
     color: var(--ink-soft);
     text-align: center;
     width: 100%;
-    padding: 10px 8px 4px;
+    padding: 12px 8px 4px;
     border-top: 1px dashed var(--line);
-    margin-top: 4px;
+    margin-top: 8px;
     line-height: 1.2;
   }
   .taken-label::before {
@@ -644,7 +652,7 @@
   .skeleton-card {
     background: var(--paper);
     border-radius: var(--radius);
-    padding: 22px;
+    padding: 24px;
     box-shadow: var(--shadow-1);
     min-height: 220px;
   }
@@ -652,9 +660,9 @@
     height: 12px;
     background: linear-gradient(90deg, var(--cream-soft) 0%, var(--cream-deep) 50%, var(--cream-soft) 100%);
     background-size: 200% 100%;
-    border-radius: 6px;
+    border-radius: 8px;
     animation: shimmer 1.4s linear infinite;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
   @keyframes shimmer {
     from { background-position: 200% 0; }
@@ -663,7 +671,7 @@
   @media (prefers-reduced-motion: reduce) {
     .skeleton-line { animation: none; }
   }
-  .skeleton-line.s-sm { width: 30%; height: 8px; margin-bottom: 18px; }
+  .skeleton-line.s-sm { width: 30%; height: 8px; margin-bottom: 20px; }
   .skeleton-line.s-md { width: 70%; }
   .skeleton-line.s-lg { width: 90%; }
   .skeleton-line.s-pill { height: 36px; border-radius: 999px; margin-top: 24px; }
@@ -683,7 +691,7 @@
   }
   .state-msg-sub {
     font-size: 13px;
-    color: var(--muted);
+    color: var(--ink-soft);
     margin: 0;
   }
   .state-msg-actions {
@@ -761,10 +769,10 @@
     text-align: center;
   }
   .sheet-item {
-    font-family: 'Patrick Hand', sans-serif;
-    font-size: 17px;
+    font-size: 15px;
+    font-weight: 500;
     color: var(--ink-soft);
-    margin: 6px 0 22px;
+    margin: 8px 0 24px;
     line-height: 1.4;
     text-align: center;
   }
@@ -779,11 +787,12 @@
   }
   .sheet input {
     width: 100%;
-    padding: 14px 18px;
+    padding: 16px 20px;
+    min-height: 48px;
     border: 1.5px solid var(--line);
     border-radius: 999px;
-    font-family: 'Patrick Hand', sans-serif;
-    font-size: 17px;
+    font-family: inherit;
+    font-size: 16px;
     background: var(--cream-soft);
     color: var(--ink);
     margin-bottom: 8px;
@@ -796,10 +805,10 @@
   }
   .sheet input::placeholder { color: var(--muted); }
   .sheet-helper {
-    font-size: 11px;
-    color: var(--muted);
-    margin: 0 4px 18px;
-    min-height: 14px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin: 0 4px 16px;
+    min-height: 16px;
   }
   .sheet-helper.is-error { color: var(--accent); }
   .view-note {
@@ -808,30 +817,30 @@
     color: var(--ink-soft);
     background: var(--cream-soft);
     border-radius: var(--radius);
-    padding: 14px 18px;
-    margin: 0 0 14px;
+    padding: 16px 20px;
+    margin: 0 0 16px;
   }
   .view-note strong {
     color: var(--ink);
     font-weight: 600;
   }
   .view-tip {
-    font-family: 'Patrick Hand', sans-serif;
-    font-size: 16px;
+    font-family: 'Caveat', cursive;
+    font-size: 20px;
     color: var(--ink);
     text-align: center;
-    margin: 0 4px 18px;
-    line-height: 1.35;
+    margin: 0 4px 20px;
+    line-height: 1.3;
   }
   .sheet-actions {
     display: flex;
-    gap: 10px;
+    gap: 8px;
   }
 
   /* ── TOAST ────────────────────────────────────────────── */
   .toast-stack {
     position: fixed;
-    bottom: 24px;
+    bottom: calc(24px + env(safe-area-inset-bottom, 0px));
     left: 50%;
     transform: translateX(-50%);
     z-index: 60;
@@ -844,7 +853,7 @@
   .toast {
     background: var(--ink);
     color: var(--cream);
-    padding: 14px 20px;
+    padding: 12px 20px;
     border-radius: 999px;
     font-size: 13px;
     font-weight: 500;
@@ -876,7 +885,7 @@
   .footer-illus {
     display: flex;
     justify-content: center;
-    margin-bottom: 14px;
+    margin-bottom: 16px;
     color: var(--ink);
   }
   .footer-script {
@@ -897,34 +906,38 @@
 
   /* ── RESPONSIVE ──────────────────────────────────────── */
   @media (max-width: 760px) {
-    .topnav-link { padding: 8px 11px; letter-spacing: 0.18em; font-size: 10px; }
+    .topnav-link { padding: 8px 12px; letter-spacing: 0.18em; font-size: 10px; }
     .topnav-link-count { display: none; }
-    .topnav-brand { font-size: 19px; }
+    .topnav-brand { font-size: 20px; }
 
-    .page { padding: 28px 16px 64px; }
-    .section { margin-top: 56px; scroll-margin-top: 64px; }
-    .grid { grid-template-columns: 1fr; gap: 14px; }
-    .illustration svg { width: 170px; }
-    .bouquet-crop { width: 190px; height: 270px; }
-    .bouquet-crop img { width: 480px; left: -240px; top: -90px; }
-    .hero-meta { font-size: 11px; gap: 10px; padding: 9px 16px; }
-    .hero-eyebrow::before, .hero-eyebrow::after { width: 18px; }
+    .page { padding: 20px 16px 64px; }
+    .hero { padding: 8px 0 16px; }
+    .hero-eyebrow { margin-bottom: 16px; }
+    .section { margin-top: 48px; scroll-margin-top: 64px; }
+    .grid { grid-template-columns: 1fr; gap: 16px; }
+    .card { padding: 20px; }
+    .illustration { margin: 20px 0 16px; }
+    .illustration svg { width: 160px; }
+    .bouquet-crop { width: 180px; height: 240px; }
+    .bouquet-crop img { width: 460px; left: -230px; top: -84px; }
+    .hero-meta { font-size: 11px; gap: 8px; padding: 8px 16px; margin-top: 20px; }
+    .hero-eyebrow::before, .hero-eyebrow::after { width: 20px; }
     .chips { width: 100%; justify-content: space-between; }
-    .chip { padding: 9px 10px; letter-spacing: 0.16em; font-size: 10px; }
+    .chip { padding: 8px 12px; letter-spacing: 0.16em; font-size: 10px; }
 
     .paths {
       grid-template-columns: 1fr;
-      gap: 10px;
-      margin-top: 24px;
+      gap: 12px;
+      margin-top: 20px;
     }
     .path-card {
-      padding: 16px 16px;
-      gap: 14px;
+      padding: 16px;
+      gap: 12px;
       min-height: 76px;
     }
-    .path-icon { width: 38px; height: 38px; }
-    .path-title { font-size: 26px; }
-    .path-sub { font-size: 11.5px; }
+    .path-icon { width: 40px; height: 40px; }
+    .path-title { font-size: 24px; }
+    .path-sub { font-size: 12px; }
   }
 
   /* Bottom-sheet style on mobile */
@@ -934,17 +947,18 @@
       width: 100%;
       max-width: 100%;
       border-radius: 24px 24px 0 0;
-      padding: 16px 22px 28px;
+      padding: 16px 20px 32px;
+      padding-bottom: calc(32px + env(safe-area-inset-bottom, 0px));
       transform: translateY(100%);
     }
     .sheet-backdrop.open .sheet { transform: translateY(0); }
     .sheet-handle {
       display: block;
-      width: 38px;
+      width: 40px;
       height: 4px;
       background: var(--line);
       border-radius: 2px;
-      margin: 0 auto 18px;
+      margin: 0 auto 16px;
     }
   }
 
@@ -969,11 +983,11 @@
     <ul class="topnav-links">
       <li><a href="#wishlist" class="topnav-link" data-nav="wishlist">
         <span>Wishlist</span>
-        <span class="topnav-link-count" id="nav-count-items">—</span>
+        <span class="topnav-link-count" id="nav-count-items">...</span>
       </a></li>
       <li><a href="#vouchers" class="topnav-link" data-nav="vouchers">
         <span>Vouchers</span>
-        <span class="topnav-link-count" id="nav-count-vouchers">—</span>
+        <span class="topnav-link-count" id="nav-count-vouchers">...</span>
       </a></li>
     </ul>
   </div>
@@ -994,7 +1008,7 @@
         <span class="pipe" aria-hidden="true">·</span>
         <span>15 · 08 · 26</span>
         <span class="pipe" aria-hidden="true">·</span>
-        <span class="countdown" id="countdown">—</span>
+        <span class="countdown" id="countdown">...</span>
       </div>
 
       <div class="illustration" aria-hidden="true">
@@ -1049,7 +1063,7 @@
 
           <!-- ── ROSES ── -->
 
-          <!-- Big rose (center) — layered petals -->
+          <!-- Big rose (center). layered petals -->
           <g transform="translate(108 78)">
             <!-- Outer petal cloud -->
             <path d="M -18 -2 q -3 -10 6 -14 q 5 -9 12 -5 q 10 -3 12 6 q 10 2 8 12 q 4 8 -5 12 q -3 9 -12 7 q -7 7 -14 0 q -10 1 -11 -8 q -8 -3 -6 -10 Z"/>
@@ -1129,7 +1143,7 @@
 
           <!-- ── PAPER WRAPPING (cone) ── -->
 
-          <!-- Outer cone — clean diagonals -->
+          <!-- Outer cone. clean diagonals -->
           <path d="M40 122 L 110 224" stroke-width="1.8"/>
           <path d="M180 122 L 110 224" stroke-width="1.8"/>
           <!-- Top opening curve -->
@@ -1162,7 +1176,7 @@
       <!-- /illustration-hidden -->
 
       <p class="intro">
-        Welcome — pick something you'd love to gift, then claim it so we don't double up.
+        Welcome. Pick something you'd love to gift, then claim it so we don't double up.
         Vouchers split into smaller amounts, so any contribution is perfect.
       </p>
 
@@ -1183,7 +1197,7 @@
           <div class="path-text">
             <div class="path-eyebrow">Option One</div>
             <div class="path-title">Bring a gift</div>
-            <div class="path-sub"><span id="path-items-count">—</span> on the wishlist</div>
+            <div class="path-sub"><span id="path-items-count">...</span> on the wishlist</div>
           </div>
           <svg class="path-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
         </a>
@@ -1213,10 +1227,10 @@
     <!-- ── WISHLIST ─────────────────────────────────────── -->
     <section class="section" id="wishlist" aria-labelledby="wishlist-title">
       <div class="section-head">
-        <div class="section-eyebrow">01 — Gifts</div>
+        <div class="section-eyebrow">01 · Gifts</div>
         <h2 class="section-script" id="wishlist-title">The Wishlist</h2>
         <div class="section-progress">
-          <span id="items-count-text">—</span>
+          <span id="items-count-text">...</span>
           <div class="progress-track"><div class="progress-fill" id="items-progress" style="width: 0%;"></div></div>
         </div>
       </div>
@@ -1241,9 +1255,9 @@
     <!-- ── VOUCHERS ─────────────────────────────────────── -->
     <section class="section" id="vouchers" aria-labelledby="vouchers-title">
       <div class="section-head">
-        <div class="section-eyebrow">02 — Gift Cards</div>
+        <div class="section-eyebrow">02 · Gift Cards</div>
         <h2 class="section-script" id="vouchers-title">Vouchers</h2>
-        <p class="section-sub">no need to claim — duplicates are very welcome!</p>
+        <p class="section-sub">no need to claim. duplicates are very welcome!</p>
       </div>
 
       <div class="grid" id="vouchers-grid">
@@ -1296,7 +1310,7 @@
     <h3 id="view-sheet-title">Just having a peek?</h3>
     <p class="sheet-item" id="view-item-name"></p>
     <div class="view-note">
-      This will just open the shop. If you do buy it, please come back and <strong>claim it</strong> here — otherwise Jess won't know it's from you, and another guest might pick up the same one.
+      This will just open the shop. If you do buy it, please come back and <strong>claim it</strong> here. Otherwise Jess won't know it's from you and another guest might pick up the same one.
     </div>
     <p class="view-tip">Easier way? Claim it now and we'll open the shop in the same tap.</p>
     <div class="sheet-actions">
@@ -1459,13 +1473,13 @@
     if (s.filter === 'available') {
       return `<div class="state-msg">
         <p class="state-msg-script">everything's been claimed!</p>
-        <p class="state-msg-sub">thank you to everyone — see "All" for the full list</p>
+        <p class="state-msg-sub">thank you to everyone. see "All" for the full list</p>
       </div>`;
     }
     if (s.filter === 'taken') {
       return `<div class="state-msg">
         <p class="state-msg-script">nothing claimed yet</p>
-        <p class="state-msg-sub">be the first — see "Available"</p>
+        <p class="state-msg-sub">be the first. see "Available"</p>
       </div>`;
     }
     return `<div class="state-msg"><p class="state-msg-script">nothing here yet</p></div>`;
@@ -1607,7 +1621,7 @@
     sheetEyebrow.textContent = openedWithShop ? "Mark It Yours" : "Claim This Gift";
     sheetHeading.textContent = openedWithShop ? "Off to the shop!" : "I'll bring this!";
     helper.textContent = openedWithShop
-      ? "we opened the shop in a new tab — pop your name in so we don't double up"
+      ? "we opened the shop in a new tab. pop your name in so we don't double up"
       : "we'll remember your name for next time";
     helper.classList.remove('is-error');
     confirmBtn.disabled = false;
@@ -1617,6 +1631,7 @@
     backdrop.classList.add('open');
     backdrop.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+    document.body.classList.add('modal-open');
     setTimeout(() => { nameInput.focus(); nameInput.select(); }, 80);
   }
 
@@ -1624,6 +1639,7 @@
     backdrop.classList.remove('open');
     backdrop.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+    document.body.classList.remove('modal-open');
     if (lastFocused && typeof lastFocused.focus === 'function') {
       setTimeout(() => lastFocused.focus(), 60);
     }
@@ -1683,11 +1699,11 @@
       claimed.takenBy = name;
       renderAll();
       closeClaim();
-      showToast(`thank you — "${claimed.name}" is yours!`);
+      showToast(`thank you! "${claimed.name}" is yours!`);
       // Re-sync from source after a moment
       setTimeout(loadRegistry, 1500);
     } catch (err) {
-      helper.textContent = 'something went wrong — try again';
+      helper.textContent = 'something went wrong. try again';
       helper.classList.add('is-error');
       confirmBtn.disabled = false;
       confirmBtn.textContent = 'Confirm';
@@ -1712,12 +1728,16 @@
     viewBackdrop.classList.add('open');
     viewBackdrop.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+    document.body.classList.add('modal-open');
     setTimeout(() => viewCancel.focus(), 80);
   }
   function closeViewWarning() {
     viewBackdrop.classList.remove('open');
     viewBackdrop.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+    if (!$('#modal-backdrop').classList.contains('open')) {
+      document.body.classList.remove('modal-open');
+    }
     if (viewLastFocused && typeof viewLastFocused.focus === 'function') {
       setTimeout(() => viewLastFocused.focus(), 60);
     }
@@ -1725,14 +1745,14 @@
   }
 
   viewCancel.addEventListener('click', () => {
-    // "Just looking" — open the shop, no claim
+    // "Just looking": open the shop, no claim
     if (viewPendingItem?.url) {
       window.open(viewPendingItem.url, '_blank', 'noopener,noreferrer');
     }
     closeViewWarning();
   });
   viewConfirm.addEventListener('click', () => {
-    // "I'll bring this" — open shop AND surface claim sheet
+    // "I'll bring this": open shop AND surface claim sheet
     const target = viewPendingItem;
     if (target?.url) window.open(target.url, '_blank', 'noopener,noreferrer');
     closeViewWarning();
