@@ -7,24 +7,45 @@
 <title>Jess's Kitchen Tea · Registry</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Caveat:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --cream:        #ffffff;
-    --cream-soft:   #f7f5f1;
-    --cream-deep:   #ece8df;
+    /* Sage scale (9 steps) */
+    --sage-50:      #f6f8ef;   /* page tint, hover bg */
+    --sage-100:     #eaf0dc;   /* taken-card bg, panel bg */
+    --sage-200:     #d4dcb9;   /* lines, dashed borders */
+    --sage-300:     #b8c391;   /* decorative accents */
+    --sage-400:     #9aa688;   /* decorative labels (large only) */
+    --sage-500:     #7d8a67;   /* secondary emphasis */
+    --sage-600:     #6b7855;   /* body secondary text */
+    --sage-700:     #4f5d3c;   /* body primary text, buttons */
+    --sage-800:     #3a4528;   /* hover/pressed depth */
+    --sage-900:     #25301a;   /* rare deep emphasis */
+
+    /* Warm neutrals */
     --paper:        #ffffff;
-    --ink:          #4f5d3c;        /* deep sage. body and illustration */
-    --ink-soft:     #6b7855;
-    --muted:        #9aa688;
-    --line:         #c8d0b2;
-    --line-soft:    #dfe4cc;
-    --accent:       #b95b3f;       /* warm terracotta, sparingly */
+    --cream:        #fbfaf5;   /* page bg with subtle warmth */
+    --cream-soft:   #f4f1e7;
+    --cream-deep:   #ece8df;
+
+    /* Semantic aliases */
+    --ink:          var(--sage-700);
+    --ink-soft:     var(--sage-600);
+    --muted:        var(--sage-400);
+    --line:         var(--sage-200);
+    --line-soft:    var(--sage-100);
+    --primary:      var(--sage-700);
+    --primary-deep: var(--sage-800);
+    --surface:      var(--paper);
+    --surface-tint: var(--sage-50);
+    --surface-taken:var(--sage-100);
+    --accent:       #b95b3f;
     --accent-soft:  #f5dccf;
-    --success:      #4a6f4a;
-    --shadow-1:     0 1px 2px rgba(26,26,26,.04), 0 0 0 1px rgba(26,26,26,.05);
-    --shadow-2:     0 4px 14px rgba(26,26,26,.06), 0 0 0 1px rgba(26,26,26,.05);
-    --shadow-3:     0 24px 64px rgba(26,26,26,.22);
+    --success:      var(--sage-700);
+
+    --shadow-1:     0 1px 2px rgba(37,48,26,.04), 0 0 0 1px rgba(37,48,26,.06);
+    --shadow-2:     0 4px 14px rgba(37,48,26,.08), 0 0 0 1px rgba(37,48,26,.06);
+    --shadow-3:     0 24px 64px rgba(37,48,26,.22);
     --radius-sm:    12px;
     --radius:       20px;
     --radius-lg:    28px;
@@ -129,7 +150,7 @@
     transition: background var(--t-fast), color var(--t-fast);
   }
   .topnav-link:hover { background: rgba(26,26,26,.05); color: var(--ink); }
-  .topnav-link.is-active { background: var(--ink); color: var(--cream); }
+  .topnav-link.is-active { background: var(--primary-deep); color: var(--paper); }
   .topnav-link-count {
     font-size: 10px;
     opacity: 0.7;
@@ -275,9 +296,11 @@
   .path-card:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-2);
+    background: var(--surface-tint);
   }
   .path-card:active { transform: translateY(0); }
-  .path-card-alt { background: var(--cream-soft); }
+  .path-card-alt { background: var(--sage-50); }
+  .path-card-alt:hover { background: var(--sage-100); }
   .path-icon {
     flex-shrink: 0;
     width: 44px;
@@ -358,8 +381,8 @@
   }
   body.modal-open .voucher-fab { transform: translateX(-50%) translateY(12px); }
   .voucher-fab:hover {
-    background: var(--cream);
-    color: var(--ink);
+    background: var(--primary-deep);
+    color: var(--paper);
   }
   .voucher-fab:active { transform: translateX(-50%) translateY(0) scale(0.97); }
   .voucher-fab svg { flex-shrink: 0; }
@@ -386,7 +409,7 @@
     font-weight: 600;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: var(--muted);
+    color: var(--sage-500);
     margin-bottom: 8px;
   }
   .section-script {
@@ -402,10 +425,9 @@
   .section-sub {
     margin: 16px auto 0;
     max-width: 460px;
-    font-family: 'Caveat', cursive;
-    font-size: 20px;
+    font-size: 14px;
     color: var(--ink-soft);
-    line-height: 1.3;
+    line-height: 1.5;
   }
   .section-progress {
     margin-top: 16px;
@@ -508,7 +530,14 @@
     box-shadow: var(--shadow-2);
   }
   .card.taken {
-    background: var(--cream-soft);
+    background: var(--surface-taken);
+    box-shadow: 0 1px 2px rgba(37,48,26,.04), 0 0 0 1px var(--sage-200);
+    opacity: 0.45;
+    transition: transform var(--t), box-shadow var(--t), opacity var(--t);
+  }
+  .card.taken:hover,
+  .card.taken:focus-within {
+    opacity: 1;
   }
   .card-doodle {
     position: absolute;
@@ -537,12 +566,15 @@
     text-transform: uppercase;
     color: var(--muted);
   }
-  .card-num { color: var(--ink); font-variant-numeric: tabular-nums; }
   .card-status {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
-    color: var(--success);
+    gap: 6px;
+    padding: 2px 8px;
+    background: var(--sage-100);
+    border-radius: 999px;
+    color: var(--sage-700);
+    letter-spacing: 0.18em;
   }
   .card-status::before {
     content: '';
@@ -613,19 +645,20 @@
     justify-content: center;
     gap: 8px;
   }
-  .btn:hover { background: var(--ink); color: var(--cream); }
+  .btn:hover { background: var(--primary-deep); color: var(--paper); border-color: var(--primary-deep); }
   .btn:active { transform: scale(0.97); }
-  .btn-primary { background: var(--ink); color: var(--cream); }
-  .btn-primary:hover { background: transparent; color: var(--ink); }
+  .btn-primary { background: var(--primary); color: var(--paper); border-color: var(--primary); }
+  .btn-primary:hover { background: var(--primary-deep); color: var(--paper); border-color: var(--primary-deep); }
   .btn:disabled, .btn[disabled] {
     opacity: 0.5;
     cursor: not-allowed;
     transform: none;
   }
   .taken-label {
-    font-family: 'Caveat', cursive;
-    font-weight: 500;
-    font-size: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
     color: var(--ink-soft);
     text-align: center;
     width: 100%;
@@ -683,11 +716,11 @@
     padding: 56px 24px;
   }
   .state-msg-script {
-    font-family: 'Caveat', cursive;
-    font-size: 26px;
-    color: var(--muted);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--ink-soft);
     margin: 0 0 8px;
-    line-height: 1.2;
+    line-height: 1.4;
   }
   .state-msg-sub {
     font-size: 13px;
@@ -815,27 +848,59 @@
     font-size: 14px;
     line-height: 1.55;
     color: var(--ink-soft);
-    background: var(--cream-soft);
+    background: var(--sage-50);
     border-radius: var(--radius);
     padding: 16px 20px;
     margin: 0 0 16px;
+    border: 1px solid var(--sage-100);
   }
   .view-note strong {
     color: var(--ink);
     font-weight: 600;
   }
   .view-tip {
-    font-family: 'Caveat', cursive;
-    font-size: 20px;
+    font-size: 13px;
+    font-weight: 500;
     color: var(--ink);
     text-align: center;
     margin: 0 4px 20px;
-    line-height: 1.3;
+    line-height: 1.4;
   }
   .sheet-actions {
     display: flex;
     gap: 8px;
   }
+  .voucher-email-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    background: var(--cream-soft);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    margin: 8px 0 14px;
+  }
+  #voucher-email-text {
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    color: var(--ink);
+    word-break: break-all;
+    flex: 1;
+  }
+  .btn-copy {
+    border: 1px solid var(--line);
+    background: var(--paper);
+    color: var(--ink);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background var(--t-fast), border-color var(--t-fast);
+    flex-shrink: 0;
+  }
+  .btn-copy:hover { background: var(--cream-soft); }
+  .btn-copy.copied { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
 
   /* ── TOAST ────────────────────────────────────────────── */
   .toast-stack {
@@ -1176,8 +1241,7 @@
       <!-- /illustration-hidden -->
 
       <p class="intro">
-        Welcome. Pick something you'd love to gift, then claim it so we don't double up.
-        Vouchers split into smaller amounts, so any contribution is perfect.
+        Pick something you'd love to gift, then claim it here so we don't double up.
       </p>
 
       <div class="paths" role="group" aria-label="Two ways to gift">
@@ -1217,7 +1281,7 @@
           <div class="path-text">
             <div class="path-eyebrow">Option Two</div>
             <div class="path-title">Send a voucher</div>
-            <div class="path-sub">any amount · duplicates welcome</div>
+            <div class="path-sub">welcome</div>
           </div>
           <svg class="path-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
         </a>
@@ -1257,7 +1321,7 @@
       <div class="section-head">
         <div class="section-eyebrow">02 · Gift Cards</div>
         <h2 class="section-script" id="vouchers-title">Vouchers</h2>
-        <p class="section-sub">no need to claim. duplicates are very welcome!</p>
+        <p class="section-sub">send to <a href="mailto:jessbmclaren@gmail.com">jessbmclaren@gmail.com</a></p>
       </div>
 
       <div class="grid" id="vouchers-grid">
@@ -1323,6 +1387,28 @@
   </div>
 </div>
 
+<!-- ── VOUCHER EMAIL SHEET ──────────────────────────────── -->
+<div class="sheet-backdrop" id="voucher-backdrop" role="dialog" aria-modal="true" aria-labelledby="voucher-sheet-title" aria-hidden="true">
+  <div class="sheet" role="document">
+    <div class="sheet-handle" aria-hidden="true"></div>
+    <div class="sheet-eyebrow">Send a Voucher</div>
+    <h3 id="voucher-sheet-title">Almost there!</h3>
+    <p class="sheet-item">Send the voucher to:</p>
+    <div class="voucher-email-box">
+      <span id="voucher-email-text">jessbmclaren@gmail.com</span>
+      <button type="button" class="btn-copy" id="voucher-copy" aria-label="Copy email">Copy</button>
+    </div>
+    <p class="view-tip">After buying, email the voucher with a quick note so Jess knows it's from you.</p>
+    <div class="sheet-actions">
+      <button type="button" class="btn" id="voucher-cancel">Cancel</button>
+      <button type="button" class="btn btn-primary" id="voucher-continue">
+        <span>Open shop</span>
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
 <!-- ── STICKY "SEND A VOUCHER" PILL ─────────────────────── -->
 <a href="#vouchers" class="voucher-fab" id="voucher-fab" aria-label="Jump to vouchers">
   <span>Send a voucher</span>
@@ -1378,6 +1464,13 @@
     el.textContent = days === 1 ? '1 day to go' : `${days} days to go`;
   }
 
+  // ── MOCK CLAIMED ITEMS (remove this block when not needed) ──
+  const MOCK_CLAIMED = [
+    { rowIndex: -1001, taken: true, takenBy: '', number: '', url: 'https://mungo.co.za/',           name: 'Linen tea towel set',     notes: 'A trio in sage + cream',                  store: 'Mungo',      price: 'R 480',   section: 'items' },
+    { rowIndex: -1002, taken: true, takenBy: '', number: '', url: 'https://www.africology.co.za/',  name: 'Africology candle',       notes: 'Soft botanical scent for the kitchen',    store: 'Africology', price: 'R 650',   section: 'items' },
+    { rowIndex: -1003, taken: true, takenBy: '', number: '', url: 'https://www.lecreuset.co.za/',   name: 'Le Creuset Cloche Kettle',notes: '2.1L in Shell Pink — stainless steel knob', store: 'Le Creuset', price: 'R 2,099', section: 'items' },
+  ];
+
   // ── DATA LOAD ──────────────────────────────────────────
   async function loadRegistry() {
     if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.startsWith('PASTE_')) {
@@ -1388,7 +1481,8 @@
     try {
       const res = await fetch(APPS_SCRIPT_URL);
       const data = await res.json();
-      state.items.all    = (data.items || []).filter(i => i.section === 'items');
+      const realItems = (data.items || []).filter(i => i.section === 'items');
+      state.items.all    = [...MOCK_CLAIMED, ...realItems];
       state.vouchers.all = (data.items || []).filter(i => i.section === 'vouchers');
       renderAll();
     } catch (err) {
@@ -1492,7 +1586,7 @@
     if (isVoucher) {
       const action = item.url
         ? `<div class="card-actions">
-             <a href="${escapeAttr(item.url)}" target="_blank" rel="noopener" class="btn btn-primary" aria-label="Shop ${escapeAttr(item.name)} (opens in new tab)">
+             <a href="${escapeAttr(item.url)}" target="_blank" rel="noopener" class="btn btn-primary voucher-shop-link" aria-label="Shop ${escapeAttr(item.name)} (opens in new tab)">
                <span>Shop</span>
                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
              </a>
@@ -1502,8 +1596,7 @@
         <article class="card">
           <div class="card-doodle" aria-hidden="true">${doodle}</div>
           <div class="card-meta-top">
-            ${item.number ? `<span class="card-num">No. ${escapeHtml(String(item.number))}</span>` : ''}
-          </div>
+            </div>
           <h3 class="card-name">${escapeHtml(item.name)}</h3>
           ${item.store ? `<div class="card-store">${escapeHtml(item.store)}</div>` : ''}
           ${item.price ? `<div class="card-price">${escapeHtml(item.price)}</div>` : ''}
@@ -1526,17 +1619,14 @@
           : `<div class="card-actions">
                <button type="button" class="btn btn-primary" data-claim="${item.rowIndex}" aria-label="Claim ${escapeAttr(item.name)}">Claim</button>
              </div>`);
-    const takenLabel = item.taken
-      ? `<div class="taken-label">taken by <span class="taken-by">${escapeHtml(item.takenBy || 'a friend')}</span></div>`
-      : '';
+    const takenLabel = '';
     const statusBadge = item.taken
-      ? `<span class="card-status">Claimed</span>`
+      ? `<span class="card-status"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Claimed</span>`
       : '';
     return `
       <article class="card ${item.taken ? 'taken' : ''}">
         <div class="card-doodle" aria-hidden="true">${doodle}</div>
         <div class="card-meta-top">
-          ${item.number ? `<span class="card-num">No. ${escapeHtml(String(item.number))}</span>` : ''}
           ${statusBadge}
         </div>
         <h3 class="card-name">${escapeHtml(item.name)}</h3>
@@ -1772,6 +1862,78 @@
     const last  = focusable[focusable.length - 1];
     if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
     else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+
+  // ── VOUCHER EMAIL SHEET ────────────────────────────────
+  const VOUCHER_EMAIL = 'jessbmclaren@gmail.com';
+  const voucherBackdrop = $('#voucher-backdrop');
+  const voucherSheet    = voucherBackdrop.querySelector('.sheet');
+  const voucherCancel   = $('#voucher-cancel');
+  const voucherContinue = $('#voucher-continue');
+  const voucherCopy     = $('#voucher-copy');
+  let voucherPendingUrl = null;
+  let voucherLastFocused = null;
+
+  function openVoucherSheet(url) {
+    voucherPendingUrl = url;
+    voucherLastFocused = document.activeElement;
+    voucherBackdrop.classList.add('open');
+    voucherBackdrop.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    document.body.classList.add('modal-open');
+    setTimeout(() => voucherCopy.focus(), 80);
+  }
+  function closeVoucherSheet() {
+    voucherBackdrop.classList.remove('open');
+    voucherBackdrop.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (!$('#modal-backdrop').classList.contains('open') && !$('#view-backdrop').classList.contains('open')) {
+      document.body.classList.remove('modal-open');
+    }
+    if (voucherLastFocused && typeof voucherLastFocused.focus === 'function') {
+      setTimeout(() => voucherLastFocused.focus(), 60);
+    }
+    voucherPendingUrl = null;
+  }
+
+  voucherCancel.addEventListener('click', closeVoucherSheet);
+  voucherContinue.addEventListener('click', () => {
+    if (voucherPendingUrl) window.open(voucherPendingUrl, '_blank', 'noopener,noreferrer');
+    closeVoucherSheet();
+  });
+  voucherCopy.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(VOUCHER_EMAIL);
+      voucherCopy.textContent = 'Copied!';
+      voucherCopy.classList.add('copied');
+      setTimeout(() => {
+        voucherCopy.textContent = 'Copy';
+        voucherCopy.classList.remove('copied');
+      }, 1800);
+    } catch (e) {
+      showToast("couldn't copy. select the email manually", 'error');
+    }
+  });
+  voucherBackdrop.addEventListener('click', (e) => {
+    if (e.target === voucherBackdrop) closeVoucherSheet();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && voucherBackdrop.classList.contains('open')) closeVoucherSheet();
+  });
+  voucherBackdrop.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab' || !voucherBackdrop.classList.contains('open')) return;
+    const focusable = voucherSheet.querySelectorAll('input, button, [href]');
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last  = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a.voucher-shop-link');
+    if (!link) return;
+    e.preventDefault();
+    openVoucherSheet(link.href);
   });
 
   // ── TOASTS ─────────────────────────────────────────────
