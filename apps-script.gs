@@ -129,3 +129,32 @@ function jsonResp(obj) {
     .createTextOutput(JSON.stringify(obj))
     .setMimeType(ContentService.MimeType.JSON);
 }
+
+// Run manually from the Apps Script editor to clear all claims.
+// Items get "Write taken if bought" back in column A; vouchers get "Voucher".
+function resetAll() {
+  const sheet = getRegistrySheet();
+  const lastRow = sheet.getLastRow();
+  const values = sheet.getRange(1, 1, lastRow, 4).getValues();
+
+  let headerRow = -1;
+  for (let i = 0; i < values.length; i++) {
+    if (String(values[i][0]).trim().toUpperCase() === 'BOUGHT') {
+      headerRow = i;
+      break;
+    }
+  }
+  if (headerRow === -1) throw new Error('No header row found on sheet "' + sheet.getName() + '"');
+
+  let section = 'items';
+  let cleared = 0;
+  for (let i = headerRow + 1; i < values.length; i++) {
+    const first = String(values[i][0] || '').trim().toUpperCase();
+    if (first === 'VOUCHERS') { section = 'vouchers'; continue; }
+    const itemName = String(values[i][3] || '').trim();
+    if (!itemName) continue;
+    sheet.getRange(i + 1, 1).setValue(section === 'vouchers' ? 'Voucher' : 'Write taken if bought');
+    cleared++;
+  }
+  Logger.log('Reset ' + cleared + ' rows on sheet "' + sheet.getName() + '".');
+}

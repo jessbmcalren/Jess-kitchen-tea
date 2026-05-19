@@ -2,23 +2,41 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Jess's Bridal Shower Registry</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#ffffff" />
+<title>Jess's Kitchen Tea · Registry</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Caveat:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
 <style>
   :root {
-    --cream: #f4ede2;
-    --cream-soft: #faf5ec;
-    --paper: #ffffff;
-    --ink: #1a1a1a;
-    --ink-soft: #3a3a3a;
-    --muted: #888080;
-    --line: #d4c9b8;
+    --cream:        #ffffff;
+    --cream-soft:   #f7f5f1;
+    --cream-deep:   #ece8df;
+    --paper:        #ffffff;
+    --ink:          #4f5d3c;        /* deep sage — body + illustration */
+    --ink-soft:     #6b7855;
+    --muted:        #9aa688;
+    --line:         #c8d0b2;
+    --line-soft:    #dfe4cc;
+    --accent:       #b95b3f;       /* warm terracotta, sparingly */
+    --accent-soft:  #f5dccf;
+    --success:      #4a6f4a;
+    --shadow-1:     0 1px 2px rgba(26,26,26,.04), 0 0 0 1px rgba(26,26,26,.05);
+    --shadow-2:     0 4px 14px rgba(26,26,26,.06), 0 0 0 1px rgba(26,26,26,.05);
+    --shadow-3:     0 24px 64px rgba(26,26,26,.22);
+    --radius-sm:    12px;
+    --radius:       20px;
+    --radius-lg:    28px;
+    --t-fast:       120ms cubic-bezier(.2,.8,.2,1);
+    --t:            220ms cubic-bezier(.2,.8,.2,1);
+    --t-slow:       420ms cubic-bezier(.16,1,.3,1);
   }
-  * { box-sizing: border-box; }
+
+  /* ── RESET ──────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
   body {
     font-family: 'Outfit', sans-serif;
     background: var(--cream);
@@ -26,19 +44,128 @@
     line-height: 1.6;
     font-size: 15px;
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
   }
   ::selection { background: var(--ink); color: var(--cream); }
+  button { font: inherit; }
+  a { color: inherit; }
+  :focus { outline: none; }
+  :focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
 
+  /* Skip link */
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 8px;
+    background: var(--ink);
+    color: var(--cream);
+    padding: 10px 16px;
+    border-radius: 999px;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    z-index: 100;
+    text-decoration: none;
+  }
+  .skip-link:focus { left: 16px; }
+
+  /* ── STICKY MINI NAV ─────────────────────────────────── */
+  .topnav {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    background: rgba(255, 255, 255, 0.78);
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--t), background var(--t);
+  }
+  .topnav.is-scrolled {
+    border-bottom-color: var(--line-soft);
+    background: rgba(255, 255, 255, 0.92);
+  }
+  .topnav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .topnav-brand {
+    font-family: 'Caveat Brush', cursive;
+    font-size: 22px;
+    line-height: 1;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    flex-shrink: 0;
+  }
+  .topnav-links {
+    display: flex;
+    gap: 4px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .topnav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-radius: 999px;
+    transition: background var(--t-fast), color var(--t-fast);
+  }
+  .topnav-link:hover { background: rgba(26,26,26,.05); color: var(--ink); }
+  .topnav-link.is-active { background: var(--ink); color: var(--cream); }
+  .topnav-link-count {
+    font-size: 10px;
+    opacity: 0.7;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ── PAGE ─────────────────────────────────────────────── */
   .page {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 56px 28px 96px;
+    padding: 40px 28px 96px;
   }
 
-  /* ── HERO ─────────────────────────────────── */
+  /* ── HERO ─────────────────────────────────────────────── */
   .hero {
     text-align: center;
-    padding: 16px 0 32px;
+    padding: 24px 0 24px;
+    position: relative;
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 24px;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .hero-eyebrow::before,
+  .hero-eyebrow::after {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--ink);
   }
   .hero-script {
     font-family: 'Caveat Brush', cursive;
@@ -54,141 +181,292 @@
     transform: rotate(-2deg);
     margin-top: -4px;
   }
-  .hero-eyebrow {
-    font-family: 'Outfit', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-    color: var(--ink);
-    margin-bottom: 20px;
-  }
   .hero-meta {
-    margin-top: 24px;
-    display: flex;
+    margin-top: 28px;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 14px;
-    font-family: 'Outfit', sans-serif;
-    font-size: 13px;
+    padding: 10px 22px;
+    background: var(--paper);
+    border-radius: 999px;
+    box-shadow: var(--shadow-1);
+    font-size: 12px;
     font-weight: 500;
     letter-spacing: 0.24em;
     text-transform: uppercase;
   }
   .hero-meta .pipe {
-    font-weight: 300;
-    color: var(--muted);
+    color: var(--line);
+  }
+  .hero-meta .countdown {
+    color: var(--accent);
+    font-weight: 600;
   }
 
-  /* ── ILLUSTRATION ─────────────────────────── */
   .illustration {
     display: flex;
     justify-content: center;
     margin: 32px 0 24px;
   }
   .illustration svg {
-    width: 220px;
+    width: 260px;
     height: auto;
     color: var(--ink);
   }
+  .bouquet-crop {
+    width: 230px;
+    height: 320px;
+    overflow: hidden;
+    position: relative;
+  }
+  .bouquet-crop img {
+    position: absolute;
+    width: 580px;
+    height: auto;
+    top: -110px;
+    left: -290px;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .illustration svg { animation: floaty 6s ease-in-out infinite; }
+    .bouquet-crop { animation: floaty 6s ease-in-out infinite; }
+  }
+  @keyframes floaty {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-4px); }
+  }
 
-  /* ── INTRO ────────────────────────────────── */
   .intro {
-    max-width: 580px;
-    margin: 16px auto 32px;
+    max-width: 560px;
+    margin: 12px auto 28px;
     text-align: center;
-    font-family: 'Outfit', sans-serif;
     font-weight: 400;
     font-size: 15px;
     line-height: 1.7;
     color: var(--ink-soft);
   }
 
-  /* ── BUTTONS (hero pills) ─────────────────── */
-  .hero-actions {
-    display: flex;
+  /* ── HERO PATHS ──────────────────────────────────────── */
+  .paths {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 14px;
-    justify-content: center;
     margin-top: 28px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
   }
-  .pill {
-    padding: 12px 28px;
-    border-radius: 999px;
-    font-family: 'Outfit', sans-serif;
-    font-size: 11px;
+  .path-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 18px;
+    background: var(--paper);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--ink);
+    box-shadow: var(--shadow-1);
+    transition: transform var(--t), box-shadow var(--t), background var(--t-fast);
+    text-align: left;
+    min-height: 80px;
+  }
+  .path-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-2);
+  }
+  .path-card:active { transform: translateY(0); }
+  .path-card-alt { background: var(--cream-soft); }
+  .path-icon {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    color: var(--ink);
+  }
+  .path-icon svg { width: 100%; height: 100%; display: block; }
+  .path-text { flex: 1; min-width: 0; }
+  .path-eyebrow {
+    font-size: 9.5px;
     font-weight: 600;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    cursor: pointer;
-    text-decoration: none;
-    border: 1.5px solid var(--ink);
-    color: var(--ink);
-    background: transparent;
-    transition: all 0.2s;
-    display: inline-block;
-    line-height: 1;
+    color: var(--muted);
+    margin-bottom: 4px;
   }
-  .pill:hover { background: var(--ink); color: var(--cream); }
-  .pill-dark {
+  .path-title {
+    font-family: 'Caveat Brush', cursive;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .path-sub {
+    font-size: 12px;
+    color: var(--ink-soft);
+    line-height: 1.3;
+    font-variant-numeric: tabular-nums;
+  }
+  .path-arrow {
+    flex-shrink: 0;
+    color: var(--muted);
+    transition: transform var(--t-fast), color var(--t-fast);
+  }
+  .path-card:hover .path-arrow {
+    color: var(--ink);
+    transform: translateX(3px);
+  }
+
+  /* ── CROSS-LINK BETWEEN SECTIONS ─────────────────────── */
+  /* ── STICKY "SEND A VOUCHER" FAB ───────────────────── */
+  .voucher-fab {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(12px);
+    z-index: 40;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
     background: var(--ink);
     color: var(--cream);
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    text-decoration: none;
+    line-height: 1;
+    box-shadow: 0 8px 24px rgba(26,26,26,.18), 0 0 0 1px rgba(26,26,26,.06);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--t), transform var(--t), visibility 0s var(--t), background var(--t-fast), color var(--t-fast);
   }
-  .pill-dark:hover { background: transparent; color: var(--ink); }
+  .voucher-fab.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+    transition: opacity var(--t), transform var(--t), background var(--t-fast), color var(--t-fast);
+  }
+  .voucher-fab:hover {
+    background: var(--cream);
+    color: var(--ink);
+  }
+  .voucher-fab:active { transform: translateX(-50%) translateY(0) scale(0.97); }
+  .voucher-fab svg { flex-shrink: 0; }
+  @media (max-width: 540px) {
+    .voucher-fab {
+      bottom: 16px;
+      padding: 12px 18px;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+    }
+  }
 
-  /* ── SECTION ──────────────────────────────── */
+  /* ── SECTION HEAD ─────────────────────────────────────── */
   .section {
-    margin-top: 72px;
+    margin-top: 80px;
+    scroll-margin-top: 80px;
   }
-  .section-title-wrap {
+  .section-head {
     text-align: center;
-    margin-bottom: 36px;
+    margin-bottom: 28px;
+  }
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
   }
   .section-script {
     font-family: 'Caveat Brush', cursive;
     font-weight: 400;
-    font-size: clamp(48px, 7vw, 76px);
+    font-size: clamp(46px, 7vw, 72px);
     line-height: 0.95;
     color: var(--ink);
     margin: 0;
     display: inline-block;
     transform: rotate(-1deg);
   }
-  .section-eyebrow {
-    font-family: 'Outfit', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--ink);
-    margin-bottom: 12px;
+  .section-sub {
+    margin: 14px auto 0;
+    max-width: 460px;
+    font-family: 'Patrick Hand', sans-serif;
+    font-size: 17px;
+    color: var(--ink-soft);
+    line-height: 1.4;
   }
   .section-progress {
-    margin-top: 18px;
-    display: flex;
+    margin-top: 16px;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
     gap: 12px;
-    font-family: 'Outfit', sans-serif;
     font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.24em;
     text-transform: uppercase;
     color: var(--muted);
+    font-variant-numeric: tabular-nums;
   }
   .progress-track {
-    width: 100px;
-    height: 2px;
-    background: var(--line);
+    width: 110px;
+    height: 3px;
+    background: var(--line-soft);
     border-radius: 2px;
     overflow: hidden;
   }
   .progress-fill {
     height: 100%;
     background: var(--ink);
-    transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: width var(--t-slow);
+    border-radius: 2px;
   }
 
-  /* ── REGISTRY GRID ────────────────────────── */
+  /* ── CONTROLS (filter + search) ───────────────────────── */
+  .controls {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 22px;
+  }
+  .chips {
+    display: inline-flex;
+    gap: 4px;
+    padding: 6px;
+    background: var(--cream-soft);
+    border-radius: 999px;
+    box-shadow: var(--shadow-1);
+  }
+  .chip {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: background var(--t-fast), color var(--t-fast);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .chip:hover { background: var(--cream-soft); }
+  .chip.is-active { background: var(--ink); color: var(--cream); }
+  .chip-count {
+    font-size: 10px;
+    opacity: 0.7;
+    font-variant-numeric: tabular-nums;
+  }
+  /* ── REGISTRY GRID ────────────────────────────────────── */
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -196,79 +474,109 @@
   }
   .card {
     background: var(--paper);
-    border-radius: 20px;
-    padding: 24px 22px 20px;
+    border-radius: var(--radius);
+    padding: 22px 22px 18px;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 2px 8px rgba(26, 26, 26, 0.04), 0 0 0 1px rgba(26, 26, 26, 0.04);
-    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: var(--shadow-1);
+    transition: transform var(--t), box-shadow var(--t);
     position: relative;
+    overflow: hidden;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .card { animation: cardIn var(--t-slow) both; }
+    .card:nth-child(2) { animation-delay: 40ms; }
+    .card:nth-child(3) { animation-delay: 80ms; }
+    .card:nth-child(4) { animation-delay: 120ms; }
+    .card:nth-child(5) { animation-delay: 160ms; }
+    .card:nth-child(6) { animation-delay: 200ms; }
+  }
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-2);
+  }
+  .card.taken {
+    background: var(--cream-soft);
   }
   .card-doodle {
     position: absolute;
     top: 14px;
     right: 16px;
-    width: 38px;
-    height: 38px;
+    width: 36px;
+    height: 36px;
     color: var(--ink);
-    opacity: 0.75;
+    opacity: 0.7;
     pointer-events: none;
   }
   .card-doodle svg { width: 100%; height: 100%; display: block; }
-  .card.taken .card-doodle { opacity: 0.3; }
-  .card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(26, 26, 26, 0.08), 0 0 0 1px rgba(26, 26, 26, 0.06);
-  }
-  .card.taken {
-    background: var(--cream-soft);
-  }
+  .card.taken .card-doodle { opacity: 0.25; }
+
   .card-meta-top {
     display: flex;
     justify-content: flex-start;
-    align-items: baseline;
+    align-items: center;
+    gap: 8px;
     margin-bottom: 12px;
-    padding-right: 52px;
-    font-family: 'Outfit', sans-serif;
+    padding-right: 48px;
+    min-height: 14px;
     font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.24em;
     text-transform: uppercase;
     color: var(--muted);
   }
-  .card-num { color: var(--ink); }
+  .card-num { color: var(--ink); font-variant-numeric: tabular-nums; }
+  .card-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--success);
+  }
+  .card-status::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+  }
   .card-name {
-    font-family: 'Outfit', sans-serif;
     font-weight: 600;
-    font-size: 14px;
-    line-height: 1.4;
-    margin: 0 0 10px;
-    letter-spacing: 0.04em;
+    font-size: 15px;
+    line-height: 1.35;
+    margin: 0 0 8px;
+    letter-spacing: 0.03em;
     text-transform: uppercase;
     color: var(--ink);
   }
   .card.taken .card-name { color: var(--muted); }
   .card-store {
     font-family: 'Patrick Hand', sans-serif;
-    font-size: 17px;
-    color: var(--ink);
+    font-size: 16px;
+    color: var(--ink-soft);
     margin-bottom: 8px;
+    line-height: 1.3;
   }
   .card-price {
-    font-family: 'Outfit', sans-serif;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 17px;
     color: var(--ink);
-    margin-bottom: 14px;
+    margin-bottom: 12px;
+    font-variant-numeric: tabular-nums;
   }
+  .card.taken .card-price { color: var(--muted); }
   .card-notes {
     font-family: 'Patrick Hand', sans-serif;
     font-size: 15px;
     color: var(--ink-soft);
     flex: 1;
-    margin-bottom: 18px;
+    margin: 0 0 16px;
     line-height: 1.45;
   }
+  .card-notes:empty { margin-bottom: 4px; }
   .card-actions {
     display: flex;
     gap: 8px;
@@ -276,12 +584,12 @@
   }
   .btn {
     flex: 1;
-    padding: 11px 12px;
+    padding: 12px 14px;
     border-radius: 999px;
-    font-family: 'Outfit', sans-serif;
+    font-family: inherit;
     font-size: 10px;
     font-weight: 600;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
     cursor: pointer;
     text-decoration: none;
@@ -289,99 +597,179 @@
     border: 1.5px solid var(--ink);
     background: transparent;
     color: var(--ink);
-    transition: all 0.2s;
+    transition: background var(--t-fast), color var(--t-fast), transform var(--t-fast);
     line-height: 1;
     white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
   }
   .btn:hover { background: var(--ink); color: var(--cream); }
-  .btn-primary {
-    background: var(--ink);
-    color: var(--cream);
-  }
+  .btn:active { transform: scale(0.97); }
+  .btn-primary { background: var(--ink); color: var(--cream); }
   .btn-primary:hover { background: transparent; color: var(--ink); }
-  .btn:disabled, .btn[disabled] { opacity: 0.4; cursor: not-allowed; }
+  .btn:disabled, .btn[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
   .taken-label {
     font-family: 'Caveat', cursive;
     font-weight: 500;
-    font-size: 22px;
-    color: var(--ink);
+    font-size: 20px;
+    color: var(--ink-soft);
     text-align: center;
     width: 100%;
-    padding: 8px 0 4px;
+    padding: 10px 8px 4px;
     border-top: 1px dashed var(--line);
-    margin-top: 8px;
-    line-height: 1.1;
+    margin-top: 4px;
+    line-height: 1.2;
   }
   .taken-label::before {
     content: '✓';
-    margin-right: 8px;
+    margin-right: 6px;
     font-family: 'Outfit', sans-serif;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
-    vertical-align: 3px;
+    color: var(--success);
+    vertical-align: 2px;
+  }
+  .taken-by {
+    font-weight: 600;
+    color: var(--ink);
   }
 
-  /* ── STATE MESSAGES ───────────────────────── */
+  /* ── SKELETON LOADERS ─────────────────────────────────── */
+  .skeleton-card {
+    background: var(--paper);
+    border-radius: var(--radius);
+    padding: 22px;
+    box-shadow: var(--shadow-1);
+    min-height: 220px;
+  }
+  .skeleton-line {
+    height: 12px;
+    background: linear-gradient(90deg, var(--cream-soft) 0%, var(--cream-deep) 50%, var(--cream-soft) 100%);
+    background-size: 200% 100%;
+    border-radius: 6px;
+    animation: shimmer 1.4s linear infinite;
+    margin-bottom: 10px;
+  }
+  @keyframes shimmer {
+    from { background-position: 200% 0; }
+    to   { background-position: -200% 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .skeleton-line { animation: none; }
+  }
+  .skeleton-line.s-sm { width: 30%; height: 8px; margin-bottom: 18px; }
+  .skeleton-line.s-md { width: 70%; }
+  .skeleton-line.s-lg { width: 90%; }
+  .skeleton-line.s-pill { height: 36px; border-radius: 999px; margin-top: 24px; }
+
+  /* ── STATE MESSAGES ───────────────────────────────────── */
   .state-msg {
     grid-column: 1 / -1;
     text-align: center;
+    padding: 56px 24px;
+  }
+  .state-msg-script {
     font-family: 'Caveat', cursive;
     font-size: 26px;
     color: var(--muted);
-    padding: 48px 16px;
+    margin: 0 0 8px;
+    line-height: 1.2;
+  }
+  .state-msg-sub {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0;
+  }
+  .state-msg-actions {
+    margin-top: 16px;
+  }
+  .state-link {
+    background: none;
+    border: 0;
+    padding: 0;
+    color: var(--ink);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 4px;
   }
 
-  /* ── MODAL ────────────────────────────────── */
-  .modal-backdrop {
+  /* ── BOTTOM-SHEET MODAL ───────────────────────────────── */
+  .sheet-backdrop {
     position: fixed;
     inset: 0;
-    background: rgba(26, 26, 26, 0.5);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    display: none;
+    background: rgba(26, 26, 26, 0);
+    backdrop-filter: blur(0);
+    -webkit-backdrop-filter: blur(0);
+    display: flex;
     align-items: center;
     justify-content: center;
     z-index: 50;
-    padding: 20px;
+    padding: 0;
+    visibility: hidden;
+    transition: background var(--t), backdrop-filter var(--t), visibility 0s var(--t);
   }
-  .modal-backdrop.open { display: flex; }
-  .modal {
+  .sheet-backdrop.open {
+    background: rgba(26, 26, 26, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    visibility: visible;
+    transition: background var(--t), backdrop-filter var(--t);
+  }
+  .sheet {
     background: var(--paper);
-    border-radius: 24px;
-    padding: 36px 32px 32px;
+    border-radius: var(--radius-lg);
+    padding: 32px 28px 28px;
     max-width: 440px;
-    width: 100%;
-    box-shadow: 0 24px 64px rgba(26, 26, 26, 0.22);
+    width: calc(100% - 32px);
+    box-shadow: var(--shadow-3);
+    transform: translateY(20px) scale(0.96);
+    opacity: 0;
+    transition: transform var(--t-slow), opacity var(--t);
   }
-  .modal-eyebrow {
-    font-family: 'Outfit', sans-serif;
+  .sheet-backdrop.open .sheet {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  .sheet-handle {
+    display: none;
+  }
+  .sheet-eyebrow {
     font-size: 10px;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: var(--ink);
+    color: var(--muted);
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     text-align: center;
   }
-  .modal h3 {
+  .sheet h3 {
     font-family: 'Caveat Brush', cursive;
     font-weight: 400;
-    font-size: 46px;
+    font-size: 44px;
     margin: 0 0 4px;
     line-height: 0.95;
     text-align: center;
   }
-  .modal .modal-item {
+  .sheet-item {
     font-family: 'Patrick Hand', sans-serif;
     font-size: 17px;
     color: var(--ink-soft);
-    margin: 8px 0 28px;
+    margin: 6px 0 22px;
     line-height: 1.4;
     text-align: center;
   }
-  .modal label {
+  .sheet label {
     display: block;
-    font-family: 'Outfit', sans-serif;
     font-size: 10px;
     letter-spacing: 0.24em;
     text-transform: uppercase;
@@ -389,45 +777,106 @@
     font-weight: 600;
     margin-bottom: 8px;
   }
-  .modal input {
+  .sheet input {
     width: 100%;
-    padding: 12px 16px;
-    border: 1.5px solid var(--ink);
+    padding: 14px 18px;
+    border: 1.5px solid var(--line);
     border-radius: 999px;
     font-family: 'Patrick Hand', sans-serif;
     font-size: 17px;
-    background: transparent;
+    background: var(--cream-soft);
     color: var(--ink);
-    margin-bottom: 22px;
-    transition: background 0.2s;
+    margin-bottom: 8px;
+    transition: border-color var(--t-fast), background var(--t-fast);
   }
-  .modal input:focus { outline: none; background: var(--cream-soft); }
-  .modal input::placeholder { color: var(--muted); }
-  .modal-actions {
+  .sheet input:focus {
+    outline: none;
+    border-color: var(--ink);
+    background: var(--paper);
+  }
+  .sheet input::placeholder { color: var(--muted); }
+  .sheet-helper {
+    font-size: 11px;
+    color: var(--muted);
+    margin: 0 4px 18px;
+    min-height: 14px;
+  }
+  .sheet-helper.is-error { color: var(--accent); }
+  .view-note {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    background: var(--cream-soft);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    margin: 0 0 14px;
+  }
+  .view-note strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .view-tip {
+    font-family: 'Patrick Hand', sans-serif;
+    font-size: 16px;
+    color: var(--ink);
+    text-align: center;
+    margin: 0 4px 18px;
+    line-height: 1.35;
+  }
+  .sheet-actions {
     display: flex;
     gap: 10px;
   }
-  .modal .feedback {
-    margin-top: 18px;
-    font-family: 'Caveat', cursive;
-    font-size: 24px;
-    text-align: center;
-    color: var(--ink);
-    display: none;
-    line-height: 1;
+
+  /* ── TOAST ────────────────────────────────────────────── */
+  .toast-stack {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 60;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    pointer-events: none;
+    width: min(380px, calc(100% - 32px));
+  }
+  .toast {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 14px 20px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    box-shadow: var(--shadow-2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    pointer-events: auto;
+    transform: translateY(8px);
+    opacity: 0;
+    transition: transform var(--t), opacity var(--t);
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+  .toast.error { background: var(--accent); }
+  .toast-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
   }
 
-  /* ── FOOTER ───────────────────────────────── */
+  /* ── FOOTER ───────────────────────────────────────────── */
   footer {
     text-align: center;
-    margin-top: 88px;
+    margin-top: 96px;
     padding-top: 40px;
     border-top: 1px dashed var(--line);
   }
   .footer-illus {
     display: flex;
     justify-content: center;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
     color: var(--ink);
   }
   .footer-script {
@@ -439,7 +888,6 @@
   }
   .footer-sub {
     margin-top: 8px;
-    font-family: 'Outfit', sans-serif;
     font-size: 11px;
     font-weight: 500;
     letter-spacing: 0.28em;
@@ -447,304 +895,928 @@
     color: var(--ink);
   }
 
-  @media (max-width: 640px) {
-    .page { padding: 36px 18px 64px; }
-    .section { margin-top: 56px; }
-    .grid { grid-template-columns: 1fr; }
-    .illustration svg { width: 180px; }
-    .hero-meta { font-size: 11px; gap: 10px; }
+  /* ── RESPONSIVE ──────────────────────────────────────── */
+  @media (max-width: 760px) {
+    .topnav-link { padding: 8px 11px; letter-spacing: 0.18em; font-size: 10px; }
+    .topnav-link-count { display: none; }
+    .topnav-brand { font-size: 19px; }
+
+    .page { padding: 28px 16px 64px; }
+    .section { margin-top: 56px; scroll-margin-top: 64px; }
+    .grid { grid-template-columns: 1fr; gap: 14px; }
+    .illustration svg { width: 170px; }
+    .bouquet-crop { width: 190px; height: 270px; }
+    .bouquet-crop img { width: 480px; left: -240px; top: -90px; }
+    .hero-meta { font-size: 11px; gap: 10px; padding: 9px 16px; }
+    .hero-eyebrow::before, .hero-eyebrow::after { width: 18px; }
+    .chips { width: 100%; justify-content: space-between; }
+    .chip { padding: 9px 10px; letter-spacing: 0.16em; font-size: 10px; }
+
+    .paths {
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .path-card {
+      padding: 16px 16px;
+      gap: 14px;
+      min-height: 76px;
+    }
+    .path-icon { width: 38px; height: 38px; }
+    .path-title { font-size: 26px; }
+    .path-sub { font-size: 11.5px; }
+  }
+
+  /* Bottom-sheet style on mobile */
+  @media (max-width: 540px) {
+    .sheet-backdrop { align-items: flex-end; }
+    .sheet {
+      width: 100%;
+      max-width: 100%;
+      border-radius: 24px 24px 0 0;
+      padding: 16px 22px 28px;
+      transform: translateY(100%);
+    }
+    .sheet-backdrop.open .sheet { transform: translateY(0); }
+    .sheet-handle {
+      display: block;
+      width: 38px;
+      height: 4px;
+      background: var(--line);
+      border-radius: 2px;
+      margin: 0 auto 18px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 </style>
 </head>
 <body>
-  <div class="page">
 
-    <!-- HERO -->
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- ── STICKY NAV ────────────────────────────────────────── -->
+<nav class="topnav" id="topnav" aria-label="Sections">
+  <div class="topnav-inner">
+    <a href="#top" class="topnav-brand">Jess's Kitchen Tea</a>
+    <ul class="topnav-links">
+      <li><a href="#wishlist" class="topnav-link" data-nav="wishlist">
+        <span>Wishlist</span>
+        <span class="topnav-link-count" id="nav-count-items">—</span>
+      </a></li>
+      <li><a href="#vouchers" class="topnav-link" data-nav="vouchers">
+        <span>Vouchers</span>
+        <span class="topnav-link-count" id="nav-count-vouchers">—</span>
+      </a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+  <div class="page" id="top">
+
+    <!-- ── HERO ─────────────────────────────────────────── -->
     <header class="hero">
-      <div class="hero-eyebrow">A Celebration for Jess</div>
+      <div class="hero-eyebrow">She's Fresh Off the Market</div>
       <h1 class="hero-script">
         Jess's
         <span class="row2">Kitchen Tea</span>
       </h1>
-      <div class="hero-meta">
+      <div class="hero-meta" aria-label="Event details">
         <span>Bridal Shower</span>
-        <span class="pipe">·</span>
+        <span class="pipe" aria-hidden="true">·</span>
         <span>15 · 08 · 26</span>
+        <span class="pipe" aria-hidden="true">·</span>
+        <span class="countdown" id="countdown">—</span>
       </div>
 
-      <!-- HERO ILLUSTRATION -->
-      <div class="illustration">
-        <svg viewBox="0 0 220 200" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <!-- steam wisps -->
-          <path d="M82 22 Q 76 34 84 46 Q 92 58 84 70" />
-          <path d="M108 14 Q 100 28 110 42 Q 120 56 110 70" />
-          <path d="M134 22 Q 128 34 136 46 Q 144 58 136 70" />
-          <!-- teapot body -->
-          <path d="M55 85 Q 56 82 60 82 L 152 82 Q 156 82 156 85 L 152 142 Q 150 154 138 154 L 74 154 Q 62 154 60 142 Z" />
-          <!-- teapot rim -->
-          <path d="M58 92 Q 106 100 154 92" />
-          <!-- spout -->
-          <path d="M52 100 Q 38 95 30 85 Q 38 105 50 110" />
-          <!-- handle -->
-          <path d="M156 92 Q 188 94 188 116 Q 188 138 156 134" />
-          <!-- saucer -->
-          <ellipse cx="106" cy="166" rx="80" ry="10" />
-          <path d="M28 162 Q 106 182 184 162" />
-          <!-- little heart -->
-          <path d="M106 110 q -5 -8 -12 -4 q -7 4 0 13 q 5 6 12 11 q 7 -5 12 -11 q 7 -9 0 -13 q -7 -4 -12 4 Z" stroke-width="2" />
-          <!-- side flora -->
-          <path d="M18 130 Q 14 124 18 118 Q 22 124 18 130 Z" />
-          <path d="M18 130 L 18 144" />
-          <path d="M14 138 Q 18 134 22 138" />
-          <path d="M198 50 Q 194 44 198 38 Q 202 44 198 50 Z" />
-          <path d="M198 50 L 198 64" />
-          <!-- sparkle stars -->
-          <path d="M22 60 l 3 5 l 5 1 l -4 4 l 1 5 l -5 -3 l -5 3 l 1 -5 l -4 -4 l 5 -1 z" stroke-width="1.5" />
-          <path d="M200 130 l 2 4 l 4 1 l -3 3 l 1 4 l -4 -2 l -4 2 l 1 -4 l -3 -3 l 4 -1 z" stroke-width="1.5" />
+      <div class="illustration" aria-hidden="true">
+        <svg viewBox="0 60 220 155" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Steam wisps -->
+          <path d="M88 80 q -4 -8 0 -16 q 4 -8 0 -16" stroke-width="1.6"/>
+          <path d="M110 76 q 4 -8 0 -16 q -4 -8 0 -16" stroke-width="1.6"/>
+          <path d="M132 80 q -4 -8 0 -16 q 4 -8 0 -16" stroke-width="1.6"/>
+
+          <!-- TEACUP -->
+          <path d="M68 118 Q 68 114 73 114 L 147 114 Q 152 114 152 118 L 144 178 Q 142 188 132 188 L 88 188 Q 78 188 76 178 Z"/>
+          <path d="M70 122 Q 110 130 150 122"/>
+          <path d="M152 128 Q 178 130 178 148 Q 178 166 152 162"/>
+          <path d="M78 152 Q 110 158 142 152" stroke-width="1.4"/>
+          <path d="M110 165 q -3 -5 -7 -3 q -4 2 0 7 q 3 4 7 6 q 4 -2 7 -6 q 4 -5 0 -7 q -4 -2 -7 3 Z" stroke-width="1.6"/>
+
+          <!-- SAUCER -->
+          <ellipse cx="110" cy="196" rx="68" ry="6"/>
+          <path d="M44 193 Q 110 208 176 193"/>
+
+          <!-- Sparkles -->
+          <path d="M24 70 l 2.5 4 l 4 1 l -3 3 l 1 4 l -4 -2 l -4 2 l 1 -4 l -3 -3 l 4 -1 z" stroke-width="1.3"/>
+          <path d="M198 60 l 2 3 l 3 1 l -2.5 2.5 l 1 3 l -3.5 -2 l -3 2 l 1 -3 l -2.5 -2.5 l 3 -1 z" stroke-width="1.2"/>
+          <path d="M30 168 l 2 3 l 3 0.5 l -2 2 l 1 3 l -3 -1.5 l -3 1.5 l 1 -3 l -2 -2 l 3 -0.5 z" stroke-width="1.2"/>
         </svg>
       </div>
+
+      <div class="illustration-hidden" hidden aria-hidden="true">
+        <svg viewBox="0 0 220 250" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+
+          <!-- ── FOLIAGE & TALL STEMS (behind flowers) ── -->
+
+          <!-- Wheat / lavender stem (tall, top-center-right) -->
+          <path d="M138 12 Q 136 40 134 70" stroke-width="1.4"/>
+          <path d="M138 22 q -5 -1 -7 -5"/>
+          <path d="M137 30 q 5 -1 7 -5"/>
+          <path d="M136 38 q -5 -1 -7 -5"/>
+          <path d="M135 46 q 5 -1 7 -5"/>
+          <path d="M135 54 q -5 -1 -7 -5"/>
+
+          <!-- Eucalyptus sprig (top-right, arcing) -->
+          <path d="M168 26 Q 178 60 162 96" stroke-width="1.4"/>
+          <ellipse cx="173" cy="42" rx="4" ry="6" transform="rotate(35 173 42)"/>
+          <ellipse cx="178" cy="58" rx="4" ry="6" transform="rotate(70 178 58)"/>
+          <ellipse cx="174" cy="74" rx="4" ry="6" transform="rotate(110 174 74)"/>
+          <ellipse cx="166" cy="88" rx="3.5" ry="5.5" transform="rotate(135 166 88)"/>
+
+          <!-- Greenery sprig left -->
+          <path d="M44 60 Q 52 90 60 110" stroke-width="1.4"/>
+          <ellipse cx="49" cy="74" rx="3.5" ry="5.5" transform="rotate(-40 49 74)"/>
+          <ellipse cx="54" cy="90" rx="3.5" ry="5.5" transform="rotate(-25 54 90)"/>
+
+          <!-- ── ROSES ── -->
+
+          <!-- Big rose (center) — layered petals -->
+          <g transform="translate(108 78)">
+            <!-- Outer petal cloud -->
+            <path d="M -18 -2 q -3 -10 6 -14 q 5 -9 12 -5 q 10 -3 12 6 q 10 2 8 12 q 4 8 -5 12 q -3 9 -12 7 q -7 7 -14 0 q -10 1 -11 -8 q -8 -3 -6 -10 Z"/>
+            <!-- Mid petal layer -->
+            <path d="M -10 -1 q -1 -6 5 -7 q 4 -5 8 -1 q 6 -1 7 5 q 5 3 1 8 q -1 6 -7 5 q -5 4 -9 -1 q -6 0 -5 -5 q -3 -2 0 -4 Z" stroke-width="1.5"/>
+            <!-- Inner whorl -->
+            <path d="M -4 0 q 0 -4 4 -4 q 4 0 4 4 q 0 3 -3 3 q -3 0 -3 -3 q 0 -2 2 -2" stroke-width="1.4"/>
+          </g>
+
+          <!-- Medium rose (left) -->
+          <g transform="translate(64 88)">
+            <path d="M -13 0 q -2 -8 5 -10 q 4 -6 9 -3 q 8 -1 9 5 q 7 2 5 9 q 2 7 -5 9 q -2 7 -9 5 q -6 4 -10 -2 q -7 1 -7 -6 q -5 -3 -3 -7 Z"/>
+            <path d="M -6 -1 q 0 -5 4 -5 q 4 0 5 4 q 4 1 3 5 q -2 4 -6 3 q -5 1 -5 -3 q -2 -2 -1 -4 Z" stroke-width="1.4"/>
+            <circle cx="0" cy="0" r="1.5" fill="currentColor"/>
+          </g>
+
+          <!-- Smaller rose (right) -->
+          <g transform="translate(146 102)">
+            <path d="M -11 0 q -1 -7 5 -8 q 3 -5 8 -2 q 6 0 7 5 q 6 2 4 7 q 2 6 -5 7 q -2 6 -8 4 q -6 3 -8 -2 q -6 1 -6 -5 q -4 -2 -3 -6 Z"/>
+            <path d="M -4 0 q 0 -3 3 -3 q 3 0 3 3 q 0 3 -3 3 q -3 0 -3 -3 Z" stroke-width="1.4"/>
+          </g>
+
+          <!-- ── DAISIES ── -->
+
+          <!-- Daisy (upper-left) -->
+          <g transform="translate(50 50)">
+            <circle r="2.2" fill="currentColor"/>
+            <ellipse cx="0" cy="-8.5" rx="2.6" ry="5" stroke-width="1.4"/>
+            <ellipse cx="0" cy="-8.5" rx="2.6" ry="5" stroke-width="1.4" transform="rotate(60)"/>
+            <ellipse cx="0" cy="-8.5" rx="2.6" ry="5" stroke-width="1.4" transform="rotate(120)"/>
+            <ellipse cx="0" cy="-8.5" rx="2.6" ry="5" stroke-width="1.4" transform="rotate(180)"/>
+            <ellipse cx="0" cy="-8.5" rx="2.6" ry="5" stroke-width="1.4" transform="rotate(240)"/>
+            <ellipse cx="0" cy="-8.5" rx="2.6" ry="5" stroke-width="1.4" transform="rotate(300)"/>
+          </g>
+
+          <!-- Small daisy (upper-right) -->
+          <g transform="translate(170 78)">
+            <circle r="1.8" fill="currentColor"/>
+            <ellipse cx="0" cy="-7" rx="2.2" ry="4.2" stroke-width="1.3"/>
+            <ellipse cx="0" cy="-7" rx="2.2" ry="4.2" stroke-width="1.3" transform="rotate(72)"/>
+            <ellipse cx="0" cy="-7" rx="2.2" ry="4.2" stroke-width="1.3" transform="rotate(144)"/>
+            <ellipse cx="0" cy="-7" rx="2.2" ry="4.2" stroke-width="1.3" transform="rotate(216)"/>
+            <ellipse cx="0" cy="-7" rx="2.2" ry="4.2" stroke-width="1.3" transform="rotate(288)"/>
+          </g>
+
+          <!-- Small daisy (lower-center, peeking) -->
+          <g transform="translate(94 108)">
+            <circle r="1.7" fill="currentColor"/>
+            <ellipse cx="0" cy="-6" rx="2" ry="3.8" stroke-width="1.2"/>
+            <ellipse cx="0" cy="-6" rx="2" ry="3.8" stroke-width="1.2" transform="rotate(72)"/>
+            <ellipse cx="0" cy="-6" rx="2" ry="3.8" stroke-width="1.2" transform="rotate(144)"/>
+            <ellipse cx="0" cy="-6" rx="2" ry="3.8" stroke-width="1.2" transform="rotate(216)"/>
+            <ellipse cx="0" cy="-6" rx="2" ry="3.8" stroke-width="1.2" transform="rotate(288)"/>
+          </g>
+
+          <!-- ── BUDS & FILLER ── -->
+
+          <!-- Tulip-bud (lower-right) -->
+          <path d="M158 122 q -2 -8 3 -10 q 5 -2 7 5 q 1 6 -3 8 q -5 2 -7 -3 Z" stroke-width="1.5"/>
+          <path d="M158 122 q 4 -1 7 -5" stroke-width="1.2"/>
+
+          <!-- Bud (lower-left) -->
+          <path d="M44 116 q 2 -8 -3 -10 q -5 -2 -7 5 q -1 6 3 8 q 5 2 7 -3 Z" stroke-width="1.5"/>
+
+          <!-- Tiny berries / dots -->
+          <circle cx="80" cy="58" r="1.6" fill="currentColor"/>
+          <circle cx="85" cy="64" r="1.2" fill="currentColor"/>
+          <circle cx="124" cy="46" r="1.6" fill="currentColor"/>
+          <circle cx="130" cy="52" r="1.2" fill="currentColor"/>
+          <circle cx="32" cy="92" r="1.3" fill="currentColor"/>
+          <circle cx="192" cy="76" r="1.3" fill="currentColor"/>
+
+          <!-- Single leaves filling gaps -->
+          <ellipse cx="92" cy="46" rx="3" ry="6" transform="rotate(-25 92 46)" stroke-width="1.3"/>
+          <ellipse cx="116" cy="116" rx="3.5" ry="5.5" transform="rotate(60 116 116)" stroke-width="1.3"/>
+          <ellipse cx="74" cy="110" rx="3" ry="5" transform="rotate(-50 74 110)" stroke-width="1.3"/>
+
+          <!-- ── PAPER WRAPPING (cone) ── -->
+
+          <!-- Outer cone — clean diagonals -->
+          <path d="M40 122 L 110 224" stroke-width="1.8"/>
+          <path d="M180 122 L 110 224" stroke-width="1.8"/>
+          <!-- Top opening curve -->
+          <path d="M40 122 Q 70 134 110 132 Q 150 130 180 122" stroke-width="1.6"/>
+          <!-- Inner top fold (small flap) -->
+          <path d="M52 124 Q 80 138 110 136" stroke-width="1.2" opacity="0.75"/>
+          <path d="M168 124 Q 140 137 110 136" stroke-width="1.2" opacity="0.75"/>
+          <!-- Crease lines from base point upward -->
+          <path d="M110 224 Q 90 180 70 138" stroke-width="1" opacity="0.6"/>
+          <path d="M110 224 Q 130 180 150 138" stroke-width="1" opacity="0.6"/>
+          <path d="M110 224 L 110 132" stroke-width="0.9" opacity="0.45"/>
+
+          <!-- ── BOW at the narrow point ── -->
+          <g transform="translate(110 204)">
+            <!-- Left loop -->
+            <path d="M -1 0 q -16 -10 -20 0 q -4 8 6 10 q 10 1 15 -8 Z" stroke-width="1.7"/>
+            <!-- Right loop -->
+            <path d="M 1 0 q 16 -10 20 0 q 4 8 -6 10 q -10 1 -15 -8 Z" stroke-width="1.7"/>
+            <!-- Knot -->
+            <path d="M -3 -3 q 0 -3 3 -3 q 3 0 3 3 q 0 5 -3 5 q -3 0 -3 -5 Z" stroke-width="1.6"/>
+            <!-- Ribbon trails -->
+            <path d="M -3 4 q -2 10 1 22 q 0 5 -3 7" stroke-width="1.5"/>
+            <path d="M 3 4 q 2 10 -1 22 q 0 5 3 7" stroke-width="1.5"/>
+            <!-- Ribbon ends (V-shape cuts) -->
+            <path d="M -8 33 q 1 -3 3 -4" stroke-width="1.2"/>
+            <path d="M 8 33 q -1 -3 -3 -4" stroke-width="1.2"/>
+          </g>
+        </svg>
+      </div>
+      <!-- /illustration-hidden -->
 
       <p class="intro">
         Welcome — pick something you'd love to gift, then claim it so we don't double up.
         Vouchers split into smaller amounts, so any contribution is perfect.
       </p>
 
-      <div class="hero-actions">
-        <a href="#wishlist" class="pill pill-dark">The Wishlist</a>
-        <a href="#vouchers" class="pill">Vouchers</a>
+      <div class="paths" role="group" aria-label="Two ways to gift">
+        <a href="#wishlist" class="path-card">
+          <div class="path-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 26 Q 14 24 16 24 L 32 24 Q 34 24 34 26 L 32 38 Q 31 41 28 41 L 20 41 Q 17 41 16 38 Z"/>
+              <path d="M14 28 Q 24 30 34 28"/>
+              <path d="M12 30 Q 7 28 5 24 Q 8 32 13 33"/>
+              <path d="M34 28 Q 41 29 41 33 Q 41 37 34 37"/>
+              <ellipse cx="24" cy="43" rx="14" ry="2"/>
+              <path d="M21 18 Q 19 21 21 24"/>
+              <path d="M24 16 Q 22 20 24 24"/>
+              <path d="M27 18 Q 25 21 27 24"/>
+            </svg>
+          </div>
+          <div class="path-text">
+            <div class="path-eyebrow">Option One</div>
+            <div class="path-title">Bring a gift</div>
+            <div class="path-sub"><span id="path-items-count">—</span> on the wishlist</div>
+          </div>
+          <svg class="path-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+        </a>
+        <a href="#vouchers" class="path-card path-card-alt">
+          <div class="path-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="6" y="14" width="36" height="22" rx="3"/>
+              <path d="M24 14 Q 20 8 16 11 Q 14 14 18 16 L 24 14"/>
+              <path d="M24 14 Q 28 8 32 11 Q 34 14 30 16 L 24 14"/>
+              <path d="M24 16 V 36"/>
+              <path d="M11 22 H 19"/>
+              <path d="M29 22 H 37"/>
+              <path d="M11 28 H 19"/>
+              <path d="M29 28 H 37"/>
+            </svg>
+          </div>
+          <div class="path-text">
+            <div class="path-eyebrow">Option Two</div>
+            <div class="path-title">Send a voucher</div>
+            <div class="path-sub">any amount · duplicates welcome</div>
+          </div>
+          <svg class="path-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+        </a>
       </div>
     </header>
 
-    <!-- WISHLIST -->
-    <section class="section" id="wishlist">
-      <div class="section-title-wrap">
+    <!-- ── WISHLIST ─────────────────────────────────────── -->
+    <section class="section" id="wishlist" aria-labelledby="wishlist-title">
+      <div class="section-head">
         <div class="section-eyebrow">01 — Gifts</div>
-        <h2 class="section-script">The Wishlist</h2>
+        <h2 class="section-script" id="wishlist-title">The Wishlist</h2>
         <div class="section-progress">
           <span id="items-count-text">—</span>
           <div class="progress-track"><div class="progress-fill" id="items-progress" style="width: 0%;"></div></div>
         </div>
       </div>
-      <div class="grid" id="items-grid">
-        <div class="state-msg" id="items-loading">loading the wishlist…</div>
-      </div>
-    </section>
 
-    <!-- VOUCHERS -->
-    <section class="section" id="vouchers">
-      <div class="section-title-wrap">
-        <div class="section-eyebrow">02 — Gift Cards</div>
-        <h2 class="section-script">Vouchers</h2>
-        <div class="section-progress">
-          <span id="vouchers-count-text">—</span>
-          <div class="progress-track"><div class="progress-fill" id="vouchers-progress" style="width: 0%;"></div></div>
+      <div class="controls" data-controls="items" role="group" aria-label="Filter wishlist">
+        <div class="chips" role="tablist">
+          <button type="button" class="chip is-active" data-filter="all"      role="tab" aria-selected="true">All <span class="chip-count" data-count="all">0</span></button>
+          <button type="button" class="chip"            data-filter="available" role="tab" aria-selected="false">Available <span class="chip-count" data-count="available">0</span></button>
+          <button type="button" class="chip"            data-filter="taken"     role="tab" aria-selected="false">Taken <span class="chip-count" data-count="taken">0</span></button>
         </div>
       </div>
+
+      <div class="grid" id="items-grid">
+        <!-- skeleton loaders -->
+        <div class="skeleton-card"><div class="skeleton-line s-sm"></div><div class="skeleton-line s-lg"></div><div class="skeleton-line s-md"></div><div class="skeleton-line s-md"></div><div class="skeleton-line s-pill"></div></div>
+        <div class="skeleton-card"><div class="skeleton-line s-sm"></div><div class="skeleton-line s-lg"></div><div class="skeleton-line s-md"></div><div class="skeleton-line s-md"></div><div class="skeleton-line s-pill"></div></div>
+        <div class="skeleton-card"><div class="skeleton-line s-sm"></div><div class="skeleton-line s-lg"></div><div class="skeleton-line s-md"></div><div class="skeleton-line s-md"></div><div class="skeleton-line s-pill"></div></div>
+      </div>
+
+    </section>
+
+    <!-- ── VOUCHERS ─────────────────────────────────────── -->
+    <section class="section" id="vouchers" aria-labelledby="vouchers-title">
+      <div class="section-head">
+        <div class="section-eyebrow">02 — Gift Cards</div>
+        <h2 class="section-script" id="vouchers-title">Vouchers</h2>
+        <p class="section-sub">no need to claim — duplicates are very welcome!</p>
+      </div>
+
       <div class="grid" id="vouchers-grid">
-        <div class="state-msg" id="vouchers-loading">loading the vouchers…</div>
+        <div class="skeleton-card"><div class="skeleton-line s-sm"></div><div class="skeleton-line s-lg"></div><div class="skeleton-line s-md"></div><div class="skeleton-line s-md"></div><div class="skeleton-line s-pill"></div></div>
+        <div class="skeleton-card"><div class="skeleton-line s-sm"></div><div class="skeleton-line s-lg"></div><div class="skeleton-line s-md"></div><div class="skeleton-line s-md"></div><div class="skeleton-line s-pill"></div></div>
+        <div class="skeleton-card"><div class="skeleton-line s-sm"></div><div class="skeleton-line s-lg"></div><div class="skeleton-line s-md"></div><div class="skeleton-line s-md"></div><div class="skeleton-line s-pill"></div></div>
       </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- ── FOOTER ───────────────────────────────────────── -->
     <footer>
-      <div class="footer-illus">
-        <svg width="60" height="40" viewBox="0 0 60 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M30 32 q -10 -16 -22 -8 q -6 4 -2 12 q 4 8 24 4 q 20 4 24 -4 q 4 -8 -2 -12 q -12 -8 -22 8 Z" />
-          <path d="M22 10 l 1.5 3 l 3 0.5 l -2 2 l 0.5 3 l -3 -1.5 l -3 1.5 l 0.5 -3 l -2 -2 l 3 -0.5 z" stroke-width="1.5" />
-          <path d="M42 16 l 1 2 l 2 0.3 l -1.5 1.5 l 0.5 2 l -2 -1 l -2 1 l 0.5 -2 l -1.5 -1.5 l 2 -0.3 z" stroke-width="1.3" />
+      <div class="footer-illus" aria-hidden="true">
+        <svg width="64" height="56" viewBox="0 0 64 56" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Heart -->
+          <path d="M32 48 C 18 38 8 30 8 22 C 8 16 12 12 17 12 C 22 12 26 15 32 22 C 38 15 42 12 47 12 C 52 12 56 16 56 22 C 56 30 46 38 32 48 Z"/>
+          <!-- Sparkle stars above -->
+          <path d="M18 6 l 1.2 2.4 l 2.4 0.4 l -1.8 1.6 l 0.4 2.4 l -2.2 -1.2 l -2.2 1.2 l 0.4 -2.4 l -1.8 -1.6 l 2.4 -0.4 z" stroke-width="1.4"/>
+          <path d="M48 4 l 1 2 l 2 0.3 l -1.5 1.4 l 0.3 2 l -1.8 -1 l -1.8 1 l 0.3 -2 l -1.5 -1.4 l 2 -0.3 z" stroke-width="1.2"/>
         </svg>
       </div>
       <div class="footer-script">with love &amp; thanks</div>
-      <div class="footer-sub">Jess &amp; Sam · 15 · 08 · 26</div>
+      <div class="footer-sub">15 · 08 · 26</div>
     </footer>
 
   </div>
+</main>
 
-  <!-- CLAIM MODAL -->
-  <div class="modal-backdrop" id="modal-backdrop">
-    <div class="modal">
-      <div class="modal-eyebrow">Claim This Gift</div>
-      <h3>I'll bring this!</h3>
-      <p class="modal-item" id="modal-item-name"></p>
-      <label for="modal-name">Your Name</label>
-      <input type="text" id="modal-name" placeholder="so jess knows it's from you" autocomplete="name" />
-      <div class="modal-actions">
-        <button type="button" class="btn" id="modal-cancel">Cancel</button>
-        <button type="button" class="btn btn-primary" id="modal-confirm">Confirm</button>
-      </div>
-      <div class="feedback" id="modal-feedback"></div>
+<!-- ── CLAIM MODAL ──────────────────────────────────────── -->
+<div class="sheet-backdrop" id="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="sheet-title" aria-hidden="true">
+  <div class="sheet" role="document">
+    <div class="sheet-handle" aria-hidden="true"></div>
+    <div class="sheet-eyebrow">Claim This Gift</div>
+    <h3 id="sheet-title">I'll bring this!</h3>
+    <p class="sheet-item" id="modal-item-name"></p>
+    <label for="modal-name">Your Name</label>
+    <input type="text" id="modal-name" placeholder="so jess knows it's from you" autocomplete="name" />
+    <div class="sheet-helper" id="sheet-helper">we'll remember your name for next time</div>
+    <div class="sheet-actions">
+      <button type="button" class="btn" id="modal-cancel">Cancel</button>
+      <button type="button" class="btn btn-primary" id="modal-confirm">Confirm</button>
     </div>
   </div>
+</div>
+
+<!-- ── VIEW WARNING SHEET ───────────────────────────────── -->
+<div class="sheet-backdrop" id="view-backdrop" role="dialog" aria-modal="true" aria-labelledby="view-sheet-title" aria-hidden="true">
+  <div class="sheet" role="document">
+    <div class="sheet-handle" aria-hidden="true"></div>
+    <div class="sheet-eyebrow">Heads Up</div>
+    <h3 id="view-sheet-title">Just having a peek?</h3>
+    <p class="sheet-item" id="view-item-name"></p>
+    <div class="view-note">
+      This will just open the shop. If you do buy it, please come back and <strong>claim it</strong> here — otherwise Jess won't know it's from you, and another guest might pick up the same one.
+    </div>
+    <p class="view-tip">Easier way? Claim it now and we'll open the shop in the same tap.</p>
+    <div class="sheet-actions">
+      <button type="button" class="btn" id="view-cancel">Just looking</button>
+      <button type="button" class="btn btn-primary" id="view-confirm">
+        <span>I'll bring this</span>
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ── STICKY "SEND A VOUCHER" PILL ─────────────────────── -->
+<a href="#vouchers" class="voucher-fab" id="voucher-fab" aria-label="Jump to vouchers">
+  <span>Send a voucher</span>
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+</a>
+
+<!-- ── TOASTS ───────────────────────────────────────────── -->
+<div class="toast-stack" id="toast-stack" aria-live="polite" aria-atomic="true"></div>
 
 <script>
+  // ── CONFIG ─────────────────────────────────────────────
   const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwcSsgdUQVLSCR_sMxWuYBVe-ra-HmlrmlZMB9MV1njGoJe9b2xMHNsFr98Izku6rmp/exec';
+  const EVENT_DATE = new Date('2026-08-15T00:00:00');
+  const NAME_STORAGE_KEY = 'jess-kitchen-tea:guest-name';
 
-  // Hand-drawn doodles cycled across cards by index.
+  // ── DOODLES ────────────────────────────────────────────
   const DOODLES = [
-    // heart
     `<svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 30 q -10 -8 -13 -15 q -3 -7 4 -9 q 5 -1 9 4 q 4 -5 9 -4 q 7 2 4 9 q -3 7 -13 15 Z"/></svg>`,
-    // daisy
     `<svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(18 18)"><ellipse cx="0" cy="-9" rx="3.5" ry="6"/><ellipse cx="0" cy="-9" rx="3.5" ry="6" transform="rotate(72)"/><ellipse cx="0" cy="-9" rx="3.5" ry="6" transform="rotate(144)"/><ellipse cx="0" cy="-9" rx="3.5" ry="6" transform="rotate(216)"/><ellipse cx="0" cy="-9" rx="3.5" ry="6" transform="rotate(288)"/></g><circle cx="18" cy="18" r="2.5" fill="currentColor"/></svg>`,
-    // mini teacup
     `<svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5 Q 11 10 14 14"/><path d="M19 4 Q 16 10 19 14"/><path d="M7 17 L 26 17 L 24 28 Q 23 30 21 30 L 12 30 Q 10 30 9 28 Z"/><path d="M26 19 Q 30 20 30 24 Q 30 27 26 27"/><path d="M5 32 L 28 32"/></svg>`,
-    // sparkle 4-point
     `<svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 4 Q 18 16 30 18 Q 18 20 18 32 Q 18 20 6 18 Q 18 16 18 4 Z"/></svg>`,
-    // leaf sprig
     `<svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 32 Q 18 22 18 6"/><path d="M18 24 Q 11 23 7 18 Q 13 20 18 25"/><path d="M18 18 Q 25 17 29 12 Q 23 14 18 19"/><path d="M18 12 Q 14 9 12 4 Q 17 8 18 13"/></svg>`,
-    // bow
     `<svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13 L 15 18 L 5 23 Z"/><path d="M31 13 L 21 18 L 31 23 Z"/><circle cx="18" cy="18" r="3"/><path d="M14 24 L 12 32"/><path d="M22 24 L 24 32"/></svg>`,
   ];
 
-  let registry = { items: [], vouchers: [] };
+  // ── STATE ──────────────────────────────────────────────
+  const state = {
+    items:     { all: [], filter: 'all' },
+    vouchers:  { all: [], filter: 'all' },
+  };
   let pendingItem = null;
-  let doodleCursor = 0;
 
+  // ── UTILITIES ──────────────────────────────────────────
+  const $  = (s, el = document) => el.querySelector(s);
+  const $$ = (s, el = document) => Array.from(el.querySelectorAll(s));
+
+  const escapeHtml = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+  }[c]));
+  const escapeAttr = escapeHtml;
+
+  // ── COUNTDOWN ──────────────────────────────────────────
+  function updateCountdown() {
+    const now = new Date();
+    const diff = EVENT_DATE - now;
+    const el = $('#countdown');
+    if (!el) return;
+    if (diff <= 0) {
+      el.textContent = 'Today!';
+      return;
+    }
+    const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+    el.textContent = days === 1 ? '1 day to go' : `${days} days to go`;
+  }
+
+  // ── DATA LOAD ──────────────────────────────────────────
   async function loadRegistry() {
-    if (APPS_SCRIPT_URL.startsWith('PASTE_')) {
-      document.getElementById('items-loading').textContent = '⚠ Apps Script URL not yet configured.';
-      document.getElementById('vouchers-loading').textContent = '';
+    if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.startsWith('PASTE_')) {
+      renderError('items',    'apps script not yet configured');
+      renderError('vouchers', '');
       return;
     }
     try {
       const res = await fetch(APPS_SCRIPT_URL);
       const data = await res.json();
-      registry.items = (data.items || []).filter(i => i.section === 'items');
-      registry.vouchers = (data.items || []).filter(i => i.section === 'vouchers');
+      state.items.all    = (data.items || []).filter(i => i.section === 'items');
+      state.vouchers.all = (data.items || []).filter(i => i.section === 'vouchers');
       renderAll();
     } catch (err) {
-      document.getElementById('items-loading').textContent = "couldn't load the registry. please refresh.";
-      document.getElementById('vouchers-loading').textContent = '';
+      renderError('items',    "couldn't load the registry");
+      renderError('vouchers', "couldn't load the registry");
     }
   }
 
+  function renderError(key, msg) {
+    const grid = $(`#${key}-grid`);
+    grid.innerHTML = `
+      <div class="state-msg">
+        <p class="state-msg-script">${msg || 'something went wrong'}</p>
+        <p class="state-msg-sub">please try refreshing</p>
+        <div class="state-msg-actions">
+          <button type="button" class="state-link" onclick="location.reload()">Reload</button>
+        </div>
+      </div>`;
+    $(`#${key}-count-text`).textContent = '';
+  }
+
+  // ── FILTER / SEARCH ────────────────────────────────────
+  function priceValue(p) {
+    if (p == null) return Infinity;
+    const n = parseFloat(String(p).replace(/[^0-9.]/g, ''));
+    return Number.isFinite(n) ? n : Infinity;
+  }
+
+  function visibleList(key) {
+    const s = state[key];
+    let list = s.all;
+    if (s.filter === 'available') list = list.filter(i => !i.taken);
+    else if (s.filter === 'taken') list = list.filter(i =>  i.taken);
+    // Wishlist: cheapest → most expensive (items without a price go last)
+    if (key === 'items') {
+      list = [...list].sort((a, b) => priceValue(a.price) - priceValue(b.price));
+    }
+    return list;
+  }
+
+  // ── RENDER ─────────────────────────────────────────────
   function renderAll() {
-    doodleCursor = 0;
-    renderGrid('items-grid', registry.items);
-    renderGrid('vouchers-grid', registry.vouchers);
-    updateMeta('items', registry.items);
-    updateMeta('vouchers', registry.vouchers);
+    renderSection('items');
+    renderSection('vouchers');
+    updateNavCounts();
   }
 
-  function updateMeta(key, list) {
-    const total = list.length;
-    const taken = list.filter(i => i.taken).length;
-    const available = total - taken;
-    document.getElementById(`${key}-count-text`).textContent =
-      `${available} of ${total} available`;
-    const pct = total ? Math.round((taken / total) * 100) : 0;
-    document.getElementById(`${key}-progress`).style.width = pct + '%';
-  }
+  function renderSection(key) {
+    const s = state[key];
+    const list = visibleList(key);
+    const grid = $(`#${key}-grid`);
+    const isVouchers = key === 'vouchers';
 
-  function renderGrid(targetId, items) {
-    const grid = document.getElementById(targetId);
-    if (!items.length) {
-      grid.innerHTML = '<div class="state-msg">nothing here yet</div>';
+    // Filter chip counts (items section only)
+    if (!isVouchers) {
+      const totalAll  = s.all.length;
+      const available = s.all.filter(i => !i.taken).length;
+      const taken     = totalAll - available;
+      const controls = document.querySelector(`[data-controls="${key}"]`);
+      if (controls) {
+        controls.querySelector('[data-count="all"]').textContent       = totalAll;
+        controls.querySelector('[data-count="available"]').textContent = available;
+        controls.querySelector('[data-count="taken"]').textContent     = taken;
+      }
+      const countText = $(`#${key}-count-text`);
+      const progress  = $(`#${key}-progress`);
+      if (countText) countText.textContent = totalAll ? `${available} of ${totalAll} available` : '';
+      if (progress)  progress.style.width  = (totalAll ? Math.round((taken / totalAll) * 100) : 0) + '%';
+    }
+
+    if (!list.length) {
+      grid.innerHTML = emptyState(key, s);
       return;
     }
-    grid.innerHTML = items.map(item => cardHtml(item)).join('');
+    grid.innerHTML = list.map((item, idx) => cardHtml(item, idx, isVouchers)).join('');
   }
 
-  function cardHtml(item) {
-    const linkBtn = item.url
-      ? `<a href="${escapeAttr(item.url)}" target="_blank" rel="noopener" class="btn">View</a>`
+  function emptyState(key, s) {
+    if (!s.all.length) {
+      return `<div class="state-msg"><p class="state-msg-script">nothing here yet</p></div>`;
+    }
+    if (s.filter === 'available') {
+      return `<div class="state-msg">
+        <p class="state-msg-script">everything's been claimed!</p>
+        <p class="state-msg-sub">thank you to everyone — see "All" for the full list</p>
+      </div>`;
+    }
+    if (s.filter === 'taken') {
+      return `<div class="state-msg">
+        <p class="state-msg-script">nothing claimed yet</p>
+        <p class="state-msg-sub">be the first — see "Available"</p>
+      </div>`;
+    }
+    return `<div class="state-msg"><p class="state-msg-script">nothing here yet</p></div>`;
+  }
+
+  function cardHtml(item, idx, isVoucher = false) {
+    const doodle = DOODLES[idx % DOODLES.length];
+
+    // Vouchers: no claim, no taken state, just a shop link
+    if (isVoucher) {
+      const action = item.url
+        ? `<div class="card-actions">
+             <a href="${escapeAttr(item.url)}" target="_blank" rel="noopener" class="btn btn-primary" aria-label="Shop ${escapeAttr(item.name)} (opens in new tab)">
+               <span>Shop</span>
+               <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+             </a>
+           </div>`
+        : '';
+      return `
+        <article class="card">
+          <div class="card-doodle" aria-hidden="true">${doodle}</div>
+          <div class="card-meta-top">
+            ${item.number ? `<span class="card-num">No. ${escapeHtml(String(item.number))}</span>` : ''}
+          </div>
+          <h3 class="card-name">${escapeHtml(item.name)}</h3>
+          ${item.store ? `<div class="card-store">${escapeHtml(item.store)}</div>` : ''}
+          ${item.price ? `<div class="card-price">${escapeHtml(item.price)}</div>` : ''}
+          ${item.notes ? `<p class="card-notes">${escapeHtml(item.notes)}</p>` : '<p class="card-notes"></p>'}
+          ${action}
+        </article>
+      `;
+    }
+
+    // Items: claim flow
+    const actions = item.taken
+      ? (item.url
+          ? `<div class="card-actions"><a href="${escapeAttr(item.url)}" target="_blank" rel="noopener" class="btn">View</a></div>`
+          : '')
+      : (item.url
+          ? `<div class="card-actions">
+               <button type="button" class="btn" data-view="${item.rowIndex}" aria-label="View ${escapeAttr(item.name)}">View</button>
+               <button type="button" class="btn btn-primary" data-claim="${item.rowIndex}" aria-label="Claim ${escapeAttr(item.name)}">Claim</button>
+             </div>`
+          : `<div class="card-actions">
+               <button type="button" class="btn btn-primary" data-claim="${item.rowIndex}" aria-label="Claim ${escapeAttr(item.name)}">Claim</button>
+             </div>`);
+    const takenLabel = item.taken
+      ? `<div class="taken-label">taken by <span class="taken-by">${escapeHtml(item.takenBy || 'a friend')}</span></div>`
       : '';
-    const claimRow = item.taken
-      ? `<div class="taken-label">taken by ${escapeHtml(item.takenBy)}</div>`
-      : `<div class="card-actions">
-           ${linkBtn}
-           <button type="button" class="btn btn-primary" onclick="openClaim(${item.rowIndex})">Claim</button>
-         </div>`;
-    const linkOnlyForTaken = item.taken && item.url
-      ? `<div class="card-actions"><a href="${escapeAttr(item.url)}" target="_blank" rel="noopener" class="btn">View</a></div>`
+    const statusBadge = item.taken
+      ? `<span class="card-status">Claimed</span>`
       : '';
-    const doodle = DOODLES[doodleCursor++ % DOODLES.length];
     return `
       <article class="card ${item.taken ? 'taken' : ''}">
-        <div class="card-doodle">${doodle}</div>
+        <div class="card-doodle" aria-hidden="true">${doodle}</div>
         <div class="card-meta-top">
-          ${item.number ? `<span class="card-num">No. ${escapeHtml(String(item.number))}</span>` : '<span></span>'}
+          ${item.number ? `<span class="card-num">No. ${escapeHtml(String(item.number))}</span>` : ''}
+          ${statusBadge}
         </div>
         <h3 class="card-name">${escapeHtml(item.name)}</h3>
         ${item.store ? `<div class="card-store">${escapeHtml(item.store)}</div>` : ''}
         ${item.price ? `<div class="card-price">${escapeHtml(item.price)}</div>` : ''}
         ${item.notes ? `<p class="card-notes">${escapeHtml(item.notes)}</p>` : '<p class="card-notes"></p>'}
-        ${item.taken ? linkOnlyForTaken : ''}
-        ${claimRow}
+        ${actions}
+        ${takenLabel}
       </article>
     `;
   }
 
-  function escapeHtml(s) {
-    return String(s).replace(/[&<>"']/g, c => ({
-      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-    }[c]));
+  function updateNavCounts() {
+    const itemsTotal = state.items.all.length;
+    const itemsAvail = state.items.all.filter(i => !i.taken).length;
+    $('#nav-count-items').textContent    = itemsTotal ? itemsAvail : '';
+    $('#nav-count-vouchers').textContent = state.vouchers.all.length ? state.vouchers.all.length : '';
+
+    // Hero path-card subtitle: "X available"
+    const pathItems = $('#path-items-count');
+    if (pathItems) {
+      pathItems.textContent = itemsTotal
+        ? `${itemsAvail} of ${itemsTotal} available`
+        : 'loading…';
+    }
   }
-  function escapeAttr(s) { return escapeHtml(s); }
 
-  // ── Modal ─────────────────────────────────────
-  const backdrop = document.getElementById('modal-backdrop');
-  const modalItemName = document.getElementById('modal-item-name');
-  const modalNameInput = document.getElementById('modal-name');
-  const modalFeedback = document.getElementById('modal-feedback');
-  const modalConfirm = document.getElementById('modal-confirm');
-  const modalCancel = document.getElementById('modal-cancel');
+  // ── EVENT WIRING: FILTER CHIPS ─────────────────────────
+  $$('[data-controls]').forEach(group => {
+    const key = group.dataset.controls;
+    group.querySelectorAll('.chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        group.querySelectorAll('.chip').forEach(c => {
+          c.classList.remove('is-active');
+          c.setAttribute('aria-selected', 'false');
+        });
+        chip.classList.add('is-active');
+        chip.setAttribute('aria-selected', 'true');
+        state[key].filter = chip.dataset.filter;
+        renderSection(key);
+      });
+    });
+  });
 
-  function openClaim(rowIndex) {
-    const all = [...registry.items, ...registry.vouchers];
+  // ── CLAIM + VIEW (event delegation) ────────────────────
+  document.addEventListener('click', (e) => {
+    const claimBtn = e.target.closest('[data-claim]');
+    if (claimBtn) {
+      openClaim(Number(claimBtn.dataset.claim), false);
+      return;
+    }
+    const viewBtn = e.target.closest('[data-view]');
+    if (viewBtn) {
+      openViewWarning(Number(viewBtn.dataset.view));
+    }
+  });
+
+  // ── MODAL ──────────────────────────────────────────────
+  const backdrop      = $('#modal-backdrop');
+  const sheet         = backdrop.querySelector('.sheet');
+  const sheetEyebrow  = sheet.querySelector('.sheet-eyebrow');
+  const sheetHeading  = $('#sheet-title');
+  const sheetItemName = $('#modal-item-name');
+  const nameInput     = $('#modal-name');
+  const helper        = $('#sheet-helper');
+  const confirmBtn    = $('#modal-confirm');
+  const cancelBtn     = $('#modal-cancel');
+  let lastFocused = null;
+
+  function openClaim(rowIndex, openedWithShop = false) {
+    const all = [...state.items.all, ...state.vouchers.all];
     pendingItem = all.find(i => i.rowIndex === rowIndex);
     if (!pendingItem) return;
-    modalItemName.textContent = pendingItem.name;
-    modalNameInput.value = '';
-    modalFeedback.style.display = 'none';
-    modalConfirm.disabled = false;
-    modalConfirm.textContent = 'Confirm';
+    sheetItemName.textContent = pendingItem.name;
+
+    // Pre-fill remembered name
+    try {
+      const remembered = localStorage.getItem(NAME_STORAGE_KEY) || '';
+      nameInput.value = remembered;
+    } catch (e) { /* localStorage may be blocked */ }
+
+    sheetEyebrow.textContent = openedWithShop ? "Mark It Yours" : "Claim This Gift";
+    sheetHeading.textContent = openedWithShop ? "Off to the shop!" : "I'll bring this!";
+    helper.textContent = openedWithShop
+      ? "we opened the shop in a new tab — pop your name in so we don't double up"
+      : "we'll remember your name for next time";
+    helper.classList.remove('is-error');
+    confirmBtn.disabled = false;
+    confirmBtn.textContent = openedWithShop ? "Yes, it's mine" : 'Confirm';
+
+    lastFocused = document.activeElement;
     backdrop.classList.add('open');
-    setTimeout(() => modalNameInput.focus(), 50);
+    backdrop.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => { nameInput.focus(); nameInput.select(); }, 80);
   }
-  window.openClaim = openClaim;
 
-  modalCancel.addEventListener('click', () => backdrop.classList.remove('open'));
+  function closeClaim() {
+    backdrop.classList.remove('open');
+    backdrop.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (lastFocused && typeof lastFocused.focus === 'function') {
+      setTimeout(() => lastFocused.focus(), 60);
+    }
+    pendingItem = null;
+  }
+
+  cancelBtn.addEventListener('click', closeClaim);
   backdrop.addEventListener('click', (e) => {
-    if (e.target === backdrop) backdrop.classList.remove('open');
+    if (e.target === backdrop) closeClaim();
   });
-  modalNameInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') modalConfirm.click();
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && backdrop.classList.contains('open')) closeClaim();
+  });
+  nameInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') { e.preventDefault(); confirmBtn.click(); }
   });
 
-  modalConfirm.addEventListener('click', async () => {
-    const name = modalNameInput.value.trim();
-    if (!name) { modalNameInput.focus(); return; }
+  // Simple focus trap
+  backdrop.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab' || !backdrop.classList.contains('open')) return;
+    const focusable = sheet.querySelectorAll('input, button, [href]');
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last  = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+
+  confirmBtn.addEventListener('click', async () => {
+    const name = nameInput.value.trim();
+    if (!name) {
+      helper.textContent = 'pop your name in so jess knows it\'s from you';
+      helper.classList.add('is-error');
+      nameInput.focus();
+      return;
+    }
     if (!pendingItem) return;
 
-    modalConfirm.disabled = true;
-    modalConfirm.textContent = 'Sending…';
-    modalFeedback.style.display = 'none';
+    confirmBtn.disabled = true;
+    confirmBtn.textContent = 'Sending…';
+    helper.textContent = '';
+    helper.classList.remove('is-error');
 
+    // Remember name
+    try { localStorage.setItem(NAME_STORAGE_KEY, name); } catch (e) { /* ignore */ }
+
+    const claimed = pendingItem;
     try {
       await fetch(APPS_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify({ rowIndex: pendingItem.rowIndex, name: name }),
+        body: JSON.stringify({ rowIndex: claimed.rowIndex, name }),
       });
-      modalFeedback.textContent = 'thank you — you got it!';
-      modalFeedback.style.display = 'block';
-      pendingItem.taken = true;
-      pendingItem.takenBy = name;
+      // Optimistic update
+      claimed.taken = true;
+      claimed.takenBy = name;
       renderAll();
-      setTimeout(() => {
-        backdrop.classList.remove('open');
-        loadRegistry();
-      }, 1200);
+      closeClaim();
+      showToast(`thank you — "${claimed.name}" is yours!`);
+      // Re-sync from source after a moment
+      setTimeout(loadRegistry, 1500);
     } catch (err) {
-      modalFeedback.textContent = 'something went wrong — try again';
-      modalFeedback.style.display = 'block';
-      modalConfirm.disabled = false;
-      modalConfirm.textContent = 'Confirm';
+      helper.textContent = 'something went wrong — try again';
+      helper.classList.add('is-error');
+      confirmBtn.disabled = false;
+      confirmBtn.textContent = 'Confirm';
     }
   });
 
+  // ── VIEW WARNING SHEET ────────────────────────────────
+  const viewBackdrop = $('#view-backdrop');
+  const viewSheet    = viewBackdrop.querySelector('.sheet');
+  const viewItemName = $('#view-item-name');
+  const viewCancel   = $('#view-cancel');
+  const viewConfirm  = $('#view-confirm');
+  let viewPendingItem = null;
+  let viewLastFocused = null;
+
+  function openViewWarning(rowIndex) {
+    const all = [...state.items.all, ...state.vouchers.all];
+    viewPendingItem = all.find(i => i.rowIndex === rowIndex);
+    if (!viewPendingItem) return;
+    viewItemName.textContent = viewPendingItem.name;
+    viewLastFocused = document.activeElement;
+    viewBackdrop.classList.add('open');
+    viewBackdrop.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => viewCancel.focus(), 80);
+  }
+  function closeViewWarning() {
+    viewBackdrop.classList.remove('open');
+    viewBackdrop.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (viewLastFocused && typeof viewLastFocused.focus === 'function') {
+      setTimeout(() => viewLastFocused.focus(), 60);
+    }
+    viewPendingItem = null;
+  }
+
+  viewCancel.addEventListener('click', () => {
+    // "Just looking" — open the shop, no claim
+    if (viewPendingItem?.url) {
+      window.open(viewPendingItem.url, '_blank', 'noopener,noreferrer');
+    }
+    closeViewWarning();
+  });
+  viewConfirm.addEventListener('click', () => {
+    // "I'll bring this" — open shop AND surface claim sheet
+    const target = viewPendingItem;
+    if (target?.url) window.open(target.url, '_blank', 'noopener,noreferrer');
+    closeViewWarning();
+    if (target) setTimeout(() => openClaim(target.rowIndex, true), 80);
+  });
+  viewBackdrop.addEventListener('click', (e) => {
+    if (e.target === viewBackdrop) closeViewWarning();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && viewBackdrop.classList.contains('open')) closeViewWarning();
+  });
+  viewBackdrop.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab' || !viewBackdrop.classList.contains('open')) return;
+    const focusable = viewSheet.querySelectorAll('input, button, [href]');
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last  = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+
+  // ── TOASTS ─────────────────────────────────────────────
+  function showToast(message, type = 'success') {
+    const stack = $('#toast-stack');
+    const t = document.createElement('div');
+    t.className = `toast ${type === 'error' ? 'error' : ''}`;
+    t.innerHTML = `
+      <svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        ${type === 'error' ? '<circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/>' : '<path d="M20 6 9 17l-5-5"/>'}
+      </svg>
+      <span>${escapeHtml(message)}</span>`;
+    stack.appendChild(t);
+    requestAnimationFrame(() => t.classList.add('show'));
+    setTimeout(() => {
+      t.classList.remove('show');
+      setTimeout(() => t.remove(), 300);
+    }, 3200);
+  }
+
+  // ── STICKY NAV: SCROLL STATE + ACTIVE SECTION ──────────
+  const topnav = $('#topnav');
+  window.addEventListener('scroll', () => {
+    topnav.classList.toggle('is-scrolled', window.scrollY > 8);
+  }, { passive: true });
+
+  if ('IntersectionObserver' in window) {
+    const navLinks = $$('.topnav-link');
+    const sections = $$('section.section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          navLinks.forEach(l => l.classList.toggle('is-active', l.dataset.nav === id));
+        }
+      });
+    }, { rootMargin: '-40% 0px -50% 0px' });
+    sections.forEach(s => observer.observe(s));
+  }
+
+  // ── STICKY VOUCHER FAB: show during wishlist, hide on hero & vouchers ──
+  const voucherFab = $('#voucher-fab');
+  const wishlistSection = $('#wishlist');
+  const vouchersSection = $('#vouchers');
+  if (voucherFab && wishlistSection && vouchersSection && 'IntersectionObserver' in window) {
+    let wishlistVisible = false;
+    let vouchersVisible = false;
+    const updateFab = () => {
+      voucherFab.classList.toggle('show', wishlistVisible && !vouchersVisible);
+    };
+    new IntersectionObserver((entries) => {
+      wishlistVisible = entries[0].isIntersecting;
+      updateFab();
+    }, { rootMargin: '-15% 0px -15% 0px' }).observe(wishlistSection);
+    new IntersectionObserver((entries) => {
+      vouchersVisible = entries[0].isIntersecting;
+      updateFab();
+    }, { rootMargin: '0px 0px -30% 0px' }).observe(vouchersSection);
+  }
+
+  // ── KICK OFF ───────────────────────────────────────────
+  updateCountdown();
+  setInterval(updateCountdown, 1000 * 60 * 60); // hourly
   loadRegistry();
 </script>
+
 </body>
 </html>
