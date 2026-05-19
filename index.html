@@ -532,12 +532,14 @@
   .card.taken {
     background: var(--surface-taken);
     box-shadow: 0 1px 2px rgba(37,48,26,.04), 0 0 0 1px var(--sage-200);
-    opacity: 0.45;
-    transition: transform var(--t), box-shadow var(--t), opacity var(--t);
+    opacity: 0.4;
+    filter: grayscale(0.6);
+    transition: transform var(--t), box-shadow var(--t), opacity var(--t), filter var(--t);
   }
   .card.taken:hover,
   .card.taken:focus-within {
     opacity: 1;
+    filter: grayscale(0);
   }
   .card-doodle {
     position: absolute;
@@ -592,7 +594,10 @@
     text-transform: uppercase;
     color: var(--ink);
   }
-  .card.taken .card-name { color: var(--ink-soft); }
+  .card.taken .card-name,
+  .card.taken .card-store,
+  .card.taken .card-price,
+  .card.taken .card-notes { color: var(--muted); }
   .card-store {
     font-size: 13px;
     font-weight: 500;
@@ -607,7 +612,6 @@
     margin: 0 0 12px;
     font-variant-numeric: tabular-nums;
   }
-  .card.taken .card-price { color: var(--ink-soft); }
   .card-notes {
     font-size: 14px;
     color: var(--ink-soft);
