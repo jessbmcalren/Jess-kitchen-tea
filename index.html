@@ -1050,13 +1050,13 @@
   <div class="topnav-inner">
     <a href="#top" class="topnav-brand">Jess's Kitchen Tea</a>
     <ul class="topnav-links">
-      <li><a href="#wishlist" class="topnav-link" data-nav="wishlist">
-        <span>Wishlist</span>
-        <span class="topnav-link-count" id="nav-count-items">...</span>
-      </a></li>
       <li><a href="#vouchers" class="topnav-link" data-nav="vouchers">
         <span>Vouchers</span>
         <span class="topnav-link-count" id="nav-count-vouchers">...</span>
+      </a></li>
+      <li><a href="#wishlist" class="topnav-link" data-nav="wishlist">
+        <span>Gift List</span>
+        <span class="topnav-link-count" id="nav-count-items">...</span>
       </a></li>
     </ul>
   </div>
@@ -1244,32 +1244,8 @@
       </div>
       <!-- /illustration-hidden -->
 
-      <p class="intro">
-        Pick something you'd love to gift, then claim it here so we don't double up.
-      </p>
-
       <div class="paths" role="group" aria-label="Two ways to gift">
-        <a href="#wishlist" class="path-card">
-          <div class="path-icon" aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 26 Q 14 24 16 24 L 32 24 Q 34 24 34 26 L 32 38 Q 31 41 28 41 L 20 41 Q 17 41 16 38 Z"/>
-              <path d="M14 28 Q 24 30 34 28"/>
-              <path d="M12 30 Q 7 28 5 24 Q 8 32 13 33"/>
-              <path d="M34 28 Q 41 29 41 33 Q 41 37 34 37"/>
-              <ellipse cx="24" cy="43" rx="14" ry="2"/>
-              <path d="M21 18 Q 19 21 21 24"/>
-              <path d="M24 16 Q 22 20 24 24"/>
-              <path d="M27 18 Q 25 21 27 24"/>
-            </svg>
-          </div>
-          <div class="path-text">
-            <div class="path-eyebrow">Option One</div>
-            <div class="path-title">Bring a gift</div>
-            <div class="path-sub"><span id="path-items-count">...</span> on the wishlist</div>
-          </div>
-          <svg class="path-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
-        </a>
-        <a href="#vouchers" class="path-card path-card-alt">
+        <a href="#vouchers" class="path-card">
           <div class="path-icon" aria-hidden="true">
             <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="6" y="14" width="36" height="22" rx="3"/>
@@ -1283,27 +1259,63 @@
             </svg>
           </div>
           <div class="path-text">
-            <div class="path-eyebrow">Option Two</div>
+            <div class="path-eyebrow">Option One</div>
             <div class="path-title">Send a voucher</div>
             <div class="path-sub">welcome</div>
+          </div>
+          <svg class="path-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+        </a>
+        <a href="#wishlist" class="path-card path-card-alt">
+          <div class="path-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 26 Q 14 24 16 24 L 32 24 Q 34 24 34 26 L 32 38 Q 31 41 28 41 L 20 41 Q 17 41 16 38 Z"/>
+              <path d="M14 28 Q 24 30 34 28"/>
+              <path d="M12 30 Q 7 28 5 24 Q 8 32 13 33"/>
+              <path d="M34 28 Q 41 29 41 33 Q 41 37 34 37"/>
+              <ellipse cx="24" cy="43" rx="14" ry="2"/>
+              <path d="M21 18 Q 19 21 21 24"/>
+              <path d="M24 16 Q 22 20 24 24"/>
+              <path d="M27 18 Q 25 21 27 24"/>
+            </svg>
+          </div>
+          <div class="path-text">
+            <div class="path-eyebrow">Option Two</div>
+            <div class="path-title">Bring a gift</div>
+            <div class="path-sub"><span id="path-items-count">...</span> on the gift list</div>
           </div>
           <svg class="path-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
         </a>
       </div>
     </header>
 
+    <!-- ── VOUCHERS ─────────────────────────────────────── -->
+    <section class="section" id="vouchers" aria-labelledby="vouchers-title">
+      <div class="section-head">
+        <div class="section-eyebrow">01 · Gift Cards</div>
+        <h2 class="section-script" id="vouchers-title">Vouchers</h2>
+        <p class="section-sub">send to <a href="mailto:jessbmclaren@gmail.com">jessbmclaren@gmail.com</a></p>
+      </div>
+
+      <div class="grid" id="vouchers-grid">
+        <div class="skeleton-card"><div class="skeleton-line s-sm"></div><div class="skeleton-line s-lg"></div><div class="skeleton-line s-md"></div><div class="skeleton-line s-md"></div><div class="skeleton-line s-pill"></div></div>
+        <div class="skeleton-card"><div class="skeleton-line s-sm"></div><div class="skeleton-line s-lg"></div><div class="skeleton-line s-md"></div><div class="skeleton-line s-md"></div><div class="skeleton-line s-pill"></div></div>
+        <div class="skeleton-card"><div class="skeleton-line s-sm"></div><div class="skeleton-line s-lg"></div><div class="skeleton-line s-md"></div><div class="skeleton-line s-md"></div><div class="skeleton-line s-pill"></div></div>
+      </div>
+    </section>
+
     <!-- ── WISHLIST ─────────────────────────────────────── -->
     <section class="section" id="wishlist" aria-labelledby="wishlist-title">
       <div class="section-head">
-        <div class="section-eyebrow">01 · Gifts</div>
-        <h2 class="section-script" id="wishlist-title">The Wishlist</h2>
+        <div class="section-eyebrow">02 · Gifts</div>
+        <h2 class="section-script" id="wishlist-title">The Gift List</h2>
+        <p class="section-sub">If you choose a gift, then claim it here so we don't double up.</p>
         <div class="section-progress">
           <span id="items-count-text">...</span>
           <div class="progress-track"><div class="progress-fill" id="items-progress" style="width: 0%;"></div></div>
         </div>
       </div>
 
-      <div class="controls" data-controls="items" role="group" aria-label="Filter wishlist">
+      <div class="controls" data-controls="items" role="group" aria-label="Filter gift list">
         <div class="chips" role="tablist">
           <button type="button" class="chip is-active" data-filter="all"      role="tab" aria-selected="true">All <span class="chip-count" data-count="all">0</span></button>
           <button type="button" class="chip"            data-filter="available" role="tab" aria-selected="false">Available <span class="chip-count" data-count="available">0</span></button>
@@ -1318,21 +1330,6 @@
         <div class="skeleton-card"><div class="skeleton-line s-sm"></div><div class="skeleton-line s-lg"></div><div class="skeleton-line s-md"></div><div class="skeleton-line s-md"></div><div class="skeleton-line s-pill"></div></div>
       </div>
 
-    </section>
-
-    <!-- ── VOUCHERS ─────────────────────────────────────── -->
-    <section class="section" id="vouchers" aria-labelledby="vouchers-title">
-      <div class="section-head">
-        <div class="section-eyebrow">02 · Gift Cards</div>
-        <h2 class="section-script" id="vouchers-title">Vouchers</h2>
-        <p class="section-sub">send to <a href="mailto:jessbmclaren@gmail.com">jessbmclaren@gmail.com</a></p>
-      </div>
-
-      <div class="grid" id="vouchers-grid">
-        <div class="skeleton-card"><div class="skeleton-line s-sm"></div><div class="skeleton-line s-lg"></div><div class="skeleton-line s-md"></div><div class="skeleton-line s-md"></div><div class="skeleton-line s-pill"></div></div>
-        <div class="skeleton-card"><div class="skeleton-line s-sm"></div><div class="skeleton-line s-lg"></div><div class="skeleton-line s-md"></div><div class="skeleton-line s-md"></div><div class="skeleton-line s-pill"></div></div>
-        <div class="skeleton-card"><div class="skeleton-line s-sm"></div><div class="skeleton-line s-lg"></div><div class="skeleton-line s-md"></div><div class="skeleton-line s-md"></div><div class="skeleton-line s-pill"></div></div>
-      </div>
     </section>
 
     <!-- ── FOOTER ───────────────────────────────────────── -->
@@ -1413,9 +1410,9 @@
   </div>
 </div>
 
-<!-- ── STICKY "SEND A VOUCHER" PILL ─────────────────────── -->
-<a href="#vouchers" class="voucher-fab" id="voucher-fab" aria-label="Jump to vouchers">
-  <span>Send a voucher</span>
+<!-- ── STICKY CROSS-LINK PILL ───────────────────────────── -->
+<a href="#wishlist" class="voucher-fab" id="voucher-fab" aria-label="Jump to gift list">
+  <span>View the gift list</span>
   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
 </a>
 
@@ -1978,24 +1975,24 @@
     sections.forEach(s => observer.observe(s));
   }
 
-  // ── STICKY VOUCHER FAB: show during wishlist, hide on hero & vouchers ──
+  // ── STICKY WISHLIST FAB: show during vouchers, hide on hero & wishlist ──
   const voucherFab = $('#voucher-fab');
   const wishlistSection = $('#wishlist');
   const vouchersSection = $('#vouchers');
   if (voucherFab && wishlistSection && vouchersSection && 'IntersectionObserver' in window) {
-    let wishlistVisible = false;
     let vouchersVisible = false;
+    let wishlistVisible = false;
     const updateFab = () => {
-      voucherFab.classList.toggle('show', wishlistVisible && !vouchersVisible);
+      voucherFab.classList.toggle('show', vouchersVisible && !wishlistVisible);
     };
-    new IntersectionObserver((entries) => {
-      wishlistVisible = entries[0].isIntersecting;
-      updateFab();
-    }, { rootMargin: '-15% 0px -15% 0px' }).observe(wishlistSection);
     new IntersectionObserver((entries) => {
       vouchersVisible = entries[0].isIntersecting;
       updateFab();
-    }, { rootMargin: '0px 0px -30% 0px' }).observe(vouchersSection);
+    }, { rootMargin: '-15% 0px -15% 0px' }).observe(vouchersSection);
+    new IntersectionObserver((entries) => {
+      wishlistVisible = entries[0].isIntersecting;
+      updateFab();
+    }, { rootMargin: '0px 0px -30% 0px' }).observe(wishlistSection);
   }
 
   // ── KICK OFF ───────────────────────────────────────────
