@@ -7,47 +7,37 @@
 <title>Jess's Kitchen Tea · Registry</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    /* Sage scale (9 steps) */
-    --sage-50:      #f6f8ef;   /* page tint, hover bg */
-    --sage-100:     #eaf0dc;   /* taken-card bg, panel bg */
-    --sage-200:     #d4dcb9;   /* lines, dashed borders */
-    --sage-300:     #b8c391;   /* decorative accents */
-    --sage-400:     #9aa688;   /* decorative labels (large only) */
-    --sage-500:     #7d8a67;   /* secondary emphasis */
-    --sage-600:     #6b7855;   /* body secondary text */
-    --sage-700:     #4f5d3c;   /* body primary text, buttons */
-    --sage-800:     #3a4528;   /* hover/pressed depth */
-    --sage-900:     #25301a;   /* rare deep emphasis */
-
-    /* Warm neutrals */
     --paper:        #ffffff;
-    --cream:        #fbfaf5;   /* page bg with subtle warmth */
-    --cream-soft:   #f4f1e7;
-    --cream-deep:   #ece8df;
+    --ink:          #111111;
+    --ink-soft:     #4f4f4f;
+    --muted:        #707070;
+    --line:         #e8e8e8;
+    --line-soft:    #f4f4f4;
+    --surface:      #ffffff;
+    --surface-tint: #fafafa;
+    --surface-taken: #f7f7f7;
+    --accent:       #111111;
+    --accent-soft:  #fafafa;
+    --success:      #111111;
 
-    /* Semantic aliases */
-    --ink:          var(--sage-700);
-    --ink-soft:     var(--sage-600);
-    --muted:        var(--sage-400);
-    --line:         var(--sage-200);
-    --line-soft:    var(--sage-100);
-    --primary:      var(--sage-700);
-    --primary-deep: var(--sage-800);
-    --surface:      var(--paper);
-    --surface-tint: var(--sage-50);
-    --surface-taken:var(--sage-100);
-    --accent:       #b95b3f;
-    --accent-soft:  #f5dccf;
-    --success:      var(--sage-700);
+    --cream:        var(--paper);
+    --cream-soft:   #f5f5f5;
+    --cream-deep:   #e8e8e8;
+    --sage-50:      #f9f9f9;
+    --sage-100:     #f1f1f1;
+    --sage-200:     #e4e4e4;
+    --sage-700:     #4f4f4f;
+    --primary:      var(--ink);
+    --primary-deep: var(--ink);
 
-    --shadow-1:     0 1px 2px rgba(37,48,26,.04), 0 0 0 1px rgba(37,48,26,.06);
-    --shadow-2:     0 4px 14px rgba(37,48,26,.08), 0 0 0 1px rgba(37,48,26,.06);
-    --shadow-3:     0 24px 64px rgba(37,48,26,.22);
-    --radius-sm:    12px;
-    --radius:       20px;
+    --shadow-1:     0 1px 2px rgba(17,17,17,.06);
+    --shadow-2:     0 10px 30px rgba(17,17,17,.08);
+    --shadow-3:     0 24px 64px rgba(17,17,17,.12);
+    --radius-sm:    10px;
+    --radius:       18px;
     --radius-lg:    28px;
     --t-fast:       120ms cubic-bezier(.2,.8,.2,1);
     --t:            220ms cubic-bezier(.2,.8,.2,1);
@@ -59,10 +49,10 @@
   html, body { margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
-    font-family: 'Outfit', sans-serif;
-    background: var(--cream);
+    font-family: 'Inter', sans-serif;
+    background: var(--paper);
     color: var(--ink);
-    line-height: 1.6;
+    line-height: 1.65;
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -120,12 +110,14 @@
     gap: 16px;
   }
   .topnav-brand {
-    font-family: 'Caveat Brush', cursive;
-    font-size: 22px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
     line-height: 1;
     color: var(--ink);
     text-decoration: none;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
     flex-shrink: 0;
   }
   .topnav-links {
@@ -167,16 +159,16 @@
   /* ── HERO ─────────────────────────────────────────────── */
   .hero {
     text-align: center;
-    padding: 24px 0 24px;
+    padding: 34px 0 24px;
     position: relative;
   }
   .hero-eyebrow {
     font-size: 11px;
     font-weight: 600;
-    letter-spacing: 0.34em;
+    letter-spacing: 0.32em;
     text-transform: uppercase;
-    color: var(--ink);
-    margin-bottom: 24px;
+    color: var(--ink-soft);
+    margin-bottom: 26px;
     display: inline-flex;
     align-items: center;
     gap: 14px;
@@ -184,17 +176,17 @@
   .hero-eyebrow::before,
   .hero-eyebrow::after {
     content: '';
-    width: 28px;
+    width: 26px;
     height: 1px;
-    background: var(--ink);
+    background: var(--ink-soft);
   }
   .hero-script {
-    font-family: 'Caveat Brush', cursive;
-    font-weight: 400;
-    font-size: clamp(64px, 11vw, 132px);
-    line-height: 0.95;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: clamp(58px, 9vw, 110px);
+    line-height: 0.94;
     color: var(--ink);
-    letter-spacing: 0.005em;
+    letter-spacing: -0.03em;
     margin: 0;
   }
   .hero-script .row2 {
@@ -203,26 +195,27 @@
     margin-top: -4px;
   }
   .hero-meta {
-    margin-top: 28px;
+    margin-top: 30px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 14px;
-    padding: 10px 22px;
-    background: var(--paper);
+    padding: 10px 20px;
+    background: transparent;
+    border: 1px solid var(--line);
     border-radius: 999px;
-    box-shadow: var(--shadow-1);
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 500;
-    letter-spacing: 0.24em;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
+    color: var(--ink-soft);
   }
   .hero-meta .pipe {
     color: var(--line);
   }
   .hero-meta .countdown {
-    color: var(--accent);
-    font-weight: 600;
+    color: var(--ink);
+    font-weight: 700;
   }
 
   .illustration {
@@ -283,19 +276,19 @@
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 20px;
-    background: var(--paper);
+    padding: 22px 20px;
+    background: #fff;
+    border: 1px solid var(--line);
     border-radius: var(--radius);
     text-decoration: none;
     color: var(--ink);
-    box-shadow: var(--shadow-1);
-    transition: transform var(--t), box-shadow var(--t), background var(--t-fast);
+    transition: transform var(--t), border-color var(--t), background var(--t-fast);
     text-align: left;
-    min-height: 80px;
+    min-height: 92px;
   }
   .path-card:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-2);
+    border-color: var(--ink);
     background: var(--surface-tint);
   }
   .path-card:active { transform: translateY(0); }
@@ -318,10 +311,10 @@
     margin-bottom: 4px;
   }
   .path-title {
-    font-family: 'Caveat Brush', cursive;
-    font-weight: 400;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
     font-size: 28px;
-    line-height: 1;
+    line-height: 1.1;
     color: var(--ink);
     margin-bottom: 4px;
   }
@@ -406,28 +399,28 @@
   }
   .section-eyebrow {
     font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.3em;
+    font-weight: 700;
+    letter-spacing: 0.32em;
     text-transform: uppercase;
-    color: var(--sage-500);
+    color: var(--ink-soft);
     margin-bottom: 8px;
   }
   .section-script {
-    font-family: 'Caveat Brush', cursive;
-    font-weight: 400;
-    font-size: clamp(46px, 7vw, 72px);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: clamp(44px, 6vw, 72px);
     line-height: 0.95;
     color: var(--ink);
     margin: 0;
     display: inline-block;
-    transform: rotate(-1deg);
+    transform: none;
   }
   .section-sub {
     margin: 16px auto 0;
-    max-width: 460px;
+    max-width: 520px;
     font-size: 14px;
     color: var(--ink-soft);
-    line-height: 1.5;
+    line-height: 1.7;
   }
   .section-progress {
     margin-top: 16px;
@@ -504,12 +497,12 @@
   }
   .card {
     background: var(--paper);
+    border: 1px solid var(--line);
     border-radius: var(--radius);
-    padding: 24px;
+    padding: 26px;
     display: flex;
     flex-direction: column;
-    box-shadow: var(--shadow-1);
-    transition: transform var(--t), box-shadow var(--t);
+    transition: transform var(--t), border-color var(--t), box-shadow var(--t);
     position: relative;
     overflow: hidden;
   }
@@ -527,19 +520,17 @@
   }
   .card:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-2);
+    border-color: var(--ink);
+    box-shadow: var(--shadow-1);
   }
   .card.taken {
     background: var(--surface-taken);
-    box-shadow: 0 1px 2px rgba(37,48,26,.04), 0 0 0 1px var(--sage-200);
-    opacity: 0.4;
-    filter: grayscale(0.6);
-    transition: transform var(--t), box-shadow var(--t), opacity var(--t), filter var(--t);
+    opacity: 0.82;
+    filter: none;
   }
   .card.taken:hover,
   .card.taken:focus-within {
     opacity: 1;
-    filter: grayscale(0);
   }
   .card-doodle {
     position: absolute;
@@ -558,13 +549,13 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     margin-bottom: 12px;
     padding-right: 48px;
-    min-height: 16px;
-    font-size: 10px;
+    min-height: 18px;
+    font-size: 11px;
     font-weight: 600;
-    letter-spacing: 0.24em;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
     color: var(--muted);
   }
@@ -572,10 +563,11 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 2px 8px;
-    background: var(--sage-100);
+    padding: 4px 10px;
+    background: transparent;
+    border: 1px solid var(--ink);
     border-radius: 999px;
-    color: var(--sage-700);
+    color: var(--ink);
     letter-spacing: 0.18em;
   }
   .card-status::before {
@@ -586,12 +578,13 @@
     background: currentColor;
   }
   .card-name {
+    font-family: 'Cormorant Garamond', serif;
     font-weight: 600;
-    font-size: 15px;
-    line-height: 1.4;
-    margin: 0 0 8px;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
+    font-size: 22px;
+    line-height: 1.2;
+    margin: 0 0 10px;
+    letter-spacing: -0.03em;
+    text-transform: none;
     color: var(--ink);
   }
   .card.taken .card-name,
@@ -601,13 +594,13 @@
   .card-store {
     font-size: 13px;
     font-weight: 500;
-    color: var(--ink-soft);
+    color: var(--muted);
     margin: 0 0 8px;
     line-height: 1.4;
   }
   .card-price {
     font-weight: 600;
-    font-size: 16px;
+    font-size: 15px;
     color: var(--ink);
     margin: 0 0 12px;
     font-variant-numeric: tabular-nums;
@@ -641,7 +634,7 @@
     border: 1.5px solid var(--ink);
     background: transparent;
     color: var(--ink);
-    transition: background var(--t-fast), color var(--t-fast), transform var(--t-fast);
+    transition: background var(--t-fast), color var(--t-fast), transform var(--t-fast), border-color var(--t-fast);
     line-height: 1;
     white-space: nowrap;
     display: inline-flex;
@@ -651,8 +644,8 @@
   }
   .btn:hover { background: var(--primary-deep); color: var(--paper); border-color: var(--primary-deep); }
   .btn:active { transform: scale(0.97); }
-  .btn-primary { background: var(--primary); color: var(--paper); border-color: var(--primary); }
-  .btn-primary:hover { background: var(--primary-deep); color: var(--paper); border-color: var(--primary-deep); }
+  .btn-primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .btn-primary:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); opacity: 0.92; }
   .btn:disabled, .btn[disabled] {
     opacity: 0.5;
     cursor: not-allowed;
@@ -674,7 +667,7 @@
   .taken-label::before {
     content: '✓';
     margin-right: 6px;
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 12px;
     font-weight: 700;
     color: var(--success);
@@ -798,8 +791,8 @@
     text-align: center;
   }
   .sheet h3 {
-    font-family: 'Caveat Brush', cursive;
-    font-weight: 400;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
     font-size: 44px;
     margin: 0 0 4px;
     line-height: 0.95;
@@ -815,6 +808,7 @@
   }
   .sheet label {
     display: block;
+    font-family: 'Inter', sans-serif;
     font-size: 10px;
     letter-spacing: 0.24em;
     text-transform: uppercase;
@@ -828,7 +822,7 @@
     min-height: 48px;
     border: 1.5px solid var(--line);
     border-radius: 999px;
-    font-family: inherit;
+    font-family: 'Inter', sans-serif;
     font-size: 16px;
     background: var(--cream-soft);
     color: var(--ink);
@@ -885,7 +879,7 @@
     margin: 8px 0 14px;
   }
   #voucher-email-text {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 15px;
     color: var(--ink);
     word-break: break-all;
@@ -958,9 +952,9 @@
     color: var(--ink);
   }
   .footer-script {
-    font-family: 'Caveat Brush', cursive;
-    font-weight: 400;
-    font-size: 52px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 48px;
     color: var(--ink);
     line-height: 1.05;
   }
@@ -1076,7 +1070,7 @@
 
     <!-- ── HERO ─────────────────────────────────────────── -->
     <header class="hero">
-      <div class="hero-eyebrow">She's Fresh Off the Market</div>
+      <div class="hero-eyebrow">A refined registry</div>
       <h1 class="hero-script">
         Jess's
         <span class="row2">Kitchen Tea</span>
@@ -1268,9 +1262,9 @@
             </svg>
           </div>
           <div class="path-text">
-            <div class="path-eyebrow">Option One</div>
+            <div class="path-eyebrow">Gift idea</div>
             <div class="path-title">Send a voucher</div>
-            <div class="path-sub">welcome</div>
+            <div class="path-sub">for a thoughtful gift</div>
           </div>
           <svg class="path-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
         </a>
@@ -1288,9 +1282,9 @@
             </svg>
           </div>
           <div class="path-text">
-            <div class="path-eyebrow">Option Two</div>
+            <div class="path-eyebrow">Gift idea</div>
             <div class="path-title">Bring a gift</div>
-            <div class="path-sub"><span id="path-items-count">...</span> on the gift list</div>
+            <div class="path-sub"><span id="path-items-count">...</span> available</div>
           </div>
           <svg class="path-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
         </a>
