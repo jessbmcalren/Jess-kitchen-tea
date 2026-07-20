@@ -1479,6 +1479,105 @@
     { rowIndex: -1003, taken: true, takenBy: '', number: '', url: 'https://www.lecreuset.co.za/',   name: 'Le Creuset Cloche Kettle',notes: '2.1L in Shell Pink — stainless steel knob', store: 'Le Creuset', price: 'R 2,099', section: 'items' },
   ];
 
+  const EXTRA_ITEMS = [
+    {
+      rowIndex: -1004,
+      taken: false,
+      takenBy: '',
+      number: '',
+      url: 'https://www.poetry.co.za/products/bella-bee-glass/108366205-C00.html?pid=108346577',
+      name: 'Bella Bee Glass',
+      notes: 'Added from your requested gift link',
+      store: 'Poetry',
+      price: '',
+      section: 'items',
+    },
+    {
+      rowIndex: -1005,
+      taken: false,
+      takenBy: '',
+      number: '',
+      url: 'https://www.poetry.co.za/products/isa-marble-tapas-bowl-set/108341173-C09.html?pid=108341176',
+      name: 'Isa Marble Tapas Bowl Set',
+      notes: 'Added from your requested gift link',
+      store: 'Poetry',
+      price: '',
+      section: 'items',
+    },
+    {
+      rowIndex: -1006,
+      taken: false,
+      takenBy: '',
+      number: '',
+      url: 'https://hertexhaus.co.za/products/benares-bin-in-naturelle?variant=41743762653269&country=ZA&currency=ZAR&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&utm_source=google&utm_medium=cpc&utm_campaign={campaign.name}&utm_term=&utm_content={ad.name}&utm_adgroup={adgroup.name}&utm_device=c&utm_matchtype=&gad_source=1&gad_campaignid=20279655769&gbraid=0AAAAADCB68_j3l7kOtCwLABNZx-1yndbm&gclid=Cj0KCQjwjvfSBhDpARIsAEiOpSsKq22i-jzR85uSpmLNjynBeoQmbbgXPA0pl1cafzN_HrEED2-S5swaAtKxEALw_wcB',
+      name: 'Benares Bin in Naturelle',
+      notes: 'Added from your requested gift link',
+      store: 'Hertex Haus',
+      price: '',
+      section: 'items',
+    },
+    {
+      rowIndex: -1007,
+      taken: false,
+      takenBy: '',
+      number: '',
+      url: 'https://bash.com/glass-mushroom-bud-vase-11cm-153300abqu0/p',
+      name: 'Glass Mushroom Bud Vase 11cm',
+      notes: 'Added from your requested gift link',
+      store: 'Bash',
+      price: '',
+      section: 'items',
+    },
+    {
+      rowIndex: -1008,
+      taken: false,
+      takenBy: '',
+      number: '',
+      url: 'https://bash.com/resin-beetle-object-153300abss3/p',
+      name: 'Resin Beetle Object',
+      notes: 'Added from your requested gift link',
+      store: 'Bash',
+      price: '',
+      section: 'items',
+    },
+    {
+      rowIndex: -1009,
+      taken: false,
+      takenBy: '',
+      number: '',
+      url: 'https://bash.com/half-moon-table-clock-gold-17-x-30cm-153300absa0/p',
+      name: 'Half Moon Table Clock Gold',
+      notes: 'Added from your requested gift link',
+      store: 'Bash',
+      price: '',
+      section: 'items',
+    },
+    {
+      rowIndex: -1010,
+      taken: false,
+      takenBy: '',
+      number: '',
+      url: 'https://www.yuppiechef.com/cath-kidston-ditsy-collection.htm?id=69874&name=Cath-Kidston-Harmony-Ditsy-Placemats-Set-of-2',
+      name: 'Cath Kidston Harmony Ditsy Placemat Set',
+      notes: 'Added from your requested gift link',
+      store: 'Yuppiechef',
+      price: '',
+      section: 'items',
+    },
+    {
+      rowIndex: -1011,
+      taken: false,
+      takenBy: '',
+      number: '',
+      url: 'https://www.yuppiechef.com/cath-kidston-ditsy-collection.htm?id=69874&name=Cath-Kidston-Harmony-Ditsy-Placemats-Set-of-2',
+      name: 'Cath Kidston Harmony Ditsy Placemat Set',
+      notes: 'Added from your requested gift link',
+      store: 'Yuppiechef',
+      price: '',
+      section: 'items',
+    },
+  ];
+
   // ── DATA LOAD ──────────────────────────────────────────
   async function loadRegistry() {
     if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.startsWith('PASTE_')) {
@@ -1490,7 +1589,7 @@
       const res = await fetch(APPS_SCRIPT_URL);
       const data = await res.json();
       const realItems = (data.items || []).filter(i => i.section === 'items');
-      state.items.all    = [...MOCK_CLAIMED, ...realItems];
+      state.items.all    = [...MOCK_CLAIMED, ...EXTRA_ITEMS, ...realItems];
       state.vouchers.all = (data.items || []).filter(i => i.section === 'vouchers');
       renderAll();
     } catch (err) {
