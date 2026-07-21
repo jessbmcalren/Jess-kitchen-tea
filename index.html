@@ -996,8 +996,10 @@
     .bouquet-crop img { width: 460px; left: -230px; top: -84px; }
     .hero-meta { font-size: 11px; gap: 8px; padding: 8px 16px; margin-top: 20px; }
     .hero-eyebrow::before, .hero-eyebrow::after { width: 20px; }
-    .chips { width: 100%; justify-content: space-between; }
-    .chip { padding: 8px 12px; letter-spacing: 0.16em; font-size: 10px; }
+    .controls { gap: 8px; }
+    .chips { width: 100%; padding: 5px; }
+    .chip { flex: 1 1 0; justify-content: center; min-height: 38px; padding: 8px 6px; letter-spacing: 0.12em; font-size: 10px; }
+    .chip-count { font-size: 9px; }
 
     .paths {
       grid-template-columns: 1fr;
@@ -1327,8 +1329,8 @@
           <button type="button" class="chip"            data-filter="taken"     role="tab" aria-selected="false">Taken <span class="chip-count" data-count="taken">0</span></button>
         </div>
         <div class="chips" role="tablist" aria-label="Sort gift list by price">
-          <button type="button" class="chip is-active" data-sort="lowhigh" role="tab" aria-selected="true"  aria-label="Sort price low to high">Price ↑</button>
-          <button type="button" class="chip"            data-sort="highlow" role="tab" aria-selected="false" aria-label="Sort price high to low">Price ↓</button>
+          <button type="button" class="chip is-active" data-sort="lowhigh" role="tab" aria-selected="true"  aria-label="Sort by price, lowest first">Lowest</button>
+          <button type="button" class="chip"            data-sort="highlow" role="tab" aria-selected="false" aria-label="Sort by price, highest first">Highest</button>
         </div>
       </div>
 
