@@ -71,11 +71,17 @@
   /* Skip link */
   .skip-link {
     position: absolute;
-    left: -9999px;
+    left: 16px;
     top: 8px;
     background: var(--ink);
     color: var(--cream);
-    padding: 10px 16px;
+    padding: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
     border-radius: 999px;
     font-size: 12px;
     letter-spacing: 0.2em;
@@ -83,7 +89,14 @@
     z-index: 100;
     text-decoration: none;
   }
-  .skip-link:focus { left: 16px; }
+  .skip-link:focus {
+    width: auto;
+    height: auto;
+    padding: 10px 16px;
+    overflow: visible;
+    clip: auto;
+    clip-path: none;
+  }
 
   /* ── STICKY MINI NAV ─────────────────────────────────── */
   .topnav {
@@ -119,6 +132,7 @@
     text-transform: uppercase;
     font-weight: 600;
     flex-shrink: 0;
+    white-space: nowrap;
   }
   .topnav-links {
     display: flex;
@@ -972,7 +986,7 @@
   /* ── RESPONSIVE ──────────────────────────────────────── */
   @media (max-width: 760px) {
     .topnav-inner { padding: 10px 16px; gap: 10px; }
-    .topnav-link { padding: 7px 11px; letter-spacing: 0.16em; font-size: 10px; }
+    .topnav-link { padding: 6px 10px; letter-spacing: 0.14em; font-size: 9px; }
     .topnav-link-count { display: none; }
     .topnav-brand { font-size: 18px; letter-spacing: 0.1em; }
 
@@ -1020,7 +1034,7 @@
   @media (max-width: 400px) {
     .topnav-inner { padding: 10px 12px; gap: 6px; }
     .topnav-brand { font-size: 16px; letter-spacing: 0.06em; }
-    .topnav-link { padding: 6px 9px; letter-spacing: 0.1em; font-size: 9px; }
+    .topnav-link { padding: 5px 8px; letter-spacing: 0.08em; font-size: 8px; }
   }
 
   /* Bottom-sheet style on mobile */
@@ -1069,7 +1083,7 @@
         <span class="topnav-link-count" id="nav-count-vouchers">...</span>
       </a></li>
       <li><a href="#wishlist" class="topnav-link" data-nav="wishlist">
-        <span>Gift List</span>
+        <span>Gifts</span>
         <span class="topnav-link-count" id="nav-count-items">...</span>
       </a></li>
     </ul>
