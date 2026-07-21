@@ -453,6 +453,8 @@
   .controls {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
     margin-bottom: 22px;
   }
   .chips {
@@ -1324,6 +1326,10 @@
           <button type="button" class="chip"            data-filter="available" role="tab" aria-selected="false">Available <span class="chip-count" data-count="available">0</span></button>
           <button type="button" class="chip"            data-filter="taken"     role="tab" aria-selected="false">Taken <span class="chip-count" data-count="taken">0</span></button>
         </div>
+        <div class="chips" role="tablist" aria-label="Sort gift list by price">
+          <button type="button" class="chip is-active" data-sort="lowhigh" role="tab" aria-selected="true"  aria-label="Sort price low to high">Price ↑</button>
+          <button type="button" class="chip"            data-sort="highlow" role="tab" aria-selected="false" aria-label="Sort price high to low">Price ↓</button>
+        </div>
       </div>
 
       <div class="grid" id="items-grid">
@@ -1444,7 +1450,7 @@
 
   // ── STATE ──────────────────────────────────────────────
   const state = {
-    items:     { all: [], filter: 'all' },
+    items:     { all: [], filter: 'all', sort: 'lowhigh' },
     vouchers:  { all: [], filter: 'all' },
   };
   let pendingItem = null;
@@ -1524,13 +1530,14 @@
     let list = s.all;
     if (s.filter === 'available') list = list.filter(i => !i.taken);
     else if (s.filter === 'taken') list = list.filter(i =>  i.taken);
-    // Wishlist: pinned items first, then cheapest → most expensive (items without a price go last)
+    // Wishlist: sort purely by price. Items without a price always go last (both directions).
     if (key === 'items') {
-      const isPinned = (i) => /pure silk pillowcase/i.test(i.name || '');
+      const dir = s.sort === 'highlow' ? -1 : 1;
       list = [...list].sort((a, b) => {
-        const pa = isPinned(a), pb = isPinned(b);
-        if (pa !== pb) return pa ? -1 : 1;
-        return priceValue(a.price) - priceValue(b.price);
+        const pa = priceValue(a.price), pb = priceValue(b.price);
+        const aNo = !Number.isFinite(pa), bNo = !Number.isFinite(pb);
+        if (aNo !== bNo) return aNo ? 1 : -1;   // no-price items last, regardless of direction
+        return dir * (pa - pb);
       });
     }
     return list;
@@ -1672,13 +1679,14 @@
     const key = group.dataset.controls;
     group.querySelectorAll('.chip').forEach(chip => {
       chip.addEventListener('click', () => {
-        group.querySelectorAll('.chip').forEach(c => {
+        chip.closest('.chips').querySelectorAll('.chip').forEach(c => {
           c.classList.remove('is-active');
           c.setAttribute('aria-selected', 'false');
         });
         chip.classList.add('is-active');
         chip.setAttribute('aria-selected', 'true');
-        state[key].filter = chip.dataset.filter;
+        if (chip.dataset.filter) state[key].filter = chip.dataset.filter;
+        if (chip.dataset.sort)   state[key].sort   = chip.dataset.sort;
         renderSection(key);
       });
     });
