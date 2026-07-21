@@ -971,9 +971,10 @@
 
   /* ── RESPONSIVE ──────────────────────────────────────── */
   @media (max-width: 760px) {
-    .topnav-link { padding: 8px 12px; letter-spacing: 0.18em; font-size: 10px; }
+    .topnav-inner { padding: 10px 16px; gap: 10px; }
+    .topnav-link { padding: 7px 11px; letter-spacing: 0.16em; font-size: 10px; }
     .topnav-link-count { display: none; }
-    .topnav-brand { font-size: 20px; }
+    .topnav-brand { font-size: 18px; letter-spacing: 0.1em; }
 
     .page { padding: 20px 16px 64px; }
     .hero { padding: 8px 0 16px; }
@@ -1014,6 +1015,12 @@
     .path-icon { width: 40px; height: 40px; }
     .path-title { font-size: 24px; }
     .path-sub { font-size: 12px; }
+  }
+
+  @media (max-width: 400px) {
+    .topnav-inner { padding: 10px 12px; gap: 6px; }
+    .topnav-brand { font-size: 16px; letter-spacing: 0.06em; }
+    .topnav-link { padding: 6px 9px; letter-spacing: 0.1em; font-size: 9px; }
   }
 
   /* Bottom-sheet style on mobile */
@@ -1082,7 +1089,7 @@
       <div class="hero-meta" aria-label="Event details">
         <span>Bridal Shower</span>
         <span class="pipe" aria-hidden="true">·</span>
-        <span>15 · 08 · 26</span>
+        <span>15 · 08</span>
         <span class="pipe" aria-hidden="true">·</span>
         <span class="countdown" id="countdown">...</span>
       </div>
